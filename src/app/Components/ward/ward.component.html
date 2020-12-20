@@ -10,13 +10,13 @@
     </tr>
     <!-- לשנות על פי שמות המשמרות שהוכנסו -->
     <tr>
-        <td *ngFor= "let item of activity_days">בוקר</td>
+        <td *ngFor= "let item of activity_days" appChangeColor>בוקר</td>
     </tr>
     <tr>
-        <td  *ngFor= "let item of activity_days">ערב</td>
+        <td  *ngFor= "let item of activity_days" appChangeColor>ערב</td>
     </tr>
     <tr>
-        <td *ngFor= "let item of activity_days">לילה</td>
+        <td *ngFor= "let item of activity_days" appChangeColor>לילה</td>
     </tr>
 
 </table>

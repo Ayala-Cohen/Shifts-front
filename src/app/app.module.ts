@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { IntegrationsComponent } from './Components/integrations/integrations.component';
 import { EmployeeComponent } from './Components/employee/employee.component';
 import { WardComponent } from './Components/ward/ward.component';
+import { ChangeColorDirective } from './Directives/change-color.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     IntegrationsComponent,
     EmployeeComponent,
-    WardComponent
+    WardComponent,
+    ChangeColorDirective
   ],
   imports: [
     BrowserModule,
