@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ward.component.css']
 })
 export class WardComponent implements OnInit {
+  activity_days = [1, 2, 3, 4, 5, 6, 7]
 
   constructor() { }
 
   ngOnInit(): void {
   }
+changeColor()
+{
+  
+}
 
 }

@@ -1,1 +1,22 @@
-<p>ward works!</p>
+<table dir="rtl" class = "table" id  = "scheduleTable">
+    <tr>
+        <th>ראשון</th>
+        <th>שני</th>
+        <th>שלישי</th>
+        <th>רביעי</th>
+        <th>חמישי</th>
+        <th>שישי</th>
+        <th>שבת</th>
+    </tr>
+    <!-- לשנות על פי שמות המשמרות שהוכנסו -->
+    <tr>
+        <td *ngFor= "let item of activity_days">בוקר</td>
+    </tr>
+    <tr>
+        <td  *ngFor= "let item of activity_days">ערב</td>
+    </tr>
+    <tr>
+        <td *ngFor= "let item of activity_days">לילה</td>
+    </tr>
+
+</table>

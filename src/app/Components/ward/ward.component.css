@@ -1,0 +1,22 @@
+table
+{
+    width: 70%;
+    text-align: right;
+    margin:auto;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 25px;
+    border-color: rgb(129, 182, 226);
+    
+}
+th, td
+{
+    border-color: rgb(129, 182, 226);
+    border-style: solid;
+    border-width: thin;
+
+}
+th
+{
+    color:rgb(15, 76, 191) ;
+}
