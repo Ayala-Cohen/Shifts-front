@@ -7,6 +7,9 @@ import { IntegrationsComponent } from './Components/integrations/integrations.co
 import { EmployeeComponent } from './Components/employee/employee.component';
 import { WardComponent } from './Components/ward/ward.component';
 import { ChangeColorDirective } from './Directives/change-color.directive';
+import { DirectorDetailsComponent } from './Components/director-details/director-details.component';
+import { BusinessDetailsComponent } from './Components/business-details/business-details.component';
+import { WardsAndShiftsComponent } from './Components/wards-and-shifts/wards-and-shifts.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { ChangeColorDirective } from './Directives/change-color.directive';
     IntegrationsComponent,
     EmployeeComponent,
     WardComponent,
-    ChangeColorDirective
+    ChangeColorDirective,
+    DirectorDetailsComponent,
+    BusinessDetailsComponent,
+    WardsAndShiftsComponent
   ],
   imports: [
     BrowserModule,

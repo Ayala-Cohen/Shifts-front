@@ -1,0 +1,26 @@
+label
+{
+    direction: rtl;
+    color: rgb(39, 29, 40);
+    font-weight: 499;
+}
+
+input
+{
+    border-radius: 13px;
+    border-color: rgb(4, 112, 185);
+    border-style: solid;
+    border-width: thin;
+}
+input:focus-visible
+{
+    outline: none;
+    border-color: rgb(36, 134, 176);
+    border-width:2px;
+}
+div
+{
+    direction: rtl;
+    text-align: right;
+    margin:auto
+}
