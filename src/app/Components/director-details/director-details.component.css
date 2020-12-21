@@ -25,3 +25,8 @@ div
     direction: rtl;
     align-content:center;
 }
+button
+{
+    background-color: rgb(77, 131, 191);
+    color:rgb(255, 255, 255)
+}

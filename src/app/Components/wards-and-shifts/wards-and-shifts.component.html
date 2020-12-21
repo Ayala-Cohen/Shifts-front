@@ -1,6 +1,11 @@
 <div>
     <h2>משמרות ומחלקות</h2>
-    <label>מספר משמרות: </label><input type = "number"><br><br>
+    <label>מספר משמרות: </label><input type = "number" [(ngModel)] = "num_shifts" name = "shifts_num"><br><br>
+    <div *ngIf = "num_shifts != 0">
+        <label>שמות המשמרות: </label>
+        <p *ngFor ="let num of l_shifts; let i = index"><input   type = "text" placeholder="משמרת מספר {{i + 1}}"><br><br></p>
+    </div>
     <label>מספר מחלקות: </label><input type = "number"><br><br>
+    <button class="btn" (click) = "next()">הבא</button>
 
 </div>

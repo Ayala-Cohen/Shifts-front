@@ -24,3 +24,8 @@ div
     text-align: right;
     margin:auto
 }
+button
+{
+    background-color: rgb(77, 131, 191);
+    color:rgb(255, 255, 255)
+}
