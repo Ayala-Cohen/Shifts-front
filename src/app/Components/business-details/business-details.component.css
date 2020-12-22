@@ -22,7 +22,8 @@ div
 {
     direction: rtl;
     text-align: right;
-    margin:auto
+    margin:auto;
+    width: 400px;
 }
 button
 {

@@ -12,6 +12,7 @@ import { ChangeColorDirective } from './Directives/change-color.directive';
 import { DirectorDetailsComponent } from './Components/director-details/director-details.component';
 import { BusinessDetailsComponent } from './Components/business-details/business-details.component';
 import { WardsAndShiftsComponent } from './Components/wards-and-shifts/wards-and-shifts.component';
+import { NavComponent } from './Components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { WardsAndShiftsComponent } from './Components/wards-and-shifts/wards-and
     ChangeColorDirective,
     DirectorDetailsComponent,
     BusinessDetailsComponent,
-    WardsAndShiftsComponent
+    WardsAndShiftsComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

@@ -23,10 +23,13 @@ div
 {
     text-align: right;
     direction: rtl;
-    align-content:center;
+    margin: auto;
+    width: 400px;    
 }
 button
 {
     background-color: rgb(77, 131, 191);
     color:rgb(255, 255, 255)
 }
+
+

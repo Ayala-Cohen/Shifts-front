@@ -11,7 +11,6 @@ input
     border-color: rgb(4, 112, 185);
     border-style: solid;
     border-width: thin;
-    margin-left: 0px;
 }
 input:focus-visible
 {
@@ -23,7 +22,8 @@ div
 {
     text-align: right;
     direction: rtl;
-    align-content:center;
+    width: 400px;
+    margin: auto;
 }
 button
 {
