@@ -18,11 +18,10 @@ input:focus-visible
     border-color: rgb(36, 134, 176);
     border-width:2px;
 }
-div
+.container
 {
     text-align: right;
     direction: rtl;
-    width: 400px;
     margin: auto;
 }
 button

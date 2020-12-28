@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ward',
@@ -8,13 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class WardComponent implements OnInit {
   activity_days = [1, 2, 3, 4, 5, 6, 7]
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
-changeColor()
-{
-  
-}
+  changeColor() {
 
+  }
+  next()
+  {
+    this.router.navigate(['employee'])
+  }
 }
