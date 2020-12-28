@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./integrations.component.css']
 })
 export class IntegrationsComponent implements OnInit {
+  activity_days = [1, 2, 3, 4, 5, 6, 7]
 
   constructor() { }
 

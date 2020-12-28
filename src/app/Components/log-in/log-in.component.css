@@ -1,0 +1,23 @@
+.container
+{
+    direction: rtl;
+    text-align: right;
+}
+.form-control
+{
+    border-radius: 13px !important;
+    border-color: rgb(4, 112, 185) !important;
+    border-style: solid;
+    border-width: thin;
+}
+input:focus-visible
+{
+    outline: none;
+    border-color: rgb(36, 134, 176);
+    border-width:2px;
+}
+button
+{
+    background-color: rgb(77, 131, 191);
+    color:rgb(255, 255, 255)
+}

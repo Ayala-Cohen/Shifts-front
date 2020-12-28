@@ -1,0 +1,46 @@
+table
+{
+    width: 70%;
+    text-align: right;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 25px;
+    border-color: rgb(129, 182, 226);
+    
+}
+th, td
+{
+    border-color: rgb(129, 182, 226);
+    border-style: solid;
+    border-width: thin;
+
+}
+th
+{
+    color:rgb(15, 76, 191) ;
+}
+button
+{
+    background-color: rgb(77, 131, 191);
+    color:rgb(255, 255, 255);
+    margin:5px;
+}
+input
+{
+    border-radius: 13px;
+    border-color: rgb(4, 112, 185);
+    border-style: solid;
+    border-width: thin;
+}
+input:focus-visible
+{
+    outline: none;
+    border-color: rgb(36, 134, 176);
+    border-width:2px;
+}
+.container
+{
+    text-align: right;
+    direction: rtl;
+    margin: auto;
+}

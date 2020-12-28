@@ -1,22 +1,33 @@
-<table dir="rtl" class = "table" id  = "scheduleTable">
-    <tr>
-        <th>ראשון</th>
-        <th>שני</th>
-        <th>שלישי</th>
-        <th>רביעי</th>
-        <th>חמישי</th>
-        <th>שישי</th>
-        <th>שבת</th>
-    </tr>
-    <!-- לשנות על פי שמות המשמרות שהוכנסו -->
-    <tr>
-        <td *ngFor= "let item of activity_days">בוקר</td>
-    </tr>
-    <tr>
-        <td  *ngFor= "let item of activity_days">ערב</td>
-    </tr>
-    <tr>
-        <td *ngFor= "let item of activity_days">לילה</td>
-    </tr>
+<div class="container col-sm-12 col-md-6 col-lg-8">
+    <h2>מתאריך עד תאריך...</h2>
+    <h4>סמן כל משמרת בדרגת העדיפות שלך</h4>
+    <div class="p-5">
+        <button class="btn" style="background-color: rgb(212, 241, 255);">מעדיף</button>
+        <button class = "btn" style="background-color: rgb(152, 200, 210);">יכול</button>
+        <button class = "btn" style="background-color: rgb(120, 157, 163);">לא יכול</button>
+        <button  class = "btn" style="background-color: rgb(74, 152, 190);">מעדיף שלא</button>
 
-</table>
+    </div>
+    <table dir="rtl" class="table" id="scheduleTable">
+        <tr>
+            <th>ראשון</th>
+            <th>שני</th>
+            <th>שלישי</th>
+            <th>רביעי</th>
+            <th>חמישי</th>
+            <th>שישי</th>
+            <th>שבת</th>
+        </tr>
+        <!-- לשנות על פי שמות המשמרות שהוכנסו -->
+        <tr>
+            <td *ngFor="let item of activity_days" appChangeColor>בוקר</td>
+        </tr>
+        <tr>
+            <td *ngFor="let item of activity_days" appChangeColor>ערב</td>
+        </tr>
+        <tr>
+            <td *ngFor="let item of activity_days" appChangeColor>לילה</td>
+        </tr>
+
+    </table>
+</div>

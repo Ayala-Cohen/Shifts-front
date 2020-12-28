@@ -13,6 +13,7 @@ import { DirectorDetailsComponent } from './Components/director-details/director
 import { BusinessDetailsComponent } from './Components/business-details/business-details.component';
 import { WardsAndShiftsComponent } from './Components/wards-and-shifts/wards-and-shifts.component';
 import { NavComponent } from './Components/nav/nav.component';
+import { LogINComponent } from './Components/log-in/log-in.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NavComponent } from './Components/nav/nav.component';
     DirectorDetailsComponent,
     BusinessDetailsComponent,
     WardsAndShiftsComponent,
-    NavComponent
+    NavComponent,
+    LogINComponent
   ],
   imports: [
     BrowserModule,
