@@ -1,6 +1,5 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
-    <!-- פריסה של כמה זמן? -->
-    <h5>סמן את המשמרות בהן אינך יכול לעבוד באופן קבוע</h5>
+    <h2>שיבוץ לשבוע תאריך...</h2>
     <table class="table" id="scheduleTable">
         <tr>
             <th>ראשון</th>
@@ -13,13 +12,13 @@
         </tr>
         <!-- לשנות על פי שמות המשמרות שהוכנסו -->
         <tr>
-            <td *ngFor="let item of activity_days" appChangeColor>בוקר</td>
+            <td *ngFor="let item of activity_days">בוקר</td>
         </tr>
         <tr>
-            <td *ngFor="let item of activity_days" appChangeColor>ערב</td>
+            <td *ngFor="let item of activity_days">ערב</td>
         </tr>
         <tr>
-            <td *ngFor="let item of activity_days" appChangeColor>לילה</td>
+            <td *ngFor="let item of activity_days">לילה</td>
         </tr>
 
     </table>

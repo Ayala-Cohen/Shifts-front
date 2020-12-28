@@ -1,16 +1,13 @@
-<div class="container col-6 d-flex flex-row col-sm-12 col-md-6 col-lg-8">
-    <div class="p-3">
-        <h3>הוספת עובד חדש</h3>
-        <form>
-            <label>שם:</label><input type="text" name="employee_name"><br><br>
-            <label>מספר זהות:</label><input type="text" name="employee_id"><br><br>
-            <label>מחלקת עובד: </label><select>
-                <option></option>
-            </select><br><br>
-            <label>תפקיד:</label><input type="text" name="emplyee_task"><br>
-        </form>
+<div class="card d-flex" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">שם פרטי ומשפחה</h5>
     </div>
-    <div class="p-3">
-        <button class = "btn btn-lg" (click)="importData()">יבוא נתונים מאקסל</button>
-    </div>
-</div>
+    <ul class="list-group list-group-flush">      
+      <li class="list-group-item">מספר זהות</li><!-- להסתיר במצב עובד רגיל -->
+      <li class="list-group-item">מספר טלפון</li>
+      <li class="list-group-item">כתובת דוא"ל</li>
+      <li class="list-group-item">תפקיד</li>
+      <li class="list-group-item">מחלקה</li>
+    </ul>
+    <button class="btn">עריכה</button><!-- להסתיר במצב עובד רגיל -->
+  </div>

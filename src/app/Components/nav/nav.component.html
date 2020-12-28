@@ -3,10 +3,22 @@
     <button class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class = "collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="nav navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['integration']">שיבוץ שבועי</a>
+                <a class="nav-link" [routerLink]="['log-in']">התחבר</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['integration']">מילוי שיבוץ שבועי</a><!--להציג רק אחרי התחברות-->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['final-integration']">שיבוץ סופי</a><!--להציג רק אחרי התחברות-->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['employees-list']">רשימת עובדים</a><!--להציג רק אחרי התחברות-->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['constraints']">אילוצים קבועים</a><!--להציג רק אחרי התחברות-->
             </li>
             <!-- <li class="nav-item dropdown">
         <a  class="nav-link dropdown-toggle" data-toggle="dropdown" >{{client_service.client.name}}</a>
@@ -14,9 +26,6 @@
               <label class="dropdown-item" (click)="GetOut()">יציאה</label>
           </div>
       </li> -->
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['log-in']">התחבר</a>
-            </li>
             <li class = "nav-item">
                 <a class="nav-link" [routerLink]="['#']">עמוד הבית</a>
             </li>

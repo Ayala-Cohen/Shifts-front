@@ -26,8 +26,17 @@ th
 {
     color:rgb(15, 76, 191) ;
 }
-button
+
+input
 {
-    background-color: rgb(77, 131, 191);
-    color:rgb(255, 255, 255)
+    border-radius: 13px;
+    border-color: rgb(4, 112, 185);
+    border-style: solid;
+    border-width: thin;
+}
+input:focus-visible
+{
+    outline: none;
+    border-color: rgb(36, 134, 176);
+    border-width:2px;
 }

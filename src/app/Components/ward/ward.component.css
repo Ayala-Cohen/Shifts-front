@@ -1,6 +1,7 @@
 table
 {
     width: 70%;
+    direction: rtl;
     text-align: right;
     border-style: solid;
     border-width: thin;

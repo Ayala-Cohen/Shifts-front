@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./constraints.component.css']
 })
 export class ConstraintsComponent implements OnInit {
+  activity_days = [1, 2, 3, 4, 5, 6, 7]
 
   constructor() { }
 
