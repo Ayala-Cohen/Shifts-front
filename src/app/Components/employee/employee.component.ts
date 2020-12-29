@@ -11,5 +11,9 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit() {
   }
+  edit()
+  {
+    //( לטעון קומפוננטת הוספת עובד ולשלוח אליה את המפתח (מספר זהות
+  }
 
 }
