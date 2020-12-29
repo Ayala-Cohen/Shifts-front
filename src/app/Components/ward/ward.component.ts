@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class WardComponent implements OnInit {
   activity_days = [1, 2, 3, 4, 5, 6, 7]
+  list_wards = [1, 2, 3, 4, 5]
 
   constructor(private router:Router) { }
 

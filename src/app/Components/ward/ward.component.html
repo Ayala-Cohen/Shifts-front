@@ -1,29 +1,34 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
-    <h2>מחלקת...</h2>
-    <table class="table" id="scheduleTable">
-        <tr>
-            <th>ראשון</th>
-            <th>שני</th>
-            <th>שלישי</th>
-            <th>רביעי</th>
-            <th>חמישי</th>
-            <th>שישי</th>
-            <th>שבת</th>
-        </tr>
-        <!-- לשנות על פי שמות המשמרות שהוכנסו -->
-        <tr>
-            <td *ngFor="let item of activity_days" appChangeColor>בוקר</td>
-        </tr>
-        <tr>
-            <td *ngFor="let item of activity_days" appChangeColor>ערב</td>
-        </tr>
-        <tr>
-            <td *ngFor="let item of activity_days" appChangeColor>לילה</td>
-        </tr>
+    <p>בכל מחלקה יש ללחוץ על המשמרות בהן היא פעילה</p>
+    <div *ngFor="let item of list_wards">
+        <h2>מחלקת...</h2>
+        <table  class="table" id="scheduleTable">
+            <tr>
+                <th>ראשון</th>
+                <th>שני</th>
+                <th>שלישי</th>
+                <th>רביעי</th>
+                <th>חמישי</th>
+                <th>שישי</th>
+                <th>שבת</th>
+            </tr>
+            <!-- לשנות על פי שמות המשמרות שהוכנסו -->
+            <tr>
+                <td *ngFor="let item of activity_days" appChangeColor>בוקר</td>
+            </tr>
+            <tr>
+                <td *ngFor="let item of activity_days" appChangeColor>ערב</td>
+            </tr>
+            <tr>
+                <td *ngFor="let item of activity_days" appChangeColor>לילה</td>
+            </tr>
 
-    </table>
-    <!-- נתון לשינוי -->
-    <label> מס' סוגי עובדים במחלקה זו: </label>
-    <input type="number">
+        </table>
+        <!-- נתון לשינוי -->
+        <label> מס' סוגי עובדים במחלקה זו: </label>
+        <input type="number">
+        <label>מספר משמרות מינימלי לביצוע: </label>
+        <input type="number">
+    </div>
     <button class="btn" (click)="next()">הבא</button>
 </div>
