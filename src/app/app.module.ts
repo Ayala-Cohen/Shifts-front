@@ -18,6 +18,7 @@ import { FinalIntegrationComponent } from './Components/final-integration/final-
 import { EmployeeComponent } from './Components/employee/employee.component';
 import { EmployeesListComponent } from './Components/employees-list/employees-list.component';
 import { ConstraintsComponent } from './Components/constraints/constraints.component';
+import { IntegrationService } from './Services/integration.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { ConstraintsComponent } from './Components/constraints/constraints.compo
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [IntegrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

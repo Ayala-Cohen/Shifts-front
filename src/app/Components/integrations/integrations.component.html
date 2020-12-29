@@ -1,11 +1,12 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <h2>מתאריך עד תאריך...</h2>
     <h4>סמן כל משמרת בדרגת העדיפות שלך</h4>
+    <h5>לחץ על כפתור וצבע את המשמרות לפי עדיפותך</h5>
     <div class="p-5">
-        <button class="btn" style="background-color: rgb(212, 241, 255);">מעדיף</button>
-        <button class = "btn" style="background-color: rgb(152, 200, 210);">יכול</button>
-        <button class = "btn" style="background-color: rgb(120, 157, 163);">לא יכול</button>
-        <button  class = "btn" style="background-color: rgb(74, 152, 190);">מעדיף שלא</button>
+        <button class="btn" style="background-color: rgb(212, 241, 255);" (click)="changeDirectiveColor('rgb(212, 241, 255)')">מעדיף</button>
+        <button class = "btn" style="background-color: rgb(152, 200, 210);" (click)="changeDirectiveColor('rgb(152, 200, 210)')">יכול</button>
+        <button class = "btn" style="background-color: rgb(120, 157, 163);" (click)="changeDirectiveColor('rgb(120, 157, 163)')">לא יכול</button>
+        <button  class = "btn" style="background-color: rgb(74, 152, 190);" (click)="changeDirectiveColor('rgb(74, 152, 190)')">מעדיף שלא</button>
 
     </div>
     <table dir="rtl" class="table" id="scheduleTable">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  IntegrationService } from 'src/app/Services/integration.service';
 
 @Component({
   selector: 'app-integrations',
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class IntegrationsComponent implements OnInit {
   activity_days = [1, 2, 3, 4, 5, 6, 7]
 
-  constructor() { }
+  constructor(private integration_service :IntegrationService) { }
 
   ngOnInit() {
+  }
+  changeDirectiveColor(color:string)
+  {
+    debugger
+    this.integration_service.color = color
   }
 
 }
