@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WardService } from 'src/app/Services/ward.service';
 
 @Component({
   selector: 'app-final-integration',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class FinalIntegrationComponent implements OnInit {
   activity_days = [1, 2, 3, 4, 5, 6, 7]
 
-  constructor() { }
+  constructor(private ward_service:WardService) { }
 
   ngOnInit() {
   }

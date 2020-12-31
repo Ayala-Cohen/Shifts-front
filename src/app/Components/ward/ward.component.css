@@ -1,3 +1,14 @@
+.container
+{
+    text-align: right;
+    direction: rtl;
+    margin: auto;
+}
+.dropdown-menu
+{
+    text-align: right;
+    position: fixed;
+}
 table
 {
     width: 70%;
@@ -37,10 +48,4 @@ input:focus-visible
     outline: none;
     border-color: rgb(36, 134, 176);
     border-width:2px;
-}
-.container
-{
-    text-align: right;
-    direction: rtl;
-    margin: auto;
 }

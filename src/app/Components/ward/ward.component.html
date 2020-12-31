@@ -1,7 +1,14 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <p>בכל מחלקה יש ללחוץ על המשמרות בהן היא פעילה</p>
-    <div *ngFor="let item of list_wards">
-        <h2>מחלקת...</h2>
+    <div *ngFor="let ward of ward_service.list_wards;let i = index">
+        <h2> {{ward.name}}</h2>
+        <label> מס' סוגי עובדים במחלקה זו: </label>
+        <input type="number" name="num_task" [(ngModel)]="ward.num_tasks" (blur)="init_list(i)"><br>
+        <div *ngIf = "ward.list_tasks.length != 0">
+            <label>תפקידי עובדים : </label>
+            <p *ngFor = "let task of ward.list_tasks; let j = index;trackBy:trackByIdx"><input placeholder="הכנס תפקיד" [(ngModel)] = "ward.list_tasks[j]"><br></p>
+        </div>
+        
         <table  class="table" id="scheduleTable">
             <tr>
                 <th>ראשון</th>
@@ -12,23 +19,17 @@
                 <th>שישי</th>
                 <th>שבת</th>
             </tr>
-            <!-- לשנות על פי שמות המשמרות שהוכנסו -->
-            <tr>
-                <td *ngFor="let item of activity_days" appChangeColor>בוקר</td>
+            <tr class="dropdown" *ngFor="let shift of ward_service.list_shifts">
+                <td *ngFor="let item of activity_days" data-toggle="dropdown" appChangeColor>{{shift}}</td>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">מספר עובדים בכל משמרת</li>
+                    <li *ngFor = "let task of ward.list_tasks"><label>{{task}}</label><input type="number"></li>
+                </ul>
             </tr>
-            <tr>
-                <td *ngFor="let item of activity_days" appChangeColor>ערב</td>
-            </tr>
-            <tr>
-                <td *ngFor="let item of activity_days" appChangeColor>לילה</td>
-            </tr>
-
         </table>
         <!-- נתון לשינוי -->
-        <label> מס' סוגי עובדים במחלקה זו: </label>
-        <input type="number">
         <label>מספר משמרות מינימלי לביצוע: </label>
-        <input type="number">
+        <input type="number"><br>
     </div>
     <button class="btn" (click)="next()">הבא</button>
 </div>

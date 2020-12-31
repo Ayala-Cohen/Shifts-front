@@ -19,15 +19,8 @@
             <th>שישי</th>
             <th>שבת</th>
         </tr>
-        <!-- לשנות על פי שמות המשמרות שהוכנסו -->
-        <tr>
-            <td *ngFor="let item of activity_days" appChangeColor>בוקר</td>
-        </tr>
-        <tr>
-            <td *ngFor="let item of activity_days" appChangeColor>ערב</td>
-        </tr>
-        <tr>
-            <td *ngFor="let item of activity_days" appChangeColor>לילה</td>
+        <tr *ngFor = "let shift of ward_service.list_shifts">
+            <td *ngFor="let item of activity_days" appChangeColor>{{shift}}</td>
         </tr>
 
     </table>

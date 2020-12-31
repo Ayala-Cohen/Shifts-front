@@ -1,11 +1,14 @@
 .card
 {
-    direction: rtl;
     text-align: right;
     margin: 10px;
 }
-button
+.btn
 {
     background-color: rgb(77, 131, 191);
     color:rgb(255, 255, 255)
+}
+.card-title
+{
+    text-align: center;
 }

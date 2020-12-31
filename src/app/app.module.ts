@@ -19,6 +19,7 @@ import { EmployeeComponent } from './Components/employee/employee.component';
 import { EmployeesListComponent } from './Components/employees-list/employees-list.component';
 import { ConstraintsComponent } from './Components/constraints/constraints.component';
 import { IntegrationService } from './Services/integration.service';
+import { WardService } from './Services/ward.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { IntegrationService } from './Services/integration.service';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [IntegrationService],
+  providers: [IntegrationService,
+    WardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

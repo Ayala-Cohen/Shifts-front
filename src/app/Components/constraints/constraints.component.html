@@ -12,14 +12,31 @@
             <th>שבת</th>
         </tr>
         <!-- לשנות על פי שמות המשמרות שהוכנסו -->
-        <tr>
-            <td *ngFor="let item of activity_days" appChangeColor>בוקר</td>
+        <tr class="dropdown">
+            <td *ngFor="let item of activity_days" data-toggle="dropdown">
+                תאריך
+            </td>
+            <ul class="dropdown-menu">
+                <li *ngFor = "let shift of ward_service.list_shifts"><a (click) = "getChoice('בוקר')" >{{shift}}</a></li>
+            </ul>
         </tr>
-        <tr>
-            <td *ngFor="let item of activity_days" appChangeColor>ערב</td>
+        <tr class="dropdown">
+            <td *ngFor="let item of activity_days" data-toggle="dropdown">תאריך</td>
+            <ul class="dropdown-menu">
+                <li *ngFor = "let shift of ward_service.list_shifts"><a (click) = "getChoice('בוקר')" >{{shift}}</a></li>
+            </ul>
         </tr>
-        <tr>
-            <td *ngFor="let item of activity_days" appChangeColor>לילה</td>
+        <tr class="dropdown">
+            <td *ngFor="let item of activity_days" data-toggle="dropdown">תאריך</td>
+            <ul class="dropdown-menu">
+                <li *ngFor = "let shift of ward_service.list_shifts"><a (click) = "getChoice('בוקר')" >{{shift}}</a></li>
+            </ul>
+        </tr>
+        <tr class="dropdown">
+            <td *ngFor="let item of activity_days" data-toggle="dropdown">תאריך</td>
+            <ul class="dropdown-menu">
+                <li *ngFor = "let shift of ward_service.list_shifts"><a (click) = "getChoice('בוקר')" >{{shift}}</a></li>
+            </ul>
         </tr>
 
     </table>

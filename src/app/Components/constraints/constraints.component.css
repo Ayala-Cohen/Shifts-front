@@ -4,6 +4,10 @@
     direction: rtl;
     margin: auto;
 }
+.dropdown-menu
+{
+    text-align: center;
+}
 table
 {
     width: 70%;
