@@ -20,6 +20,7 @@ import { EmployeesListComponent } from './Components/employees-list/employees-li
 import { ConstraintsComponent } from './Components/constraints/constraints.component';
 import { IntegrationService } from './Services/integration.service';
 import { WardService } from './Services/ward.service';
+import { HomeComponent } from './Components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { WardService } from './Services/ward.service';
     FinalIntegrationComponent,
     EmployeeComponent,
     EmployeesListComponent,
-    ConstraintsComponent
+    ConstraintsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

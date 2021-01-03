@@ -16,26 +16,26 @@
             <td *ngFor="let item of activity_days" data-toggle="dropdown">
                 תאריך
             </td>
-            <ul class="dropdown-menu">
-                <li *ngFor = "let shift of ward_service.list_shifts"><a (click) = "getChoice('בוקר')" >{{shift}}</a></li>
+            <ul class="dropdown-menu checkbox">
+                <li *ngFor = "let shift of ward_service.list_shifts"><input type="checkbox"><label>{{shift}}</label></li>
             </ul>
         </tr>
         <tr class="dropdown">
             <td *ngFor="let item of activity_days" data-toggle="dropdown">תאריך</td>
-            <ul class="dropdown-menu">
-                <li *ngFor = "let shift of ward_service.list_shifts"><a (click) = "getChoice('בוקר')" >{{shift}}</a></li>
+            <ul class="dropdown-menu checkbox">
+                <li *ngFor = "let shift of ward_service.list_shifts"><input type="checkbox"><label>{{shift}}</label></li>
             </ul>
         </tr>
         <tr class="dropdown">
             <td *ngFor="let item of activity_days" data-toggle="dropdown">תאריך</td>
-            <ul class="dropdown-menu">
-                <li *ngFor = "let shift of ward_service.list_shifts"><a (click) = "getChoice('בוקר')" >{{shift}}</a></li>
+            <ul class="dropdown-menu checkbox">
+                <li *ngFor = "let shift of ward_service.list_shifts"><input type="checkbox"><label>{{shift}}</label></li>
             </ul>
         </tr>
         <tr class="dropdown">
             <td *ngFor="let item of activity_days" data-toggle="dropdown">תאריך</td>
-            <ul class="dropdown-menu">
-                <li *ngFor = "let shift of ward_service.list_shifts"><a (click) = "getChoice('בוקר')" >{{shift}}</a></li>
+            <ul class="dropdown-menu checkbox">
+                <li *ngFor = "let shift of ward_service.list_shifts"><input type="checkbox"><label>{{shift}}</label></li>
             </ul>
         </tr>
 

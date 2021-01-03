@@ -10,6 +10,7 @@ import { IntegrationsComponent } from './Components/integrations/integrations.co
 import { FinalIntegrationComponent } from './Components/final-integration/final-integration.component';
 import { EmployeesListComponent } from './Components/employees-list/employees-list.component';
 import { ConstraintsComponent } from './Components/constraints/constraints.component';
+import { HomeComponent } from './Components/home/home.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'integration', component: IntegrationsComponent },
   {path:'final-integration', component:FinalIntegrationComponent},
   {path:'employees-list', component:EmployeesListComponent},
-  {path:'constraints', component:ConstraintsComponent}
+  {path:'constraints', component:ConstraintsComponent},
+  {path:'home',component:HomeComponent}
 ];
 
 @NgModule({

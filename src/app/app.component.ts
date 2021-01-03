@@ -10,6 +10,6 @@ export class AppComponent  {
   title = 'ShiftsClientSide';
   constructor(private router:Router)
   {
-    this.router.navigate(['director-details'])
+    this.router.navigate(['home'])
   }
 }

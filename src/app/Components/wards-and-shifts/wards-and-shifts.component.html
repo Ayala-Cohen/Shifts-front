@@ -1,11 +1,11 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <h2>משמרות ומחלקות</h2>
-    <label>מספר משמרות: </label><input type = "number" [(ngModel)] = "ward_service.num_shifts" name = "shifts_num" (blur)="ward_service.init_list('shift')"><br><br>
+    <label class="form-row">מספר משמרות: </label><input type = "number" [(ngModel)] = "ward_service.num_shifts" name = "shifts_num" (blur)="ward_service.init_list('shift')"><br><br>
     <div *ngIf = "ward_service.list_shifts.length != 0">
         <label>שמות המשמרות: </label>
         <p *ngFor ="let shift of ward_service.list_shifts; let i = index; trackBy: ward_service.trackByIdx"><input type = "text" placeholder="משמרת מספר {{i + 1}}" [(ngModel)]="ward_service.list_shifts[i]"><br></p>
     </div>
-    <label>מספר מחלקות: </label><input type ="number" [(ngModel)] = "ward_service.num_wards" (blur)="ward_service.init_list('ward')"><br><br>
+    <label class="form-row">מספר מחלקות: </label><input type ="number" [(ngModel)] = "ward_service.num_wards" (blur)="ward_service.init_list('ward')"><br><br>
     <div *ngIf = "ward_service.list_wards.length != 0">
         <label>שמות המחלקות: </label>
         <p *ngFor ="let ward of ward_service.list_wards; let i = index; trackBy: ward_service.trackByIdx"><input type = "text" placeholder="מחלקה מספר {{i + 1}}" [(ngModel)]="ward_service.list_wards[i].name"><br></p>

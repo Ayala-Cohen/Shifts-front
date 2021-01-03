@@ -3,8 +3,7 @@
     direction: rtl;
     text-align: right;
 }
-.form-control
-{
+input{
     border-radius: 13px !important;
     border-color: rgb(4, 112, 185) !important;
     border-style: solid;
