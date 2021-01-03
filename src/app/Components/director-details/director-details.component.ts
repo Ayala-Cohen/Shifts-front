@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
 export class DirectorDetailsComponent implements OnInit {
 
   constructor(private router: Router) { }
+  //לשנות אחרי יצירת מחלקות
+  id:string
+  name:string
+  password:string
+  sec_password:string
 
   ngOnInit() {
   }

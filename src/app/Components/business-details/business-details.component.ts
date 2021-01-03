@@ -7,9 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./business-details.component.css']
 })
 export class BusinessDetailsComponent implements OnInit {
-
   constructor(private router:Router) { }
-
+  numb:number
   ngOnInit() {
   }
   next()

@@ -1,10 +1,25 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <h2>פרטי מנהל</h2>
-    <form>
-        <label class="form-row"> שם:</label><input type="text" name="directorName">
-        <label class="form-row"> מספר זהות:</label><input type="text" name="directorId">
-        <label class="form-row"> סיסמה:</label><input type="password" name="password">
-        <label class="form-row"> אימות סיסמה:</label><input type="password" name="verifyPassword">
+    <form #directorDetails="ngForm">
+        <label class="form-row"> שם:</label><input type="text" name="directorName" [(ngModel)]="name" #directorName="ngModel" pattern="[a-zא-תA-Z]*" required>
+        <div class="alert-danger" *ngIf="directorName.invalid && (directorName.dirty || directorName.touched)">
+            <p *ngIf="directorName.errors.required">שדה חובה</p>
+            <p *ngIf="directorName.errors.pattern">יש להכניס אותיות בלבד</p>
+        </div>
+        <label class="form-row"> מספר זהות:</label><input type="text" name="directorId" [(ngModel)]="id" #directorId="ngModel" pattern="[0-9]*" maxlength="9" minlength="9" required>
+        <div class="alert-danger" *ngIf="directorId.invalid && (directorId.dirty || directorId.touched)">
+            <p *ngIf="directorId.errors.required">שדה חובה</p>
+            <p *ngIf="directorId.errors.pattern">יש להכניס מספרים בלבד</p>
+            <p *ngIf="directorId.errors.minlength">יש להכניס תשע ספרות</p>
+        </div>
+        <label class="form-row"> סיסמה:</label><input type="password" name="password" [(ngModel)]="password" #directorPassword="ngModel" required appShowPassword >
+        <div class="alert-danger" *ngIf="directorPassword.invalid && (directorPassword.dirty || directorPassword.touched)">
+            <p *ngIf="directorPassword.errors.required">שדה חובה</p>
+        </div>
+        <label class="form-row"> אימות סיסמה:</label><input type="password" name="verifyPassword" [(ngModel)]="sec_password" #verifyPassword="ngModel" required appShowPassword>
+        <div class="alert-danger" *ngIf="verifyPassword.invalid && (verifyPassword.dirty || verifyPassword.touched)">
+            <p *ngIf="verifyPassword.errors.required">שדה חובה</p>
+        </div>
     </form>
 
     <button class="btn" (click)="next()">הבא</button>

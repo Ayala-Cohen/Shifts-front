@@ -1,8 +1,11 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <h2>פרטי עסק</h2>
-    <form>
+    <form #businessDetails="ngForm">
         <label class="form-row">  שם העסק:  </label><input type= "text" >
-        <label class="form-row">   מספר עסק:</label><input type = "text">
+        <label class="form-row" >מספר עסק:</label><input type = "text" #numBussiness="ngModel" name="numBussiness" [(ngModel)]="numb"  pattern="[0-9]*">
+        <div *ngIf="numBussiness.invalid" class="alert-danger">
+            יש להכניס מספרים בלבד
+        </div>
         <label class="form-row">  לוגו: </label><input type= "file">
     </form>
     <button class="btn" (click)="next()">הבא</button>
