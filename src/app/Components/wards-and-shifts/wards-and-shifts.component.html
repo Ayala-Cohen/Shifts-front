@@ -8,7 +8,7 @@
     <label class="form-row">מספר מחלקות: </label><input type ="number" [(ngModel)] = "ward_service.num_wards" (blur)="ward_service.init_list('ward')"><br><br>
     <div *ngIf = "ward_service.list_wards.length != 0">
         <label>שמות המחלקות: </label>
-        <p *ngFor ="let ward of ward_service.list_wards; let i = index; trackBy: ward_service.trackByIdx"><input type = "text" placeholder="מחלקה מספר {{i + 1}}" [(ngModel)]="ward_service.list_wards[i].name"><br></p>
-        <button class="btn" (click) = "next()">הבא</button>    
+        <p *ngFor ="let ward of ward_service.list_wards; let i = index; trackBy: ward_service.trackByIdx"><input type = "text" placeholder="מחלקה מספר {{i + 1}}" [(ngModel)]="ward_service.list_wards[i].name"><br></p>    
     </div>
+    <button class="btn" (click) = "next()">הבא</button>
 </div>

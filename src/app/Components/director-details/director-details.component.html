@@ -22,5 +22,5 @@
         </div>
     </form>
 
-    <button class="btn" (click)="next()">הבא</button>
+    <button class="btn" (click)="next()" [disabled]="directorDetails.form.invalid">הבא</button>
 </div>

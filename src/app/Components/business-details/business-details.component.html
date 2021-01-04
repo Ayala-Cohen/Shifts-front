@@ -8,5 +8,5 @@
         </div>
         <label class="form-row">  לוגו: </label><input type= "file">
     </form>
-    <button class="btn" (click)="next()">הבא</button>
+    <button class="btn" (click)="next()" [disabled]="businessDetails.form.invalid">הבא</button>
 </div>
