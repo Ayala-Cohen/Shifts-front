@@ -4,8 +4,8 @@
     text-align: right;
 }
 input{
-    border-radius: 13px !important;
-    border-color: rgb(4, 112, 185) !important;
+    border-radius: 11px;
+    border-color: rgb(4, 112, 185);
     border-style: solid;
     border-width: thin;
 }

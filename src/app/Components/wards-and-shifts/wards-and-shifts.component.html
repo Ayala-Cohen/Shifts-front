@@ -1,14 +1,30 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
-    <h2>משמרות ומחלקות</h2>
-    <label class="form-row">מספר משמרות: </label><input type = "number" [(ngModel)] = "ward_service.num_shifts" name = "shifts_num" (blur)="ward_service.init_list('shift')"><br><br>
-    <div *ngIf = "ward_service.list_shifts.length != 0">
-        <label>שמות המשמרות: </label>
-        <p *ngFor ="let shift of ward_service.list_shifts; let i = index; trackBy: ward_service.trackByIdx"><input type = "text" placeholder="משמרת מספר {{i + 1}}" [(ngModel)]="ward_service.list_shifts[i]"><br></p>
-    </div>
-    <label class="form-row">מספר מחלקות: </label><input type ="number" [(ngModel)] = "ward_service.num_wards" (blur)="ward_service.init_list('ward')"><br><br>
-    <div *ngIf = "ward_service.list_wards.length != 0">
-        <label>שמות המחלקות: </label>
-        <p *ngFor ="let ward of ward_service.list_wards; let i = index; trackBy: ward_service.trackByIdx"><input type = "text" placeholder="מחלקה מספר {{i + 1}}" [(ngModel)]="ward_service.list_wards[i].name"><br></p>    
-    </div>
-    <button class="btn" (click) = "next()">הבא</button>
+    <form #wardsShifts="ngForm">
+        <h2>משמרות ומחלקות</h2>
+        <label class="form-row">מספר משמרות: </label><input type="number" [(ngModel)]="ward_service.num_shifts"
+            name="shifts_num" (blur)="ward_service.init_list('shift')" required #numShifts="ngModel"><br><br>
+        <div *ngIf="numShifts.invalid && numShifts.touched" class="alert-warning col-3">
+            <p>שדה חובה</p>
+        </div>
+        <div *ngIf="ward_service.list_shifts.length != 0">
+            <label>שמות המשמרות: </label>
+            <p *ngFor="let shift of ward_service.list_shifts; let i = index; trackBy: ward_service.trackByIdx"><input
+                    type="text" placeholder="משמרת מספר {{i + 1}}" [(ngModel)]="ward_service.list_shifts[i]" 
+                    #nameShift="ngModel" name="nameShifts"><br></p>
+
+        </div>
+        <label class="form-row">מספר מחלקות: </label><input type="number" [(ngModel)]="ward_service.num_wards"
+            (blur)="ward_service.init_list('ward')" name="num_wards" required #numWards="ngModel"><br><br>
+            <div *ngIf="numWards.invalid && numWards.touched" class="alert-warning col-3">
+                    <p>שדה חובה</p>
+                </div>
+        <div *ngIf="ward_service.list_wards.length != 0">
+            <label>שמות המחלקות: </label>
+            <p *ngFor="let ward of ward_service.list_wards; let i = index; trackBy: ward_service.trackByIdx"><input
+                    type="text" placeholder="מחלקה מספר {{i + 1}}" [(ngModel)]="ward_service.list_wards[i].name"
+                    name="nameWard" #nameWard="ngModel"><br>
+            </p>
+        </div>
+    </form>
+    <button class="btn" (click)="next()" [disabled]="wardsShifts.form.invalid">הבא</button>
 </div>

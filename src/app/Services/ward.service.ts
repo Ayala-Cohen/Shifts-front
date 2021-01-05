@@ -6,8 +6,8 @@ import { Ward } from '../Classes/Ward';
   providedIn: 'root'
 })
 export class WardService {
-  num_wards: number = 0
-  num_shifts: number = 0
+  num_wards: number
+  num_shifts: number 
   list_wards: Array<Ward> = new Array<Ward>()
   list_shifts: Array<Shift> = new Array<Shift>()
 
