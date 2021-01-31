@@ -1,7 +1,7 @@
 .container
 {
     direction: rtl;
-    text-align: right;
+    text-align: center;
 }
 input{
     border-radius: 11px;
@@ -19,4 +19,10 @@ button
 {
     background-color: rgb(77, 131, 191);
     color:rgb(255, 255, 255)
+}
+.form-group
+{
+    width: 400px;
+    margin: auto;
+    text-align: center;
 }

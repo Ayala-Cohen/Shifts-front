@@ -1,19 +1,35 @@
 <div class="container d-flex flex-row col-sm-12 col-md-6 col-lg-8">
-    <div class="p-3">
+    <div class="col-12">
+        <button class="btn btn-lg" (click)="importData()">יבוא נתונים מאקסל</button>
+        <button class="btn btn-lg" data-toggle="collapse" data-target="#AddEmployee">הוספת עובד חדש</button>
+        <div id = "AddEmployee" class="collapse">
         <h3>הוספת עובד חדש</h3>
         <form>
-            <label class="form-row">שם:</label><input type="text" name="employee_name">
-            <label class="form-row">מספר זהות:</label><input type="text" name="employee_id">
-            <label class="form-row">מספר טלפון:</label><input type="text" name="emplyee_task">
-            <label class="form-row">כתובת דוא"ל:</label><input type="email" name="emplyee_task">
-            <label class="form-row">מחלקת עובד: </label>
-            <select class="form-row">
-                <option></option>
-            </select>
-            <label class="form-row">תפקיד:</label><input type="text" name="emplyee_task">
+            <div class="form-group">
+                <label class="form-row">שם:</label><input type="text" name="employee_name" class="col-12"></div>
+            <div class="form-group">
+                <label class="form-row">מספר זהות:</label><input type="text" name="employee_id" class="col-12">
+            </div>
+            <div class="form-group">
+                <label class="form-row">מספר טלפון:</label><input type="text" name="emplyee_task" class="col-12">
+            </div>
+            <div class="form-group">
+                <label class="form-row">כתובת דוא"ל:</label><input type="email" name="emplyee_task" class="col-12">
+            </div>
+            <div class="form-group">
+                <label class="form-row">מחלקת עובד: </label>
+                <select class="form-row" class="col-12">
+                    <option *ngFor="let ward of ward_service.list_wards">{{ward.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-row">תפקיד:</label><input type="text" name="emplyee_task" class="col-12">
+            </div>
+            <button  class="btn">אישור</button>
+            <div *ngIf = "">
+                הפרטים נקלטו בהצלחה!!
+            </div>
         </form>
     </div>
-    <div class="p-3">
-        <button class="btn btn-lg" (click)="importData()">יבוא נתונים מאקסל</button>
     </div>
 </div>

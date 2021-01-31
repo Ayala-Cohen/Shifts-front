@@ -1,12 +1,18 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <h2>פרטי עסק</h2>
     <form #businessDetails="ngForm">
-        <label class="form-row">  שם העסק:  </label><input type= "text" class="col-5">
-        <label class="form-row" >מספר עסק:</label><input type = "text" #numBussiness="ngModel" name="numBussiness" [(ngModel)]="numb"  pattern="[0-9]*" class="col-5">
-        <div *ngIf="numBussiness.invalid" class="alert-warning col-5">
+        <div class="form-group">
+        <label class="form-row">  שם העסק:  </label><input type= "text" class="col-12">
+    </div>
+    <div class="form-group">
+        <label class="form-row" >מספר עסק:</label><input type = "text" #numBussiness="ngModel" name="numBussiness" [(ngModel)]="numb"  pattern="[0-9]*" class="col-12">
+        <div *ngIf="numBussiness.invalid" class="alert-warning col-12">
             יש להכניס מספרים בלבד
         </div>
-        <label class="form-row">  לוגו: </label><input type= "file" class="col-5">
+    </div>
+    <div class="form-group mb-3">
+        <label class="form-row">  לוגו: </label><input type= "file" class="col-12">
+    </div>
     </form>
     <button class="btn" (click)="next()" [disabled]="businessDetails.form.invalid">הבא</button>
 </div>

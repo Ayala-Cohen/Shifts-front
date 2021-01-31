@@ -8,14 +8,14 @@
 {
     text-align: center;
 }
-table
+.table
 {
     width: 70%;
     direction: rtl;
     text-align: right;
     border-style: solid;
     border-width: thin;
-    border-radius: 25px;
+    border-radius: 25px !important;
     border-color: rgb(129, 182, 226);
     
 }

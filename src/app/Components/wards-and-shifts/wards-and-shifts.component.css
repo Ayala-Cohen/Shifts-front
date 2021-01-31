@@ -1,10 +1,21 @@
+.container
+{
+    text-align: center;
+    direction: rtl;
+    margin: auto;   
+}
+.form-group
+{
+    width: 400px;
+    margin: auto;
+    text-align: center;
+}
 label
 {
     direction: rtl;
     color: rgb(39, 29, 40);
     font-weight: 499;
 }
-
 input
 {
     border-radius: 13px;
@@ -18,12 +29,6 @@ input:focus-visible
     outline: none;
     border-color: rgb(36, 134, 176);
     border-width:2px;
-}
-.container
-{
-    text-align: right;
-    direction: rtl;
-    margin: auto;   
 }
 button
 {

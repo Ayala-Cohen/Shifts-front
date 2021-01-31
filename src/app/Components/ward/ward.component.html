@@ -1,15 +1,15 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <p>בכל מחלקה יש ללחוץ על המשמרות בהן היא פעילה</p>
-    <div *ngFor="let ward of ward_service.list_wards;let i = index">
+    <div *ngFor="let ward of ward_service.list_wards;let i = index" class="col-12 ward mb-3">
         <h2> {{ward.name}}</h2>
         <label> מס' סוגי עובדים במחלקה זו: </label>
         <input type="number" name="num_task" [(ngModel)]="ward.num_tasks" (blur)="init_list(i)"><br>
         <div *ngIf = "ward.list_tasks.length != 0">
             <label>תפקידי עובדים : </label>
-            <p *ngFor = "let task of ward.list_tasks; let j = index;trackBy:trackByIdx"><input placeholder="הכנס תפקיד" [(ngModel)] = "ward.list_tasks[j]"><br></p>
+            <p *ngFor = "let task of ward.list_tasks; let j = index;trackBy:trackByIdx"><input placeholder="הכנס תפקיד" [(ngModel)] = "ward.list_tasks[j]" class="col-4"><br></p>
         </div>
         
-        <table  class="table" id="scheduleTable">
+        <table  class="table col-10 mb-2" id="scheduleTable">
             <tr>
                 <th>ראשון</th>
                 <th>שני</th>

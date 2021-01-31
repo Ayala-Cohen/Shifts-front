@@ -1,8 +1,14 @@
 .container
 {
-    text-align: right;
+    text-align: center;
     direction: rtl;
     margin: auto;
+}
+.form-group
+{
+    width: 400px;
+    margin: auto;
+    text-align: center;
 }
 label
 {
