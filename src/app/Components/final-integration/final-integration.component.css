@@ -1,18 +1,18 @@
 .container
 {
-    text-align: right;
+    text-align: center;
     direction: rtl;
     margin: auto;
 }
 table
 {
-    width: 70%;
     direction: rtl;
-    text-align: right;
+    text-align: center;
     border-style: solid;
     border-width: thin;
     border-radius: 25px;
     border-color: rgb(129, 182, 226);
+    margin: auto;
     
 }
 th, td

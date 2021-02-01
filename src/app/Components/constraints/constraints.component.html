@@ -1,7 +1,7 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <!-- פריסה של כמה זמן? -->
     <h5>סמן את המשמרות בהן אינך יכול לעבוד באופן קבוע</h5>
-    <table class="table" id="scheduleTable">
+    <table class="table col-10 mb-2" id="scheduleTable">
         <tr>
             <th>ראשון</th>
             <th>שני</th>
@@ -11,28 +11,30 @@
             <th>שישי</th>
             <th>שבת</th>
         </tr>
+        <!-- לייחד בחירה עבור כל תאריך בנפרד -->
         <tr class="dropdown">
             <td *ngFor="let item of activity_days" data-toggle="dropdown">
-                תאריך
+                <b>תאריך</b>
+                <p>{{shift_can_not}}</p>
             </td>
             <ul class="dropdown-menu checkbox">
                 <li *ngFor = "let shift of ward_service.list_shifts"><input type="checkbox"><label>{{shift}}</label></li>
             </ul>
         </tr>
         <tr class="dropdown">
-            <td *ngFor="let item of activity_days" data-toggle="dropdown">תאריך</td>
+            <td *ngFor="let item of activity_days" data-toggle="dropdown"><b>תאריך</b><p>{{shift_can_not}}</p></td>
+            <ul class="dropdown-menu checkbox">
+                <li *ngFor = "let shift of ward_service.list_shifts"><input type="checkbox" (click)="Update(shift)" ><label>{{shift}}</label></li>
+            </ul>
+        </tr>
+        <tr class="dropdown">
+            <td *ngFor="let item of activity_days" data-toggle="dropdown"><b>תאריך</b><p>{{shift_can_not}}</p></td>
             <ul class="dropdown-menu checkbox">
                 <li *ngFor = "let shift of ward_service.list_shifts"><input type="checkbox"><label>{{shift}}</label></li>
             </ul>
         </tr>
         <tr class="dropdown">
-            <td *ngFor="let item of activity_days" data-toggle="dropdown">תאריך</td>
-            <ul class="dropdown-menu checkbox">
-                <li *ngFor = "let shift of ward_service.list_shifts"><input type="checkbox"><label>{{shift}}</label></li>
-            </ul>
-        </tr>
-        <tr class="dropdown">
-            <td *ngFor="let item of activity_days" data-toggle="dropdown">תאריך</td>
+            <td *ngFor="let item of activity_days" data-toggle="dropdown"><b>תאריך</b><p>{{shift_can_not}}</p></td>
             <ul class="dropdown-menu checkbox">
                 <li *ngFor = "let shift of ward_service.list_shifts"><input type="checkbox"><label>{{shift}}</label></li>
             </ul>
