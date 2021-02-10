@@ -2,16 +2,16 @@
     <h2>פרטי עסק</h2>
     <form #businessDetails="ngForm">
         <div class="form-group">
-        <label class="form-row">  שם העסק:  </label><input type= "text" class="col-12">
+        <label class="form-row">  שם העסק:  </label><input type= "text" name="b_name" class="col-12" [(ngModel)]="business_service.business.name">
     </div>
     <div class="form-group">
-        <label class="form-row" >מספר עסק:</label><input type = "text" #numBussiness="ngModel" name="numBussiness" [(ngModel)]="numb"  pattern="[0-9]*" class="col-12">
+        <label class="form-row" >מספר עסק:</label><input type = "text" #numBussiness="ngModel" name="numBussiness" [(ngModel)]="business_service.business.number"  pattern="[0-9]*" class="col-12">
         <div *ngIf="numBussiness.invalid" class="alert-warning col-12">
             יש להכניס מספרים בלבד
         </div>
     </div>
     <div class="form-group mb-3">
-        <label class="form-row">  לוגו: </label><input type= "file" class="col-12">
+        <label class="form-row">  לוגו: </label><input type= "file" name="logo" [(ngModel)]="business_service.business.logo" class="col-12">
     </div>
     </form>
     <button class="btn" (click)="next()" [disabled]="businessDetails.form.invalid">הבא</button>

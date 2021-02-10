@@ -22,10 +22,17 @@ import { HomeComponent } from './Components/home/home.component';
 
 import { WardService } from './Services/ward.service';
 import { IntegrationService } from './Services/integration.service';
-
+import { BusinessService } from './Services/business.service';
+import { ShiftsEmployeesService } from './Services/shifts-employees.service';
+import { ShiftsService } from './Services/shifts.service';
+import { ConstraintsService } from './Services/constraints.service';
+import { EmployeesRoleService } from './Services/employees-role.service';
+import { EmployeesService } from './Services/employees.service';
 
 import { ChangeColorDirective } from './Directives/change-color.directive';
 import {ShowPasswordDirective} from './Directives/show-password.directive'
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -50,10 +57,19 @@ import {ShowPasswordDirective} from './Directives/show-password.directive'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [IntegrationService,
-    WardService],
+  providers: [
+    IntegrationService,
+    WardService,
+    BusinessService,
+    ShiftsEmployeesService,
+    ShiftsService,
+    ConstraintsService,
+    EmployeesRoleService,
+    EmployeesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

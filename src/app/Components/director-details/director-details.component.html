@@ -2,15 +2,15 @@
     <h2>פרטי מנהל</h2>
     <form #directorDetails="ngForm">
         <div class="form-group">
-            <label class="form-row"> שם:</label><input type="text" name="directorName" [(ngModel)]="name"
-                #directorName="ngModel" pattern="[a-zא-תA-Z]*" required class="col-12">
+            <label class="form-row"> שם:</label><input type="text" name="directorName" [(ngModel)]="business_service.business.full_name"
+                #directorName="ngModel" pattern="[a-zא-תA-Z ]*" required class="col-12">
             <div class="alert-warning col-12"
                 *ngIf="directorName.invalid && (directorName.dirty || directorName.touched)">
                 <p *ngIf="directorName.errors.required">שדה חובה</p>
                 <p *ngIf="directorName.errors.pattern">יש להכניס אותיות בלבד</p>
             </div>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label class="form-row"> מספר זהות:</label><input type="text" name="directorId" [(ngModel)]="id"
                 #directorId="ngModel" pattern="[0-9]*" maxlength="9" minlength="9" required class="col-12">
             <div class="alert-warning col-12" *ngIf="directorId.invalid && (directorId.dirty || directorId.touched)">
@@ -18,9 +18,12 @@
                 <p *ngIf="directorId.errors.pattern">יש להכניס מספרים בלבד</p>
                 <p *ngIf="directorId.errors.minlength">יש להכניס תשע ספרות</p>
             </div>
+        </div> -->
+        <div class="form-group mb-3">
+            <label class="form-row">  שם משתמש מנהל: </label><input type= "text" name="user_name" [(ngModel)]="business_service.business.user_name" class="col-12">
         </div>
         <div class="form-group">
-            <label class="form-row"> סיסמה:</label><input type="password" name="password" [(ngModel)]="password"
+            <label class="form-row"> סיסמה:</label><input type="password" name="password" [(ngModel)]="business_service.business.password"
                 #directorPassword="ngModel" required appShowPassword class="col-12">
             <div class="alert-warning col-12"
                 *ngIf="directorPassword.invalid && (directorPassword.dirty || directorPassword.touched)">
@@ -29,13 +32,12 @@
         </div>
         <div class="form-group mb-3">
             <label class="form-row"> אימות סיסמה:</label><input type="password" name="verifyPassword"
-                [(ngModel)]="sec_password" #verifyPassword="ngModel" required appShowPassword class="col-12">
+                [(ngModel)]="business_service.sec_password" #verifyPassword="ngModel" required appShowPassword class="col-12">
             <div class="alert-warning col-12"
                 *ngIf="verifyPassword.invalid && (verifyPassword.dirty || verifyPassword.touched)">
                 <p *ngIf="verifyPassword.errors.required">שדה חובה</p>
             </div>
         </div>
     </form>
-
     <button class="btn" (click)="next()" [disabled]="directorDetails.form.invalid">הבא</button>
 </div>
