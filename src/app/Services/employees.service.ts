@@ -7,6 +7,7 @@ import { Employee } from '../Classes/Employee';
   providedIn: 'root'
 })
 export class EmployeesService {
+  employee:Employee = new Employee()
 
   url: string = "http://localhost:50744/api/Employees/"
   constructor(private http: HttpClient) { }
@@ -33,5 +34,10 @@ export class EmployeesService {
   public Delete(id: string): Observable<Array<Employee>> 
   {
     return this.http.delete<Array<Employee>>(this.url + "DeleteEmployee/"+ id)
+  }
+  //פונקציה לבדיקת פרטי עובד ע"י שם משתמש וסיסמה
+  public CheckEmployee():Observable<Employee>
+  {
+    return this.http.get<Employee>(`${this.url}/CheckEmployee/${this.employee.email}/${this.employee.password}`)
   }
 }

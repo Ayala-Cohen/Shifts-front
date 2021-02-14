@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeesService } from 'src/app/Services/employees.service';
 
 @Component({
   selector: 'app-log-in',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogINComponent implements OnInit {
 
-  constructor() { }
+  constructor(private employee_service: EmployeesService) { }
 
   ngOnInit() {
+  }
+  logIn() {
+    this.employee_service.CheckEmployee().subscribe(data => {
+      if (data) {
+        this.employee_service.employee = data
+      }
+      else
+        alert("לא מוכר במערכת")
+    }),
+    err=>alert("כשל בגישה לשרת")
   }
 
 }

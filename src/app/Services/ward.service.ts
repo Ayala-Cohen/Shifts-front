@@ -39,6 +39,7 @@ export class WardService {
   init_list() {
     let difference;
       //הוספת ערכים לרשימת מחלקות
+      debugger
       difference = this.num_wards - this.list_wards.length
       for (let i = 0; i < difference; i++)
         this.list_wards.push(new Ward())

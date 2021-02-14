@@ -1,5 +1,5 @@
 import { Component,  OnInit } from '@angular/core';
-import { WardService } from 'src/app/Services/ward.service';
+import { ShiftsService } from 'src/app/Services/shifts.service';
 
 @Component({
   selector: 'app-constraints',
@@ -9,7 +9,7 @@ import { WardService } from 'src/app/Services/ward.service';
 export class ConstraintsComponent implements OnInit {
   activity_days = [1, 2, 3, 4, 5, 6, 7]
   shift_can_not =""
-  constructor(private ward_service:WardService) { }
+  constructor(private shift_service:ShiftsService) { }
 
   ngOnInit(): void {
   }
