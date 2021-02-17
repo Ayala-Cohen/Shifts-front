@@ -1,34 +1,31 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
-    <form #wardsShifts="ngForm">
-        <h2>משמרות ומחלקות</h2>
-        <div class="form-group">
-        <label class="form-row">מספר משמרות: </label><input type="number" [(ngModel)]="shift_service.num_shifts"
-            name="shifts_num" (blur)="shift_service.init_list()" required #numShifts="ngModel" class="col-12"><br><br>
-        <div *ngIf="numShifts.invalid && numShifts.touched" class="alert-warning col-12">
-            <p>שדה חובה</p>
-        </div>
-        <div *ngIf="shift_service.list_shifts.length != 0">
-            <label>שמות המשמרות: </label>
-            <p *ngFor="let shift of shift_service.list_shifts; let i = index; trackBy: shift_service.trackByIdx"><input
-                    type="text" placeholder="משמרת מספר {{i + 1}}" [(ngModel)]="shift_service.list_shifts[i].name" 
-                    #nameShift="ngModel" name="nameShifts" class="col-12"><br></p>
+    <div class="ma form-group">
+        <label class="form-row">הכנס שם משמרת</label>
+        <input type="text" class="col-12" [(ngModel)]="shift_service.shift.name">
+    </div>
+    <button class="btn m-3" (click)="AddOrUpdate('shift')">הוסף משמרת</button>
+    <table *ngIf="shift_service.list_shifts.length != 0" class="table">
+        <tr>
+            <th>משמרת</th>
+        </tr>
+        <tr *ngFor="let shift of shift_service.list_shifts">
+            <td>{{shift.name}}</td>
+        </tr>
+    </table>
 
-        </div>
+    <div class="ma form-group">
+        <label class="form-row">הכנס שם מחלקה</label>
+        <input type="text" class="col-12" [(ngModel)]="ward_service.ward.name">
     </div>
-    <div class="form-group">
-        <label class="form-row">מספר מחלקות: </label><input type="number" [(ngModel)]="ward_service.num_wards"
-            (blur)="ward_service.init_list()" name="num_wards" required #numWards="ngModel" class="col-12"><br><br>
-            <div *ngIf="numWards.invalid && numWards.touched" class="alert-warning col-12">
-                    <p>שדה חובה</p>
-                </div>
-        <div *ngIf="ward_service.list_wards.length != 0">
-            <label>שמות המחלקות: </label>
-            <p *ngFor="let ward of ward_service.list_wards; let i = index; trackBy: ward_service.trackByIdx"><input
-                    type="text" placeholder="מחלקה מספר {{i + 1}}" [(ngModel)]="ward_service.list_wards[i].name"
-                    name="nameWard" #nameWard="ngModel" class="col-12"><br>
-            </p>
-        </div>
-    </div>
-    </form>
-    <button class="btn" (click)="next()" [disabled]="wardsShifts.form.invalid">הבא</button>
+    <button class="btn m-3" (click)="AddOrUpdate('ward')">הוסף מחלקה</button>
+    <table *ngIf="ward_service.list_wards.length != 0" class="table">
+        <tr>
+            <th>מחלקה</th>
+        </tr>
+        <tr *ngFor="let ward of ward_service.list_wards">
+            <td>{{ward.name}}</td>
+        </tr>
+    </table>
+    <!-- [disabled]="wardsShifts.form.invalid" -->
+    <button class="btn mb-3" (click)="next()">הבא</button>
 </div>

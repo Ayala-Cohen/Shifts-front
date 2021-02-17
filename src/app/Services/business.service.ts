@@ -25,7 +25,6 @@ export class BusinessService {
   public Add():Observable<Array<Business>>
   {
     this.business.id = 0
-    debugger
     return this.http.put<Array<Business>>(this.url+"AddBusiness", this.business)
   }
   //פונקציה לעדכון עסק

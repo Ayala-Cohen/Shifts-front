@@ -1,8 +1,8 @@
 .container
 {
-    text-align: center;
     direction: rtl;
-    margin: auto;   
+    text-align: center;
+    margin:auto;
 }
 .form-group
 {
@@ -31,20 +31,18 @@ th
 {
     color:rgb(15, 76, 191) ;
 }
-
 label
 {
-    direction: rtl;
     color: rgb(39, 29, 40);
     font-weight: 499;
 }
+
 input
 {
-    border-radius: 13px;
+    border-radius: 11px;
     border-color: rgb(4, 112, 185);
     border-style: solid;
     border-width: thin;
-    margin-left: 0px;
 }
 input:focus-visible
 {
@@ -57,5 +55,3 @@ button
     background-color: rgb(77, 131, 191);
     color:rgb(255, 255, 255)
 }
-
-

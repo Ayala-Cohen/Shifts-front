@@ -8,46 +8,31 @@ import { BusinessService } from './business.service';
   providedIn: 'root'
 })
 export class ShiftsService {
-  shift:Shift = new Shift()
-  num_shifts: number 
+  num_shifts: number
   list_shifts: Array<Shift> = new Array<Shift>()
+  shift:Shift = new Shift()
   url: string = "http://localhost:50744/api/Shifts/"
-  constructor(private http: HttpClient,private business_service:BusinessService) {
-    this.shift.business_id = business_service.business.id
-   }
+  constructor(private http: HttpClient, private business_service: BusinessService) {
+  }
   //פונקציה לשליפת רשימת משמרות
   public GetAll(): Observable<Array<Shift>> {
-    return this.http.get<Array<Shift>>(this.url + "GetAllShifts/"+this.business_service.business.id)
+    return this.http.get<Array<Shift>>(this.url + "GetAllShifts/" + this.business_service.business.id)
   }
   //פונקציה לשליפת משמרת ע"י קוד
-  public GetOneById(id: number): Observable<Shift> 
-  {
+  public GetOneById(id: number): Observable<Shift> {
     return this.http.get<Shift>(this.url + "GetShiftById/" + id)
   }
   //פונקציה להוספת משמרת
-  public Add(s: Shift): Observable<Array<Shift>> 
-  {
-    return this.http.put<Array<Shift>>(this.url + "AddShift", s)
+  public Add(): Observable<Array<Shift>> {
+    this.shift.business_id = this.business_service.business.id
+    return this.http.put<Array<Shift>>(this.url + "AddShift", this.shift)
   }
   //פונקציה לעדכון משמרת
-  public Update(s: Shift): Observable<Array<Shift>> 
-  {
+  public Update(s: Shift): Observable<Array<Shift>> {
     return this.http.post<Array<Shift>>(this.url + "UpdateShift", s)
   }
   //פונקציה למחיקת משמרת  
-  public Delete(id: number): Observable<Array<Shift>> 
-  {
-    return this.http.delete<Array<Shift>>(this.url + "DeleteShift/"+ id)
-  }
-
-  init_list()
-  {
-    //הוספת ערכים לרשימת משמרות
-      let difference = this.num_shifts - this.list_shifts.length
-      for (let i = 0; i < difference; i++)
-        this.list_shifts.push(new Shift(0,this.business_service.business.id,"" ))
-  }
-  trackByIdx(index: number, obj: any): any {
-    return index;
+  public Delete(id: number): Observable<Array<Shift>> {
+    return this.http.delete<Array<Shift>>(this.url + "DeleteShift/" + id)
   }
 }

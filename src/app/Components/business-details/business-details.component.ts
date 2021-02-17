@@ -13,8 +13,8 @@ export class BusinessDetailsComponent implements OnInit {
   }
   next()
   {
-    this.business_service.Add().subscribe(data=>{}, err=>alert("כשל בגישה לשרת"))
-    this.router.navigate(['wards-shifts'])
+    this.business_service.Add().subscribe(data=>{this.business_service.business = data.filter(x=>x.number == this.business_service.business.number)[0]}, err=>alert("כשל בגישה לשרת"))
+    this.router.navigate(['roles'])
   }
 
 }

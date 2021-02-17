@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Employee } from '../Classes/Employee';
+import { BusinessService } from './business.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,10 @@ export class EmployeesService {
   employee:Employee = new Employee()
 
   url: string = "http://localhost:50744/api/Employees/"
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private business_service:BusinessService) { }
   //פונקציה לשליפת רשימת עובדים
   public GetAll(): Observable<Array<Employee>> {
-    return this.http.get<Array<Employee>>(this.url + "GetAllEmployees")
+    return this.http.get<Array<Employee>>(this.url + "GetAllEmployees/"+this.business_service.business.id)
   }
   //פונקציה לשליפת עובד ע"י קוד
   public GetOneById(id: string): Observable<Employee> 

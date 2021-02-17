@@ -32,6 +32,7 @@ import { EmployeesService } from './Services/employees.service';
 import { ChangeColorDirective } from './Directives/change-color.directive';
 import {ShowPasswordDirective} from './Directives/show-password.directive'
 import { HttpClientModule } from '@angular/common/http';
+import { RolesComponent } from './Components/roles/roles.component';
 
 
 
@@ -52,7 +53,8 @@ import { HttpClientModule } from '@angular/common/http';
     EmployeesListComponent,
     ConstraintsComponent,
     HomeComponent,
-    ShowPasswordDirective
+    ShowPasswordDirective,
+    RolesComponent
   ],
   imports: [
     BrowserModule,
