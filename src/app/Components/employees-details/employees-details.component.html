@@ -1,31 +1,35 @@
 <div class="container d-flex flex-row col-sm-12 col-md-6 col-lg-8">
     <div class="col-12">
+        <input type="file" (change)="saveFile($event.target.files)">
         <button class="btn btn-lg" (click)="importData()">יבוא נתונים מאקסל</button>
         <button class="btn btn-lg" data-toggle="collapse" data-target="#AddEmployee">הוספת עובד חדש</button>
         <div id = "AddEmployee" class="collapse">
         <h3>הוספת עובד חדש</h3>
         <form>
             <div class="form-group">
-                <label class="form-row">שם:</label><input type="text" name="employee_name" class="col-12"></div>
+                <label class="form-row">שם:</label><input type="text" name="employee_name" class="col-12" [(ngModel)]="employee_service.employee.name"></div>
             <div class="form-group">
-                <label class="form-row">מספר זהות:</label><input type="text" name="employee_id" class="col-12">
+                <label class="form-row">מספר זהות:</label><input type="text" name="employee_id" class="col-12" [(ngModel)]="employee_service.employee.id">
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label class="form-row">מספר טלפון:</label><input type="text" name="emplyee_task" class="col-12">
-            </div>
+            </div> -->
             <div class="form-group">
-                <label class="form-row">כתובת דוא"ל:</label><input type="email" name="emplyee_task" class="col-12">
+                <label class="form-row">כתובת דוא"ל:</label><input type="email" name="emplyee_task" class="col-12" [(ngModel)]="employee_service.employee.email">
             </div>
             <div class="form-group">
                 <label class="form-row">מחלקת עובד: </label>
-                <select class="form-row" class="col-12">
-                    <option *ngFor="let ward of ward_service.list_wards">{{ward.name}}</option>
+                <select class="form-row col-12" name="wardName">
+                    <option *ngFor="let ward of ward_service.list_wards" value="{{ward.id}}">{{ward.name}}</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="form-row">תפקיד:</label><input type="text" name="emplyee_task" class="col-12">
+                <label class="form-row">תפקיד:</label>
+                <select class="form-row col-12" [(ngModel)]="employee_service.employee.role_id" name="roleName">
+                    <option *ngFor = "let role of employee_roles_service.list_roles" value="{{role.id}}">{{role.role}}</option>
+                </select>
             </div>
-            <button  class="btn">אישור</button>
+            <button  class="btn" (click)="AddEmployee()">אישור</button>
             <div *ngIf = "">
                 הפרטים נקלטו בהצלחה!!
             </div>
