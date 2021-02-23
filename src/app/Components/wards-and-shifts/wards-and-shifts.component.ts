@@ -15,7 +15,6 @@ import { Ward } from 'src/app/Classes/Ward';
 export class WardsAndShiftsComponent implements OnInit {
   constructor(private router: Router, private ward_service: WardService, private shift_service: ShiftsService, private business_service: BusinessService, private employees_roles_service: EmployeesRoleService) {
     this.employees_roles_service.GetAll().subscribe(data => this.employees_roles_service.list_roles = data)
-
   }
 
   ngOnInit() {

@@ -13,7 +13,8 @@ import { WardService } from 'src/app/Services/ward.service';
 })
 export class WardComponent implements OnInit {
   activity_days = [1, 2, 3, 4, 5, 6, 7]
-  constructor(private router: Router, private ward_service: WardService, private shift_service: ShiftsService, private employees_roles_service: EmployeesRoleService, private shift_employees_service: ShiftsEmployeesService) { }
+  constructor(private router: Router, private ward_service: WardService, private shift_service: ShiftsService, private employees_roles_service: EmployeesRoleService, private shift_employees_service: ShiftsEmployeesService) { 
+  }
 
   ngOnInit(): void {
   }

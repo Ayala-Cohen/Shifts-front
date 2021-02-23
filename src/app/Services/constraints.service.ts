@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Constraint } from '../Classes/Constraint';
 import { Observable } from 'rxjs';
+import { EmployeesService } from './employees.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConstraintsService {
   url:string = "http://localhost:50744/api/Constraints/"
-  constructor(private http : HttpClient) { }
+  c:Constraint = new Constraint()
+  list_constraints:Array<Constraint> = Array<Constraint>();
+  constructor(private http : HttpClient, private employee_service:EmployeesService) { }
     //פונקציה לשליפת רשימת אילוצים
     public GetAll(): Observable<Array<Constraint>>
     {
@@ -20,14 +23,15 @@ export class ConstraintsService {
       return this.http.get<Constraint>(this.url+"GetConstraintById/"+s_id+"/"+e_id)
     }
     //פונקציה להוספת אילוץ
-    public Add(c:Constraint):Observable<Array<Constraint>>
+    public Add():Observable<Array<Constraint>>
     {
-      return this.http.put<Array<Constraint>>(this.url+"AddConstraint", c)
+      this.c.employee_id = this.employee_service.employee.id
+      return this.http.put<Array<Constraint>>(this.url+"AddConstraint", this.c)
     }
     //פונקציה לעדכון אילוץ
-    public Update(c:Constraint):Observable<Array<Constraint>>
+    public Update():Observable<Array<Constraint>>
     {
-      return this.http.post<Array<Constraint>>(this.url + "UpdateConstraint", c)
+      return this.http.post<Array<Constraint>>(this.url + "UpdateConstraint", this.c)
     }
     //פונקציה למחיקת אילוץ
     public Delete(s_id:number, e_id:string) : Observable<Array<Constraint>>

@@ -10,7 +10,8 @@ export class BusinessService {
   business:Business = new Business()
   sec_password:string
   url:string = "http://localhost:50744/api/Business/"
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+   }
   //פונקציה לשליפת רשימת עסקים
   public GetAll(): Observable<Array<Business>>
   {

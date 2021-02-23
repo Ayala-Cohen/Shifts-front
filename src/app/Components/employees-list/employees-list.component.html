@@ -1,8 +1,5 @@
 <div class="container-fluid row col-10">
-    <app-employee></app-employee>
-    <app-employee></app-employee>
-    <app-employee></app-employee>
-    <app-employee></app-employee>
-    <app-employee></app-employee>
-    <app-employee></app-employee>
+    <div *ngFor="let employee of employees_service.list_employees">
+        <app-employee [e]="employee"></app-employee>
+    </div>
 </div>
