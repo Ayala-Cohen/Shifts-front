@@ -1,16 +1,10 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <p>בכל מחלקה יש ללחוץ על המשמרות בהן היא פעילה</p>
-    <div *ngFor="let ward of ward_service.list_wards;let i = index" class="col-12 ward mb-3">
+    <div *ngFor="let ward of ward_service.list_wards" class="col-12 ward mb-3">
         <h2> {{ward.name}}</h2>        
         <table  class="table col-10 mb-2" id="scheduleTable">
             <tr>
-                <th>ראשון</th>
-                <th>שני</th>
-                <th>שלישי</th>
-                <th>רביעי</th>
-                <th>חמישי</th>
-                <th>שישי</th>
-                <th>שבת</th>
+                <th *ngFor="let day of activity_days">{{day}}</th>
             </tr>
             <tr class="dropdown" *ngFor="let shift of shift_service.list_shifts">
                 <td *ngFor="let item of activity_days" data-toggle="dropdown" appChangeColor>{{shift.name}}</td>

@@ -14,7 +14,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
   forgotPassword() {
     this.isClicked = true
-    this.employee_service.ForgotPassword().subscribe(data => this.employee_service.employee = data)
+    this.employee_service.getEmployeeByEmail().subscribe(data => this.employee_service.employee = data)
   }
 
 }

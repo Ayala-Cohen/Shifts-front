@@ -12,7 +12,7 @@ import { WardService } from 'src/app/Services/ward.service';
   styleUrls: ['./ward.component.css']
 })
 export class WardComponent implements OnInit {
-  activity_days = [1, 2, 3, 4, 5, 6, 7]
+  activity_days = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"]
   constructor(private router: Router, private ward_service: WardService, private shift_service: ShiftsService, private employees_roles_service: EmployeesRoleService, private shift_employees_service: ShiftsEmployeesService) { 
   }
 

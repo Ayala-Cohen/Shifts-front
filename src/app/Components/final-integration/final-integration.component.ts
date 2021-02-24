@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShiftsService } from 'src/app/Services/shifts.service';
 import { WardService } from 'src/app/Services/ward.service';
 
 @Component({
@@ -7,9 +8,9 @@ import { WardService } from 'src/app/Services/ward.service';
   styleUrls: ['./final-integration.component.css']
 })
 export class FinalIntegrationComponent implements OnInit {
-  activity_days = [1, 2, 3, 4, 5, 6, 7]
+  activity_days = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"]
 
-  constructor(private ward_service:WardService) { }
+  constructor(private ward_service:WardService, private shift_service:ShiftsService) { }
 
   ngOnInit() {
   }

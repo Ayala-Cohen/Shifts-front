@@ -33,6 +33,7 @@ export class LogINComponent implements OnInit {
             alert("לא מוכר במערכת")
         })
       }
+      this.employee_service.GetAll().subscribe(x=>this.employee_service.list_employees = x)
     }),
       err => alert("כשל בגישה לשרת")
   }

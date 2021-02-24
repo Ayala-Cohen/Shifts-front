@@ -52,13 +52,13 @@ export class EmployeesService {
     this.GetAll().subscribe(data => this.list_employees = data)
   }
 
-  public ForgotPassword():Observable<Employee>
+  public getEmployeeByEmail():Observable<Employee>
   {
-    let link = this.url+"/"+"app-forgot-password"
-    return this.http.get<Employee>(`${this.url}/ForgotPassword/${this.email}/${link}`)
+    return this.http.post<Employee>(`${this.url}/GetEmployeeByEmail`, this.email)
   }
   public getBusinessByEmployee(business_id:number)
   {
-      this.business_service.GetOneById(business_id).subscribe(data => this.business_service.business = data)
+      this.business_service.GetOneById(business_id).subscribe(data => 
+        this.business_service.business = data)
   }
 }
