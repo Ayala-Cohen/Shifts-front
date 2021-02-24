@@ -28,8 +28,8 @@ export class ShiftsService {
     return this.http.put<Array<Shift>>(this.url + "AddShift", this.shift)
   }
   //פונקציה לעדכון משמרת
-  public Update(s: Shift): Observable<Array<Shift>> {
-    return this.http.post<Array<Shift>>(this.url + "UpdateShift", s)
+  public Update(): Observable<Array<Shift>> {
+    return this.http.post<Array<Shift>>(this.url + "UpdateShift", this.shift)
   }
   //פונקציה למחיקת משמרת  
   public Delete(id: number): Observable<Array<Shift>> {

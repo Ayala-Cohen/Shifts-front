@@ -36,6 +36,7 @@
             <div class="alert-warning col-12"
                 *ngIf="verifyPassword.invalid && (verifyPassword.dirty || verifyPassword.touched)">
                 <p *ngIf="verifyPassword.errors.required">שדה חובה</p>
+                <p *ngIf="business_service.business.password != business_service.sec_password">סיסמאות לא זהות</p>
             </div>
         </div>
     </form>

@@ -9,7 +9,11 @@
             <th>משמרת</th>
         </tr>
         <tr *ngFor="let shift of shift_service.list_shifts">
-            <td>{{shift.name}}</td>
+            <td>
+                {{shift.name}}
+                <button class="btn" (click)="edit('shift', shift.id)">עריכה</button>
+            </td>
+
         </tr>
     </table>
 
@@ -23,7 +27,10 @@
             <th>מחלקה</th>
         </tr>
         <tr *ngFor="let ward of ward_service.list_wards">
-            <td>{{ward.name}}</td>
+            <td>
+                {{ward.name}}
+                <button class="btn" (click)="edit('ward', ward.id)">עריכה</button>
+            </td>
         </tr>
     </table>
     <!-- [disabled]="wardsShifts.form.invalid" -->

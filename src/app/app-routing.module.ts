@@ -12,6 +12,7 @@ import { EmployeesListComponent } from './Components/employees-list/employees-li
 import { ConstraintsComponent } from './Components/constraints/constraints.component';
 import { HomeComponent } from './Components/home/home.component';
 import { RolesComponent } from './Components/roles/roles.component';
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path:'employees-list', component:EmployeesListComponent},
   {path:'constraints', component:ConstraintsComponent},
   {path:'home',component:HomeComponent},
-  {path:'roles', component:RolesComponent}
+  {path:'roles', component:RolesComponent},
+  {path:'forgot-password', component:ForgotPasswordComponent}
 ];
 
 @NgModule({

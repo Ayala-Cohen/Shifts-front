@@ -33,6 +33,7 @@ import { ChangeColorDirective } from './Directives/change-color.directive';
 import {ShowPasswordDirective} from './Directives/show-password.directive'
 import { HttpClientModule } from '@angular/common/http';
 import { RolesComponent } from './Components/roles/roles.component';
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 
 
 
@@ -54,7 +55,8 @@ import { RolesComponent } from './Components/roles/roles.component';
     ConstraintsComponent,
     HomeComponent,
     ShowPasswordDirective,
-    RolesComponent
+    RolesComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

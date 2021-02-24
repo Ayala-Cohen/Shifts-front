@@ -11,13 +11,7 @@
     </div>
     <table class="table col-10 mb-2" id="scheduleTable">
         <tr>
-            <th>ראשון</th>
-            <th>שני</th>
-            <th>שלישי</th>
-            <th>רביעי</th>
-            <th>חמישי</th>
-            <th>שישי</th>
-            <th>שבת</th>
+            <th *ngFor="let day of activity_days">{{day}}</th>
         </tr>
         <tr *ngFor = "let shift of shift_service.list_shifts">
             <td *ngFor="let day of activity_days" appChangeColor (click)="AddOrUpdate(shift.id, day)">{{shift.name}}</td>

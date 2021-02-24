@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Business } from '../Classes/Business';
 import { Observable } from 'rxjs';
+import { EmployeesService } from './employees.service';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,10 @@ export class BusinessService {
   public Delete(id:number) : Observable<Array<Business>>
   {
     return this.http.delete<Array<Business>>(this.url + "DeleteBusiness/" + id)
+  }
+
+  public getBusinessBydirectorDetails(email:string,password:string):Observable<Business>
+  {
+      return this.http.get<Business>(this.url + "GetBusinessBydirectorDetails/" + email +"/"+ password)
   }
 }

@@ -15,9 +15,20 @@ import { Ward } from 'src/app/Classes/Ward';
 export class WardsAndShiftsComponent implements OnInit {
   constructor(private router: Router, private ward_service: WardService, private shift_service: ShiftsService, private business_service: BusinessService, private employees_roles_service: EmployeesRoleService) {
     this.employees_roles_service.GetAll().subscribe(data => this.employees_roles_service.list_roles = data)
+    this.ward_service.GetAll().subscribe(data=>this.ward_service.list_wards = data)
+    this.shift_service.GetAll().subscribe(data=>shift_service.list_shifts = data)
   }
 
   ngOnInit() {
+  }
+  edit(str:string, id)
+  {
+    if (str == "shift") {
+      this.shift_service.GetOneById(id).subscribe(data=>this.shift_service.shift = data)
+    }
+    if(str=="ward"){
+      this.ward_service.GetOneById(id).subscribe(data=>this.ward_service.ward = data)
+    }
   }
   AddOrUpdate(str: string) {
     if (str == "shift") {
@@ -25,11 +36,16 @@ export class WardsAndShiftsComponent implements OnInit {
         this.shift_service.Add().subscribe(data => this.shift_service.list_shifts = data)
         this.shift_service.shift = new Shift()
       }
+      else{
+        this.shift_service.Update().subscribe(data=>this.shift_service.list_shifts = data)
+      }
     }
     else {
       if (this.ward_service.ward.id == undefined) {
         this.ward_service.Add().subscribe(data => this.ward_service.list_wards = data)
         this.ward_service.ward = new Ward()
+      }
+      else{
       }
     }
   }
