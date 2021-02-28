@@ -2,14 +2,16 @@
     <h2>שיבוץ לשבוע תאריך...</h2>
 
     <div *ngFor="let ward of ward_service.list_wards" class="col-12 ward mb-3">
-        <h2>מחלקת {{ward.name}} </h2>        
-        <table  class="table col-10 mb-2" id="scheduleTable">
-            <tr>
-                <th *ngFor="let day of activity_days">{{day}}</th>
-            </tr>
-            <tr class="dropdown" *ngFor="let shift of shift_service.list_shifts">
-                <td *ngFor="let item of activity_days">{{shift.name}}</td>
-            </tr>
-        </table>
+        <h2>מחלקת {{ward.name}} </h2>
+        <div class="scrollmenu col-10">
+            <table class="table mb-2" id="scheduleTable">
+                <tr>
+                    <th *ngFor="let day of activity_days">{{day}}</th>
+                </tr>
+                <tr class="dropdown" *ngFor="let shift of shift_service.list_shifts">
+                    <td *ngFor="let item of activity_days">{{shift.name}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>

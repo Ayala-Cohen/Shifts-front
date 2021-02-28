@@ -1,13 +1,15 @@
 <div class="card" style="width: 16rem;">
   <div class="card-body">
-    <h5 class="card-title">{{employee.name}}</h5>
+    <h5 class="card-title">{{currentEmployee.name}}</h5>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{employee.id}}</li><!-- להסתיר במצב עובד רגיל -->
+    <li class="list-group-item">{{currentEmployee.id}}</li><!-- להסתיר במצב עובד רגיל -->
     <!-- <li class="list-group-item">מספר טלפון</li> -->
-    <li class="list-group-item">{{employee.email}}</li>
+    <li class="list-group-item">{{currentEmployee.email}}</li>
     <li class="list-group-item">{{role}}</li>
     <!-- <li class="list-group-item">מחלקה</li> -->
   </ul>
   <button class="btn card-footer" (click)="edit()">עריכה</button><!-- להסתיר במצב עובד רגיל -->
+  <button class="btn card-footer" (click)="delete()">עריכה</button><!-- להסתיר במצב עובד רגיל -->
+
 </div>

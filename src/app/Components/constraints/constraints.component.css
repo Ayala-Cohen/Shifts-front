@@ -18,6 +18,11 @@
     border-color: rgb(129, 182, 226);
     margin: auto;
 }
+.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    margin: auto;
+  }
 th, td
 {
     border-color: rgb(129, 182, 226);

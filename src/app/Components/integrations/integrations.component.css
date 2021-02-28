@@ -5,8 +5,7 @@ table
     border-width: thin;
     border-radius: 25px;
     border-color: rgb(129, 182, 226);
-    margin: auto;
-    
+    margin: auto;   
 }
 th, td
 {
@@ -44,3 +43,8 @@ input:focus-visible
     direction: rtl;
     margin: auto;
 }
+.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    margin: auto;
+  }

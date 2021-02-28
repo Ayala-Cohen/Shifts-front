@@ -40,3 +40,8 @@ input:focus-visible
     border-color: rgb(36, 134, 176);
     border-width:2px;
 }
+.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    margin: auto;
+  }

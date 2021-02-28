@@ -9,17 +9,20 @@ import { EmployeesService } from 'src/app/Services/employees.service';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-  @Input() e:Employee
+  @Input() currentEmployee:Employee
   role:string 
   constructor(private employee_role_service:EmployeesRoleService, private employee_service:EmployeesService) {
-    employee_role_service.GetOneById(this.e.role_id).subscribe(data=>this.role = data.role)
+    employee_role_service.GetOneById(this.currentEmployee.role_id).subscribe(data=>this.role = data.role)
    }
 
   ngOnInit() {
   }
   edit()
   {
-    this.employee_service.employee = this.e
+    this.employee_service.employee = this.currentEmployee
   }
-
+  delete()
+  {
+    this.employee_service.Delete(this.currentEmployee.id).subscribe(data=>this.employee_service.list_employees = data)
+  }
 }

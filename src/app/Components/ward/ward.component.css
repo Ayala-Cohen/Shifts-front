@@ -55,3 +55,8 @@ input:focus-visible
     margin: auto;
     text-align: center;
 }
+.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    margin: auto;
+  }
