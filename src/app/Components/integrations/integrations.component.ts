@@ -30,10 +30,7 @@ export class IntegrationsComponent implements OnInit {
     //change according to the primary key
     if(this.integration_service.rating.employee_id == undefined)
     {
-      this.integration_service.rating.day = day
-      this.integration_service.rating.rating_end_date = this.ward_service.ward.diary_closing_day
-      this.integration_service.rating.rating_start_date = this.ward_service.ward.diary_opening_day
-      this.integration_service.rating.shift_approved = true
+      this.integration_service.rating.shift_approved = false
       this.integration_service.Add(shift_id).subscribe(data=>this.integration_service.list_rating = data)
     }
       // else //check by what to move the current shift to rating

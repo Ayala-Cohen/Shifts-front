@@ -6,6 +6,7 @@ export class Employee
         public password?:string,
         public role_id?:number,
         public email?:string,
-        public business_id?:number
+        public business_id?:number,
+        public phone?:string
     ){}
 }

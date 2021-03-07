@@ -18,8 +18,8 @@ export class IntegrationService {
       return this.http.get<Array<Rating>>(this.url + "GetAllRatings")
     }
     //פונקציה לשליפת דירוג ע"י קוד
-    public GetOneById(id: number): Observable<Rating> {
-      return this.http.get<Rating>(this.url + "GetRatingById/" + id)
+    public GetOneById(e_id:string, shift_in_day: number): Observable<Rating> {
+      return this.http.get<Rating>(`${this.url}GetRatingById/${e_id}/${shift_in_day}`)
     }
     //פונקציה להוספת דירוג
     public Add(shift_id:number): Observable<Array<Rating>> {
@@ -32,8 +32,7 @@ export class IntegrationService {
       return this.http.post<Array<Rating>>(this.url + "UpdateRating", this.rating)
     }
     //פונקציה למחיקת דירוג  
-    //primary key in rating table is not correct
-    public Delete(id: number): Observable<Array<Rating>> {
-      return this.http.delete<Array<Rating>>(this.url + "DeleteRating/" + id)
+    public Delete(shift_in_day: number, e_id:string): Observable<Array<Rating>> {
+      return this.http.delete<Array<Rating>>(`${this.url}DeleteRating/${e_id}/${shift_in_day}`)
     }
 }

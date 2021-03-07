@@ -19,3 +19,7 @@ div
 {
     text-align: right;
 }
+.logo-img{
+    float: right;
+    position: relative;
+}
