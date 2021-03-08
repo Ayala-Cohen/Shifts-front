@@ -21,7 +21,8 @@ export class ShiftsEmployeesService {
   //פונקציה לשליפת רשומה מטבלת עובדים במשמרות ע"י קוד
   public GetOneById(s_id: number, r_id:number, day:string): Observable<ShiftEmployees> 
   {
-    return this.http.get<ShiftEmployees>(`${this.url}GetShiftEmployeeById/${s_id}/${r_id}/${day}`)
+    let currentUrl = `${this.url}GetShiftEmployeeById/${s_id}/${r_id}/${day}`
+    return this.http.get<ShiftEmployees>(currentUrl)
   }
   //פונקציה להוספת רשומה לטבלת עובדים ומשמרות
   public Add(): Observable<Array<ShiftEmployees>> 
@@ -30,9 +31,10 @@ export class ShiftsEmployeesService {
     return this.http.put<Array<ShiftEmployees>>(this.url + "AddShiftEmployee", this.employee_in_shift)
   }
   //פונקציה לעדכון רשומה בטבלה עובדים ומשמרות
-  public Update(s: ShiftEmployees): Observable<Array<ShiftEmployees>> 
+  public Update(): Observable<Array<ShiftEmployees>> 
   {
-    return this.http.post<Array<ShiftEmployees>>(this.url + "UpdateShiftEmployee", s)
+    this.employee_in_shift.business_id = this.business_service.business.id
+    return this.http.post<Array<ShiftEmployees>>(this.url + "UpdateShiftEmployee", this.employee_in_shift)
   }
   //פונקציה למחיקת רשומה בטבלת עובדים ומשמרות
   public Delete(s_id: number, r_id:number, day:string): Observable<Array<ShiftEmployees>> 
