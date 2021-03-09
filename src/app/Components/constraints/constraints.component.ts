@@ -12,15 +12,19 @@ import { WardService } from 'src/app/Services/ward.service';
 export class ConstraintsComponent implements OnInit {
   activity_days = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"]
   shift_can_not = ""
+  currentDay:string
   constructor(private shift_service: ShiftsService, private constraint_service: ConstraintsService) {
     shift_service.GetAll().subscribe(data=>shift_service.list_shifts = data)
    }
 
   ngOnInit(): void {
   }
-  AddOrUpdate(shift_id: number, day: string) {
+  UpdateDay(day: string) {
+    this.currentDay = day
+  }
+  AddOrUpdate(shift_id: number) {
     this.constraint_service.c.shift_id = shift_id
-    this.constraint_service.c.day = day
+    this.constraint_service.c.day = this.currentDay
     this.getShiftName(shift_id)
     this.constraint_service.Add().subscribe(data => {this.constraint_service.list_constraints = data })
     this.constraint_service.c = new Constraint()

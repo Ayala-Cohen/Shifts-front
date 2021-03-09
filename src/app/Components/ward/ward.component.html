@@ -11,11 +11,11 @@
                     <td *ngFor="let day of activity_days" data-toggle="dropdown" appChangeColor (click)="UpdateDay(day)">{{shift.name}}</td>
                     <ul class="dropdown-menu">
                         <li class="dropdown-header">מספר עובדים בכל משמרת</li>
-                        <li *ngFor="let role of employees_roles_service.list_roles">
+                        <li *ngFor="let role of employees_roles_service.list_roles;let i = index">
                             <label>{{role.role}}</label>
-                            <input type="number"
-                                [(ngModel)]="shift_employees_service.employee_in_shift.number_of_shift_employees"
-                                (blur)="AddOrUpdate(ward.id, shift.id, role.id)">
+                            <input type="number" 
+                                (blur)="AddOrUpdate(ward.id, shift.id, role.id, this.value)"
+                                [(ngModel)]="shift_employees_service.employee_in_shift.number_of_shift_employees" >
                         </li>
                     </ul>
                 </tr>

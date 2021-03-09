@@ -12,7 +12,9 @@ export class IntegrationService {
   url:string ="http://localhost:50744/api/Rating/"
   rating:Rating = new Rating();
   list_rating:Array<Rating> = new Array<Rating>();
-  constructor(private http:HttpClient, private employee_service:EmployeesService) { }
+  constructor(private http:HttpClient, private employee_service:EmployeesService) {
+    this.rating.rating = "יכול"
+   }
     //פונקציה לשליפת רשימת דירוגים
     public GetAll(): Observable<Array<Rating>> {
       return this.http.get<Array<Rating>>(this.url + "GetAllRatings")
@@ -22,10 +24,10 @@ export class IntegrationService {
       return this.http.get<Rating>(`${this.url}GetRatingById/${e_id}/${shift_in_day}`)
     }
     //פונקציה להוספת דירוג
-    public Add(shift_id:number): Observable<Array<Rating>> {
+    public Add(shift_id:number, day:string): Observable<Array<Rating>> {
       this.rating.employee_id = this.employee_service.employee.id
       this.rating.shift_id = shift_id
-      return this.http.put<Array<Rating>>(this.url + "AddRating", this.rating)
+      return this.http.put<Array<Rating>>(this.url + "AddRating/" +day, this.rating)
     }
     //פונקציה לעדכון דירוג
     public Update(): Observable<Array<Rating>> {

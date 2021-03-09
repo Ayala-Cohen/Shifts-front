@@ -22,7 +22,7 @@ export class WardComponent implements OnInit {
   UpdateDay(day: string) {
     this.currentDay = day
   }
-  AddOrUpdate(ward_id: number, shift_id: number, role_id: number) {
+  AddOrUpdate(ward_id: number, shift_id: number, role_id: number, num_shifts:number) {
     let num_shift = this.shift_employees_service.employee_in_shift.number_of_shift_employees
     if (num_shift != undefined && num_shift != 0) {//כאשר מדובר בתפקיד שיש לו שימוש במחלקה זו
       {
@@ -30,6 +30,7 @@ export class WardComponent implements OnInit {
         this.shift_employees_service.employee_in_shift.shift_id = shift_id
         this.shift_employees_service.employee_in_shift.role_id = role_id
         this.shift_employees_service.employee_in_shift.day = this.currentDay
+        this.shift_employees_service.employee_in_shift.number_of_shift_employees = num_shifts
         this.shift_employees_service.GetOneById(shift_id, role_id, this.currentDay).subscribe(data => {
           if (data) {
             this.shift_employees_service.Update().subscribe(x => this.shift_employees_service.list_employees_in_shift = x)
