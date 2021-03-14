@@ -20,7 +20,7 @@ export class EmployeesDetailsComponent implements OnInit {
     this.employee_service.formData.append('employeesListXL', this.fileToUpload, this.fileToUpload.name);
   }
   importData() {
-    this.employee_service.ImportFromExcel(this.fileToUpload.name)
+    this.employee_service.ImportFromExcel(this.fileToUpload.name).subscribe(data=>{this.employee_service.list_employees = data})
   }
 
   AddEmployee()

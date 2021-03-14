@@ -27,6 +27,7 @@ export class LogINComponent implements OnInit {
         this.business_service.getBusinessBydirectorDetails(this.employee_service.employee.email, this.employee_service.employee.password).subscribe(x => {
           if (x) {
             this.business_service.business = x
+            this.employee_service.is_director = true
             this.router.navigate(['wards-shifts'])
           }
           else

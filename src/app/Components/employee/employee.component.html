@@ -3,13 +3,13 @@
     <h5 class="card-title">{{currentEmployee.name}}</h5>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{currentEmployee.id}}</li><!-- להסתיר במצב עובד רגיל -->
+    <li *ngIf = "employee_service.is_director == true" class="list-group-item">{{currentEmployee.id}}</li>  
     <li class="list-group-item">{{currentEmployee.phone}}</li>
     <li class="list-group-item">{{currentEmployee.email}}</li>
     <li class="list-group-item">{{role}}</li>
-    <!-- <li class="list-group-item">מחלקה</li> -->
+    <li class="list-group-item">מחלקה</li>
   </ul>
-  <button class="btn card-footer" (click)="edit()">עריכה</button><!-- להסתיר במצב עובד רגיל -->
-  <button class="btn card-footer" (click)="delete()">עריכה</button><!-- להסתיר במצב עובד רגיל -->
+  <button *ngIf = "employee_service.is_director == true" class="btn card-footer" (click)="edit()">עריכה</button><!-- להסתיר במצב עובד רגיל -->
+  <button *ngIf = "employee_service.is_director == true" class="btn card-footer" (click)="delete()">מחיקה</button><!-- להסתיר במצב עובד רגיל -->
 
 </div>

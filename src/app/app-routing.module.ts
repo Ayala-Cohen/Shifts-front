@@ -13,6 +13,7 @@ import { ConstraintsComponent } from './Components/constraints/constraints.compo
 import { HomeComponent } from './Components/home/home.component';
 import { RolesComponent } from './Components/roles/roles.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
+import { EmployeesRole } from './Classes/EmployeesRole';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path:'constraints', component:ConstraintsComponent},
   {path:'home',component:HomeComponent},
   {path:'roles', component:RolesComponent},
-  {path:'forgot-password', component:ForgotPasswordComponent}
+  {path:'forgot-password', component:ForgotPasswordComponent},
+  {path:'edit-employee', component:EmployeesDetailsComponent}
 ];
 
 @NgModule({

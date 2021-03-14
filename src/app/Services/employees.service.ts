@@ -11,6 +11,7 @@ import { Business } from '../Classes/Business';
 })
 export class EmployeesService {
   employee: Employee = new Employee()
+  is_director:boolean = false
   list_employees: Array<Employee> = new Array<Employee>();
   email:string
   sec_password:string
@@ -46,10 +47,8 @@ export class EmployeesService {
     return this.http.get<Employee>(`${this.url}/CheckEmployee/${this.employee.email}/${this.employee.password}`)
   }
 
-  public ImportFromExcel(file:string) {
-    let xlFile = this.formData.get('employeesListXL')
-    this.http.post(`${this.url}ImportFromExcel/${this.business_service.business.id}`, xlFile)
-    this.GetAll().subscribe(data => this.list_employees = data)
+  public ImportFromExcel(file:string) :Observable<Array<Employee>> {
+    return this.http.post<Array<Employee>>(`${this.url}ImportFromExcel/${this.business_service.business.id}`, this.formData)
   }
 
   public getEmployeeByEmail():Observable<Employee>
