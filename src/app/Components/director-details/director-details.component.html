@@ -1,10 +1,10 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
-    <h2>פרטי מנהל</h2>
-    <form #directorDetails="ngForm">
+    <form #directorDetails="ngForm" class="form">
+        <h2>פרטי מנהל</h2>
         <div class="form-group">
-            <label class="form-row"> שם:</label><input type="text" name="directorName"
-                [(ngModel)]="business_service.business.full_name" #directorName="ngModel" pattern="[a-zא-תA-Z ]*"
-                required class="col-12">
+            <label class="form-row"> שם:</label>
+            <input type="text" name="directorName" [(ngModel)]="business_service.business.full_name"
+                #directorName="ngModel" pattern="[a-zא-תA-Z ]*" required class="col-12">
             <div class="alert-warning col-12"
                 *ngIf="directorName.invalid && (directorName.dirty || directorName.touched)">
                 <p *ngIf="directorName.errors.required">שדה חובה</p>
@@ -45,6 +45,6 @@
                 <p *ngIf="business_service.business.password != business_service.sec_password">סיסמאות לא זהות</p>
             </div>
         </div>
+        <button class="btn" (click)="next()" [disabled]="directorDetails.form.invalid">הבא</button>
     </form>
-    <button class="btn" (click)="next()" [disabled]="directorDetails.form.invalid">הבא</button>
 </div>

@@ -1,3 +1,21 @@
 <app-nav></app-nav>
-<img src = "../assets/banner.png">
+<div class="up_banner">
+    <img class="logo" src="../assets/logo_small.png">
+</div>
+
 <router-outlet></router-outlet>
+<footer class="down_banner">
+    <nav>
+        <h3>עסקים שהצטרפו</h3>
+        <ul>
+            <li *ngFor = "let business of business_service.list_business">{{business.name}}</li>
+        </ul>
+    </nav>
+    <nav>
+        <h3>יצירת קשר</h3>
+        <ul>
+            <li>דוא"ל:support@gmail.com</li>
+            <li>מספר טלפון:0504123456</li>
+        </ul>
+    </nav>
+</footer>

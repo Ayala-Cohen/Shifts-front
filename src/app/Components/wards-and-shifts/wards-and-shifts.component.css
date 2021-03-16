@@ -3,12 +3,19 @@
     text-align: center;
     direction: rtl;
     margin: auto;   
+    align-items: center;
+    display: flex;
 }
 .form-group
 {
     width: 400px;
     margin: auto;
     text-align: center;
+}
+.sub_container 
+{
+    width: 80%;
+    margin:auto;
 }
 table
 {

@@ -42,6 +42,13 @@ input:focus-visible
     text-align: center;
     direction: rtl;
     margin: auto;
+    align-items: center;
+    display: flex;
+}
+.sub_container
+{
+    margin: auto;
+    width: 80%;
 }
 .scrollmenu {
     overflow: auto;

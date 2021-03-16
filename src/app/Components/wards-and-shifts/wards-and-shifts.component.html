@@ -1,44 +1,46 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
-    <div class="ma form-group">
-        <label class="form-row">הכנס שם משמרת</label>
-        <input type="text" class="col-12" [(ngModel)]="shift_service.shift.name">
-    </div>
-    <button class="btn m-3" (click)="AddOrUpdate('shift')">הוסף משמרת</button>
-    <div *ngIf="shift_service.list_shifts.length != 0">
-        <label>לחיצה על ערך תתן אפשרות עריכה</label>
-        <table class="table">
-            <tr>
-                <th>משמרת</th>
-            </tr>
-            <tr *ngFor="let shift of shift_service.list_shifts">
-                <td (click)="edit('shift', shift.id)">
-                    {{shift.name}}
-                    <a (click)="delete('shift',shift.id)" class="mr-5">מחיקה</a>
-                </td>
+    <div class="sub_container">
+        <div class="ma form-group">
+            <label class="form-row">הכנס שם משמרת</label>
+            <input type="text" class="col-12" [(ngModel)]="shift_service.shift.name">
+        </div>
+        <button class="btn m-3" (click)="AddOrUpdate('shift')">הוסף משמרת</button>
+        <div *ngIf="shift_service.list_shifts.length != 0">
+            <label>לחיצה על ערך תתן אפשרות עריכה</label>
+            <table class="table">
+                <tr>
+                    <th>משמרת</th>
+                </tr>
+                <tr *ngFor="let shift of shift_service.list_shifts">
+                    <td (click)="edit('shift', shift.id)">
+                        {{shift.name}}
+                        <button  (click)="delete('shift',shift.id)" class="btn mr-5">מחיקה</button>
+                    </td>
 
-            </tr>
-        </table>
-    </div>
+                </tr>
+            </table>
+        </div>
 
-    <div class="ma form-group">
-        <label class="form-row">הכנס שם מחלקה</label>
-        <input type="text" class="col-12" [(ngModel)]="ward_service.ward.name">
+        <div class="ma form-group">
+            <label class="form-row">הכנס שם מחלקה</label>
+            <input type="text" class="col-12" [(ngModel)]="ward_service.ward.name">
+        </div>
+        <button class="btn m-3" (click)="AddOrUpdate('ward')">הוסף מחלקה</button>
+        <div *ngIf="ward_service.list_wards.length != 0">
+            <label>לחיצה על ערך תתן אפשרות עריכה</label>
+            <table class="table">
+                <tr>
+                    <th>מחלקה</th>
+                </tr>
+                <tr *ngFor="let ward of ward_service.list_wards">
+                    <td (click)="edit('ward', ward.id)">
+                        {{ward.name}}
+                        <button (click)="delete('ward',ward.id)" class="btn mr-5">מחיקה</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- [disabled]="wardsShifts.form.invalid" -->
+        <button class="btn m-3" (click)="next()">הבא</button>
     </div>
-    <button class="btn m-3" (click)="AddOrUpdate('ward')">הוסף מחלקה</button>
-    <div *ngIf="ward_service.list_wards.length != 0">
-        <label>לחיצה על ערך תתן אפשרות עריכה</label>
-        <table class="table">
-            <tr>
-                <th>מחלקה</th>
-            </tr>
-            <tr *ngFor="let ward of ward_service.list_wards">
-                <td (click)="edit('ward', ward.id)">
-                    {{ward.name}}
-                    <a (click)="delete('ward',ward.id)" class="mr-5">מחיקה</a>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <!-- [disabled]="wardsShifts.form.invalid" -->
-    <button class="btn m-3" (click)="next()">הבא</button>
 </div>

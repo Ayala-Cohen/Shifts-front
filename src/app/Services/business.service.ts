@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Business } from '../Classes/Business';
 import { Observable } from 'rxjs';
-import { EmployeesService } from './employees.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BusinessService {
   business:Business = new Business()
+  list_business:Array<Business> = new Array<Business>()
   sec_password:string
   url:string = "http://localhost:50744/api/Business/"
   constructor(private http:HttpClient) {

@@ -3,12 +3,19 @@
     text-align: center;
     direction: rtl;
     margin: auto;
+    height: 500px;
+    display: flex;
+    align-items: center;
 }
 .form-group
 {
     width: 400px;
     margin: auto;
     text-align: center;
+}
+.form 
+{
+    margin:auto;
 }
 label
 {

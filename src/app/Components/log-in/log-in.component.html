@@ -1,15 +1,25 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
+  <div class="sub_container">
     <h2>התחברות</h2>
-    <form>
+    <form #logInForm="ngForm">
       <div class="ma form-group">
         <label for="uname" class="form-row">שם משתמש:</label>
-        <input type="text" id="uname" placeholder="הכנס שם משתמש" name="uname" required class="col-12" [(ngModel)]="employee_service.employee.email">
+        <input type="text" id="uname" placeholder="הכנס שם משתמש" name="uname" required class="col-12"
+          [(ngModel)]="employee_service.employee.email" #userName="ngModel" required>
+      </div>
+      <div class="alert-warning col-12" *ngIf="userName.invalid && (userName.dirty || userName.touched)">
+        <p *ngIf="userName.errors.required">שדה חובה</p>
       </div>
       <div class="form-group mb-3">
         <label for="pwd" class="form-row">סיסמה:</label>
-        <input type="password"  id="pwd" placeholder="הכנס סיסמה" name="pswd" required class="col-12" [(ngModel)]="employee_service.employee.password" appShowPassword>
+        <input type="password" id="pwd" placeholder="הכנס סיסמה" name="pswd" required class="col-12"
+          [(ngModel)]="employee_service.employee.password" appShowPassword #password="ngModel">
       </div>
-      <button type="submit" class="btn" (click)="logIn()">אישור</button>
+      <div class="alert-warning col-12" *ngIf="password.invalid && (password.dirty || password.touched)">
+        <p *ngIf="password.errors.required">שדה חובה</p>
+      </div>
+      <button type="submit" class="btn" (click)="logIn()" [disabled]="logInForm.form.invalid">אישור</button>
     </form>
-    <a [routerLink] = "['/forgot-password']">שכחת סיסמה?</a>
+    <a [routerLink]="['/forgot-password']">שכחת סיסמה?</a>
   </div>
+</div>

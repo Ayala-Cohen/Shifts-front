@@ -2,4 +2,6 @@
 {
     direction: rtl;
     margin: auto;
+    align-items: center;
+    display: flex;
 }

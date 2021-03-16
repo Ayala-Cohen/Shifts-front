@@ -1,8 +1,18 @@
 .card
 {
     width:400px;
+    height: 200px;
     margin:auto;
     text-align: center;
+}
+.container
+{
+    direction: rtl;
+    text-align: center;
+    margin:auto;
+    height: 500px; 
+    align-items: center;
+    display: flex;
 }
 button
 {

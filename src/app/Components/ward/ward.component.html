@@ -1,26 +1,28 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
-    <p>בכל מחלקה יש ללחוץ על המשמרות בהן היא פעילה</p>
-    <div *ngFor="let ward of ward_service.list_wards" class="col-12 ward mb-3">
-        <h2> {{ward.name}}</h2>
-        <div class="scrollmenu col-10">
-            <table class="table mb-2" id="scheduleTable">
-                <tr>
-                    <th *ngFor="let day of activity_days">{{day}}</th>
-                </tr>
-                <tr class="dropdown" *ngFor="let shift of shift_service.list_shifts">
-                    <td *ngFor="let day of activity_days" data-toggle="dropdown" appChangeColor (click)="UpdateDay(day)">{{shift.name}}</td>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-header">מספר עובדים בכל משמרת</li>
-                        <li *ngFor="let role of employees_roles_service.list_roles;let i = index">
-                            <label>{{role.role}}</label>
-                            <input type="number" 
-                                (blur)="AddOrUpdate(ward.id, shift.id, role.id, this.value)"
-                                [(ngModel)]="shift_employees_service.employee_in_shift.number_of_shift_employees" >
-                        </li>
-                    </ul>
-                </tr>
-            </table>
+    <div class="sub_container">
+        <p>בכל מחלקה יש ללחוץ על המשמרות בהן היא פעילה</p>
+        <div *ngFor="let ward of ward_service.list_wards" class="col-12 ward mb-3">
+            <h2> {{ward.name}}</h2>
+            <div class="scrollmenu col-10">
+                <table class="table mb-2" id="scheduleTable">
+                    <tr>
+                        <th *ngFor="let day of activity_days">{{day}}</th>
+                    </tr>
+                    <tr class="dropdown" *ngFor="let shift of shift_service.list_shifts">
+                        <td *ngFor="let day of activity_days" data-toggle="dropdown" appChangeColor
+                            (click)="UpdateDay(day)">{{shift.name}}</td>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">מספר עובדים בכל משמרת</li>
+                            <li *ngFor="let role of employees_roles_service.list_roles;let i = index">
+                                <label>{{role.role}}</label>
+                                <input type="number" (blur)="AddOrUpdate(ward.id, shift.id, role.id, this.value)"
+                                    [(ngModel)]="shift_employees_service.employee_in_shift.number_of_shift_employees">
+                            </li>
+                        </ul>
+                    </tr>
+                </table>
+            </div>
         </div>
+        <button class="btn" (click)="next()">הבא</button>
     </div>
-    <button class="btn" (click)="next()">הבא</button>
 </div>

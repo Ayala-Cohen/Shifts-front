@@ -3,6 +3,13 @@
     text-align: center;
     direction: rtl;
     margin: auto;
+    align-items: center;
+    display: flex;
+}
+.sub_container
+{
+    margin: auto;
+    width: 80%;
 }
 .dropdown-menu
 {

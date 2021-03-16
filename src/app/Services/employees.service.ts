@@ -47,7 +47,7 @@ export class EmployeesService {
     return this.http.get<Employee>(`${this.url}/CheckEmployee/${this.employee.email}/${this.employee.password}`)
   }
 
-  public ImportFromExcel(file:string) :Observable<Array<Employee>> {
+  public ImportFromExcel() :Observable<Array<Employee>> {
     return this.http.post<Array<Employee>>(`${this.url}ImportFromExcel/${this.business_service.business.id}`, this.formData)
   }
 

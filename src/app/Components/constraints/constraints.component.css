@@ -2,11 +2,18 @@
 {
     text-align: center;
     direction: rtl;
-    margin: auto;
+    margin: auto; 
+    align-items: center;
+    display: flex;
 }
 .dropdown-menu
 {
     text-align: center;
+}
+.sub_container
+{
+    margin: auto;
+    width: 80%;
 }
 .table
 {

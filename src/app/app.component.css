@@ -1,6 +1,49 @@
-img
+.up_banner
 {
     width: 100%;
-    height: 350px;
-    margin-bottom: 80px;
+    height: 250px;
+    background-image: url("../assets/banner_light_blue.png");
+    margin-bottom: 20px;
 }
+.down_banner
+{
+    width: 100%;
+    height: 250px;
+    background-color: rgb(32, 40, 42);
+    color: white;
+    font-size: large;
+    margin-top: 20px;
+    bottom: 0;
+}
+.logo
+{
+    width: 70%;
+    margin-left: 50%;
+    height: 100%;
+}
+
+footer nav
+{
+    direction: rtl;
+    width:22%;
+    float:right;
+    margin:0 10px;
+    padding:20px 0px;
+    text-align:center;
+    height:200px;
+}
+footer nav h3
+{
+    font-size:larger;
+    width:70%;
+    margin:10px 15px;
+    font: outline;
+}
+footer nav li
+{
+    list-style:none;
+    font-size:large
+}
+
+
+
