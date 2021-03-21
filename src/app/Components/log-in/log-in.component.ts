@@ -28,6 +28,8 @@ export class LogINComponent implements OnInit {
           if (x) {
             this.business_service.business = x
             this.employee_service.is_director = true
+            this.business_service.director_email = this.employee_service.employee.email
+            this.business_service.director_name = this.employee_service.employee.name
             this.router.navigate(['wards-shifts'])
           }
           else

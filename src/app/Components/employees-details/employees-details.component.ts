@@ -12,7 +12,9 @@ import { Router } from '@angular/router';
 })
 export class EmployeesDetailsComponent implements OnInit {
   fileToUpload: File = null;
-  constructor(private router:Router,private ward_service: WardService,private employee_service:EmployeesService,private employee_roles_service:EmployeesRoleService) { }
+  constructor(private router:Router,private ward_service: WardService,private employee_service:EmployeesService,private employee_roles_service:EmployeesRoleService) { 
+    this.employee_service.employee = new Employee()
+  }
 
   ngOnInit(): void {
   }

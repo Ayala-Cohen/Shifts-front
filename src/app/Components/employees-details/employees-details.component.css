@@ -2,7 +2,6 @@
 {
     direction: rtl;
     text-align: center;
-    height: 500px; 
     align-items: center;
     display: flex;
 }
@@ -16,6 +15,13 @@
     margin: auto;
     text-align: center;
     margin-bottom: 10px;
+}
+#explanation
+{
+    width: 300px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 input, select, option
 {

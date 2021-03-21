@@ -1,7 +1,10 @@
 <div class="container d-flex flex-row col-sm-12 col-md-6 col-lg-8">
     <div class="sub_container col-12">
-        <input type="file" (change)="saveFile($event.target.files)">
-        <button class="btn btn-lg" (click)="importData()">יבוא נתונים מאקסל</button>
+        <div style="margin: auto;">
+            <p id="explanation">באפשרותך להעלות קובץ אקסל המכיל את נתוני העובדים ובמידת הצורך ישנה אפשרות להוסיף עובד בצורה ידנית. כמובן שתוכל גם את כל פרטי העובדים בצורה ידנית</p>
+            <input type="file" (change)="saveFile($event.target.files)"><br>
+            <button class="btn btn-lg" (click)="importData()">הוספת עובדים</button><br>
+        </div>
         <button class="btn btn-lg" data-toggle="collapse" data-target="#AddEmployee">הוספת עובד חדש</button>
         <div id="AddEmployee" class="collapse">
             <h3>הוספת עובד חדש</h3>
@@ -35,7 +38,7 @@
                     </select>
                 </div>
                 <button class="btn" (click)="AddEmployee()">אישור</button>
-                <div *ngIf="">
+                <div *ngIf="employee_service.employee.id != undefined">
                     הפרטים נקלטו בהצלחה!!
                 </div>
             </form>
