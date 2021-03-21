@@ -10,7 +10,13 @@
                         <th *ngFor="let day of activity_days">{{day}}</th>
                     </tr>
                     <tr class="dropdown" *ngFor="let shift of shift_service.list_shifts">
-                        <td *ngFor="let item of activity_days">{{shift.name}}</td>
+                        <td *ngFor="let day of activity_days">{{shift.name}}
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" *ngFor="let item of assigning_service.list_assigning">
+                                    {{getEmployeeName(item.employee_id)}}
+                                </li>
+                            </ul>
+                        </td>
                     </tr>
                 </table>
             </div>

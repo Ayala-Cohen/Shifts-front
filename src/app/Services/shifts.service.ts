@@ -35,4 +35,9 @@ export class ShiftsService {
   public Delete(id: number): Observable<Array<Shift>> {
     return this.http.delete<Array<Shift>>(this.url + "DeleteShift/" + id)
   }
+
+  public GetShiftForDay(shift_id:number, day:string):Observable<number>
+  {
+    return this.http.get<number>(`${this.url}/GetShiftInDayId/${shift_id}/${day}`)
+  }
 }
