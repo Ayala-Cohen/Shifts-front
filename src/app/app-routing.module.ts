@@ -21,7 +21,6 @@ const routes: Routes = [
   { path: 'business-details', component: BusinessDetailsComponent },
   { path: 'wards-shifts', component: WardsAndShiftsComponent },
   { path: 'ward', component: WardComponent },
-  { path: 'employees-details', component: EmployeesDetailsComponent },
   { path: 'log-in', component: LogINComponent },
   { path: 'integration', component: IntegrationsComponent },
   {path:'final-integration', component:FinalIntegrationComponent},
@@ -30,7 +29,7 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'roles', component:RolesComponent},
   {path:'forgot-password', component:ForgotPasswordComponent},
-  {path:'edit-employee', component:EmployeesDetailsComponent}
+  {path:'add-edit-employee/:flag', component:EmployeesDetailsComponent}
 ];
 
 @NgModule({

@@ -7,7 +7,7 @@
     <li class="list-group-item">{{currentEmployee.phone}}</li>
     <li class="list-group-item">{{currentEmployee.email}}</li>
     <li class="list-group-item">{{role}}</li>
-    <li class="list-group-item">מחלקה</li>
+    <li class="list-group-item" *ngFor="let dep of list_departments">מחלקת {{dep.name}} </li>
   </ul>
   <button *ngIf = "employee_service.is_director == true" class="btn card-footer" (click)="edit()">עריכה</button><!-- להסתיר במצב עובד רגיל -->
   <button *ngIf = "employee_service.is_director == true" class="btn card-footer" (click)="delete()">מחיקה</button><!-- להסתיר במצב עובד רגיל -->

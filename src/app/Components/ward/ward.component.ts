@@ -45,6 +45,6 @@ export class WardComponent implements OnInit {
   }
 
   next() {
-    this.router.navigate(['employees-details'])
+    this.router.navigate(['add-edit-employee', false])
   }
 }
