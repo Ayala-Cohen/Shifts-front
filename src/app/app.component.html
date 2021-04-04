@@ -1,6 +1,6 @@
 <app-nav></app-nav>
 <div class="up_banner img-responsive">
-    <img class="logo img-responsive" src="../assets/small_logo.png" >
+    <img class="logo img-responsive" src="../assets/small_logo.png">
 </div>
 
 <router-outlet></router-outlet>
@@ -8,7 +8,10 @@
     <nav>
         <h3>עסקים שהצטרפו</h3>
         <ul>
-            <li *ngFor = "let business of business_service.list_business">{{business.name}}</li>
+            <li *ngFor="let business of business_service.list_business">{{business.name}}
+                <!-- <img *ngIf ="business.logo != null" [src]="sanitize(business)"> -->
+                <!-- <p>{{business_service.getLogoAsImage(business)}}</p> -->
+            </li>
         </ul>
     </nav>
     <nav>

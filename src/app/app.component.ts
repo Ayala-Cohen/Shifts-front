@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, SecurityContext } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Business } from './Classes/Business';
 import { BusinessService } from './Services/business.service';
 
 @Component({
@@ -7,11 +9,16 @@ import { BusinessService } from './Services/business.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  {
+export class AppComponent {
   title = 'ShiftsClientSide';
-  constructor(private router:Router, private business_service:BusinessService)
-  {
-    business_service.GetAll().subscribe(data=>this.business_service.list_business = data)
+  constructor(private router: Router, private business_service: BusinessService, private sanitizer: DomSanitizer) {
+    business_service.GetAll().subscribe(data => this.business_service.list_business = data)
     this.router.navigate(['home'])
   }
+
+  // sanitize(business: Business) {
+  //   // this.business_service.getLogoAsImage(business)
+  //   this.business_service.logo_url = this.sanitizer.bypassSecurityTrustUrl(this.business_service.logo_url)
+  //   return this.business_service.logo_url;
+  // }
 }

@@ -22,8 +22,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
   }
-  getOut()
-  {
+  clearData(){
     this.employee_service.employee = new Employee()
     this.business_service.business = new Business()
     this.business_service.director_email = undefined
@@ -31,7 +30,10 @@ export class NavComponent implements OnInit {
     this.shift_service.list_shifts = new Array<Shift>()
     this.ward_service.list_wards = new Array<Ward>()
     this.employee_role_service.list_roles = new Array<EmployeesRole>()
-    this.router.navigate(['log-in'])
   }
-
+  getOut()
+  {
+    this.router.navigate(['log-in'])
+    this.clearData()
+  }
 }

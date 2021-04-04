@@ -15,9 +15,9 @@ export class IntegrationService {
   constructor(private http:HttpClient, private employee_service:EmployeesService) {
     this.rating.rating = "יכול"
    }
-    //פונקציה לשליפת רשימת דירוגים
+    //פונקציה לשליפת רשימת דירוגים של עובד מסוים
     public GetAll(): Observable<Array<Rating>> {
-      return this.http.get<Array<Rating>>(this.url + "GetAllRatings")
+      return this.http.get<Array<Rating>>(`${this.url}/GetAllRatings/${this.employee_service.employee.id}`)
     }
     //פונקציה לשליפת דירוג ע"י קוד
     public GetOneById(e_id:string, shift_in_day: number): Observable<Rating> {

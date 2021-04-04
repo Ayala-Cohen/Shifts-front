@@ -26,8 +26,8 @@ export class WardService {
     this.ward.business_id = this.business_service.business.id
 
     //לשנות 
-    this.ward.diary_closing_day = new Date('December 17, 2020 07:00:00')
-    this.ward.diary_opening_day = new Date('December 10, 2020 23:59:00')
+    // this.ward.diary_closing_day = new Date('December 17, 2020 07:00:00')
+    // this.ward.diary_opening_day = new Date('December 10, 2020 23:59:00')
     return this.http.put<Array<Ward>>(this.url + "AddDepartment", this.ward)
   }
   //פונקציה לעדכון מחלקה

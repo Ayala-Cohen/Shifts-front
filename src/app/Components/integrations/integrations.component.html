@@ -5,13 +5,13 @@
         <h5>לחץ על כפתור וצבע את המשמרות לפי עדיפותך</h5>
         <div class="p-5">
             <button class="btn" style="background-color: rgb(212, 241, 255);"
-                (click)="changeDirectiveColor('rgb(212, 241, 255)','מעדיף')">מעדיף</button>
+                (click)="changeDirectiveColor('מעדיף')">מעדיף</button>
             <button class="btn" style="background-color: rgb(152, 200, 210);"
-                (click)="changeDirectiveColor('rgb(152, 200, 210)','יכול')">יכול</button>
+                (click)="changeDirectiveColor('יכול')">יכול</button>
             <button class="btn" style="background-color: rgb(120, 157, 163);"
-                (click)="changeDirectiveColor('rgb(120, 157, 163)','לא יכול')">לא יכול</button>
+                (click)="changeDirectiveColor('לא יכול')">לא יכול</button>
             <button class="btn" style="background-color: rgb(74, 152, 190);"
-                (click)="changeDirectiveColor('rgb(74, 152, 190)','מעדיף שלא')">מעדיף שלא</button>
+                (click)="changeDirectiveColor('מעדיף שלא')">מעדיף שלא</button>
 
         </div>
         <div class="scrollmenu col-10">
@@ -20,7 +20,8 @@
                     <th *ngFor="let day of activity_days">{{day}}</th>
                 </tr>
                 <tr *ngFor="let shift of shift_service.list_shifts">
-                    <td *ngFor="let day of activity_days" appChangeColor (click)="AddOrUpdate(shift.id, day)">
+                    <!--  -->
+                    <td *ngFor="let day of activity_days"  appChangeColor [style.background-color]="getRating(shift.id, day)" (click)="AddOrUpdate(shift.id, day)" >
                         {{shift.name}}
                     </td>
                 </tr>

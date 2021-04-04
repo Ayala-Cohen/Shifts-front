@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Employee } from 'src/app/Classes/Employee';
 import { BusinessService } from 'src/app/Services/business.service';
+import { EmployeesRoleService } from 'src/app/Services/employees-role.service';
 import { EmployeesService } from 'src/app/Services/employees.service';
+import { IntegrationService } from 'src/app/Services/integration.service';
 import { ShiftsService } from 'src/app/Services/shifts.service';
 import { WardService } from 'src/app/Services/ward.service';
 
@@ -12,31 +16,45 @@ import { WardService } from 'src/app/Services/ward.service';
 })
 export class LogINComponent implements OnInit {
 
-  constructor(private employee_service: EmployeesService, private business_service: BusinessService, private ward_service: WardService, private shift_service: ShiftsService, private router: Router) { }
+  constructor(private employees_roles_service: EmployeesRoleService, private employee_service: EmployeesService, private integration_service: IntegrationService, private business_service: BusinessService, private ward_service: WardService, private shift_service: ShiftsService, private router: Router) { }
 
   ngOnInit() {
   }
-  logIn() {
-    this.employee_service.CheckEmployee().subscribe(data => {
+  getAllData(){
+    if (this.employee_service.employee.id != undefined) {//ההתחברות התבצעה על ידי עובד ולא על ידי מנהל
+      this.integration_service.GetAll().subscribe(data => this.integration_service.list_rating = data)//שליפת רשימת הדירוגים של העובד
+    }
+    this.employee_service.GetAll().subscribe(x => this.employee_service.list_employees = x)
+    this.shift_service.GetAll().subscribe(data => this.shift_service.list_shifts = data)
+    this.employees_roles_service.GetAll().subscribe(data => this.employees_roles_service.list_roles = data)
+    this.ward_service.GetAll().subscribe(data => this.ward_service.list_wards = data)
+    this.shift_service.GetAll().subscribe(data => this.shift_service.list_shifts = data)
+  }
+   logIn() {
+    this.employee_service.CheckEmployee().subscribe(async data => {
       if (data) {
         this.employee_service.employee = data
-        this.employee_service.getBusinessByEmployee(data.business_id)
+        this.employee_service.getBusinessByEmployee(data.business_id)//שליפת פרטי העסק שבו העובד מועסק
+        this.getAllData()
+        await this.business_service.delay(3000);
         this.router.navigate(['integration'])
       }
       else {
         this.business_service.getBusinessBydirectorDetails(this.employee_service.employee.email, this.employee_service.employee.password).subscribe(x => {
           if (x) {
             this.business_service.business = x
+            // this.business_service.getLogoAsImage(x)
             this.employee_service.is_director = true
             this.business_service.director_email = this.employee_service.employee.email
             this.business_service.director_name = this.employee_service.employee.name
+            this.employee_service.employee = new Employee()
+            this.getAllData()
             this.router.navigate(['wards-shifts'])
           }
           else
             alert("לא מוכר במערכת")
         })
       }
-      this.employee_service.GetAll().subscribe(x=>this.employee_service.list_employees = x)
     }),
       err => alert("כשל בגישה לשרת")
   }
