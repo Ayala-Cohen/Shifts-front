@@ -12,9 +12,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit() {
   }
-  forgotPassword() {
-    this.isClicked = true
-    this.employee_service.getEmployeeByEmail().subscribe(data => this.employee_service.employee = data)
+  updatePassword(){
+    this.employee_service.Update().subscribe(data=>this.employee_service.employee = data.filter(x=>x.id == this.employee_service.employee.id)[0])
   }
-
 }

@@ -33,7 +33,7 @@ export class NavComponent implements OnInit {
   }
   getOut()
   {
-    this.router.navigate(['log-in'])
     this.clearData()
+    this.router.navigate(['home'])
   }
 }

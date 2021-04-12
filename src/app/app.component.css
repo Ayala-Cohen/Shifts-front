@@ -22,8 +22,10 @@
 }
 .logo
 {
-    width: 70%;
-    margin-left: 50%;
+    width: 31%;
+    /* margin-top: -25px; */
+    margin-left: 68%;
+    height: 100%;
 }
 
 footer nav

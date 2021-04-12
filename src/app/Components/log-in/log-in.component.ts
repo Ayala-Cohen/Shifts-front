@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Employee } from 'src/app/Classes/Employee';
+import { EmployeeWithWholeData } from 'src/app/Classes/EmployeeWithWholeData';
 import { BusinessService } from 'src/app/Services/business.service';
 import { EmployeesRoleService } from 'src/app/Services/employees-role.service';
 import { EmployeesService } from 'src/app/Services/employees.service';
@@ -36,14 +37,12 @@ export class LogINComponent implements OnInit {
         this.employee_service.employee = data
         this.employee_service.getBusinessByEmployee(data.business_id)//שליפת פרטי העסק שבו העובד מועסק
         this.getAllData()
-        await this.business_service.delay(3000);
         this.router.navigate(['integration'])
       }
       else {
         this.business_service.getBusinessBydirectorDetails(this.employee_service.employee.email, this.employee_service.employee.password).subscribe(x => {
           if (x) {
             this.business_service.business = x
-            // this.business_service.getLogoAsImage(x)
             this.employee_service.is_director = true
             this.business_service.director_email = this.employee_service.employee.email
             this.business_service.director_name = this.employee_service.employee.name

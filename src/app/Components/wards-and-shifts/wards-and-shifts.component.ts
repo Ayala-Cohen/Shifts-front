@@ -6,6 +6,7 @@ import { ShiftsService } from 'src/app/Services/shifts.service';
 import { EmployeesRoleService } from 'src/app/Services/employees-role.service';
 import { Shift } from 'src/app/Classes/Shift';
 import { Ward } from 'src/app/Classes/Ward';
+import {DatePipe} from '@angular/common'
 
 @Component({
   selector: 'app-wards-and-shifts',
@@ -15,8 +16,7 @@ import { Ward } from 'src/app/Classes/Ward';
 export class WardsAndShiftsComponent implements OnInit {
   constructor(private router: Router, private ward_service: WardService, private shift_service: ShiftsService, private business_service: BusinessService, private employees_roles_service: EmployeesRoleService) {
   }
-  closing_date:Date = new Date()
-  opening_date:Date = new Date()
+
   ngOnInit() {
   }
   edit(str: string, id) {
@@ -26,8 +26,6 @@ export class WardsAndShiftsComponent implements OnInit {
     if (str == "ward") {
       this.ward_service.GetOneById(id).subscribe(data =>{
         this.ward_service.ward = data
-        this.closing_date = this.ward_service.ward.diary_closing_day
-        this.opening_date = this.ward_service.ward.diary_opening_day
       })
     }
   }

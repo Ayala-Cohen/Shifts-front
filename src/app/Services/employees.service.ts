@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Employee } from '../Classes/Employee';
 import { BusinessService } from './business.service';
 import { Ward } from '../Classes/Ward';
+import { EmployeeWithWholeData } from '../Classes/EmployeeWithWholeData';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,13 @@ export class EmployeesService {
   employee: Employee = new Employee()
   is_director: boolean = false
   list_employees: Array<Employee> = new Array<Employee>();
+  list_employees_whole_data: Map<string,EmployeeWithWholeData> = new Map<string,EmployeeWithWholeData>()
   email: string
   sec_password: string
   formData: FormData = new FormData();
   url: string = "http://localhost:50744/api/Employees/"
   constructor(private http: HttpClient, private business_service: BusinessService) { }
-  // 
+
   //פונקציה לשליפת רשימת עובדים
   public GetAll(): Observable<Array<Employee>> {
     return this.http.get<Array<Employee>>(this.url + "GetAllEmployees/" + this.business_service.business.id)
@@ -31,8 +33,9 @@ export class EmployeesService {
     return this.http.get<Array<Ward>>(`${this.url}GetDepartmentsForEmployee/${id}`)
   }
   //פונקציה להוספת מחלקות לעובד
-  public AddDepartments(list_dep: Array<Ward>): Observable<void> {
-    return this.http.post<void>(`${this.url}AddDepartmentsForEmployee/${this.employee.id}`, list_dep)
+  public AddOrRemoveDepartments(): Observable<void> {
+    let list_dep = this.list_employees_whole_data.get(this.employee.id).list_departments
+    return this.http.post<void>(`${this.url}AddOrRemoveDepartmentsForEmployee/${this.employee.id}`, list_dep)
   }
 
   //פונקציה להוספת עובד
@@ -57,10 +60,6 @@ export class EmployeesService {
   //הוספת עובדים על ידי קריאה מקובץ אקסל
   public ImportFromExcel(): Observable<Array<Employee>> {
     return this.http.post<Array<Employee>>(`${this.url}ImportFromExcel/${this.business_service.business.id}`, this.formData)
-  }
-  //שליפת עובד לפי כתובת הדוא"ל שלו
-  public getEmployeeByEmail(): Observable<Employee> {
-    return this.http.get<Employee>(`${this.url}/GetEmployeeByEmail/${this.email}`)
   }
   //פונקציה למציאת פרטי עסק על פי פרטי עובד
   public getBusinessByEmployee(business_id: number) {

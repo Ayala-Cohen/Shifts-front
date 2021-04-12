@@ -3,6 +3,8 @@
         <h2>מתאריך עד תאריך...</h2>
         <h4>סמן כל משמרת בדרגת העדיפות שלך</h4>
         <h5>לחץ על כפתור וצבע את המשמרות לפי עדיפותך</h5>
+        <h5>משמרת שלא תדרג תדורג כברירת מחדל בדרגת יכול</h5>
+
         <div class="p-5">
             <button class="btn" style="background-color: rgb(212, 241, 255);"
                 (click)="changeDirectiveColor('מעדיף')">מעדיף</button>
@@ -20,12 +22,14 @@
                     <th *ngFor="let day of activity_days">{{day}}</th>
                 </tr>
                 <tr *ngFor="let shift of shift_service.list_shifts">
-                    <!--  -->
                     <td *ngFor="let day of activity_days"  appChangeColor [style.background-color]="getRating(shift.id, day)" (click)="AddOrUpdate(shift.id, day)" >
                         {{shift.name}}
                     </td>
                 </tr>
             </table>
+            <div class="alert-warning col-12" *ngIf="integration_service.list_rating.length == 0">
+                <p>לא דרגת אף משמרת</p>
+        </div>
         </div>
     </div>
 </div>

@@ -28,14 +28,9 @@
                 </div>
                 <div class="form-group">
                     <label class="form-row">מחלקת עובד: </label>
-                    <!-- <select class="form-row col-12 js-example-basic-multiple" name="wardName" multiple>
-                        <option *ngFor="let ward of ward_service.list_wards" value="{{ward.id}}">{{ward.name}}
-                        </option>
-                        <br>
-                    </select> -->
                     <ul class="list-group checkbox">
                         <li class="list-group-item" *ngFor="let ward of ward_service.list_wards">
-                            <input type="checkbox" class="cb" (click)="AddTolistDep(ward)">
+                            <input type="checkbox" class="cb" (click)="AddTolistDepOrRemove(ward)" [checked]="isInThisDep(ward.id)">
                             <label>{{ward.name}}</label>
                         </li>
                     </ul>

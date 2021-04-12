@@ -16,9 +16,7 @@ export class AppComponent {
     this.router.navigate(['home'])
   }
 
-  // sanitize(business: Business) {
-  //   // this.business_service.getLogoAsImage(business)
-  //   this.business_service.logo_url = this.sanitizer.bypassSecurityTrustUrl(this.business_service.logo_url)
-  //   return this.business_service.logo_url;
-  // }
+  sanitize(business: Business) { 
+    return this.sanitizer.bypassSecurityTrustUrl(this.business_service.getLogoAsImage(business).toString())
+  }
 }

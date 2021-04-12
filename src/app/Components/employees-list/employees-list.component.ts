@@ -13,6 +13,7 @@ export class EmployeesListComponent implements OnInit {
    }
 
   ngOnInit() {
+    if(this.employees_service.list_employees.length == 0)
     this.employees_service.GetAll().subscribe(data=>
       this.employees_service.list_employees = data
       ) 

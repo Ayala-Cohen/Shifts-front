@@ -21,34 +21,52 @@ export class EmployeesDetailsComponent implements OnInit {
       this.is_edit = p["flag"]
       if (this.is_edit == "false")
         this.employee_service.employee = new Employee()
-
+      else
+        this.employee_service.getDepartments(this.employee_service.employee.id).subscribe(data => {
+          if (data)
+            this.employee_service.list_employees_whole_data.get(this.employee_service.employee.id).list_departments = data
+        })
     })
   }
 
   ngOnInit(): void {
   }
-  AddTolistDep(ward: Ward) {
-    this.list_dep.push(ward)
-  }
-  saveFile(files: FileList) {
-    this.fileToUpload = files.item(0);
-    this.employee_service.formData.append('employeesListXL', this.fileToUpload, this.fileToUpload.name);
-  }
-  importData() {
-    this.employee_service.ImportFromExcel().subscribe(data => { this.employee_service.list_employees = data })
-    this.router.navigate(['/employees-list'])
-  }
-
-  AddEditEmployee() {
-    this.employee_service.AddDepartments(this.list_dep).subscribe()
-    if (this.employee_service.employee.id == undefined) {
-      this.employee_service.Add().subscribe(data => this.employee_service.list_employees = data)
-      this.employee_service.employee = new Employee()
-    }
+  AddTolistDepOrRemove(ward: Ward) {
+    let l_dep = this.employee_service.list_employees_whole_data.get(this.employee_service.employee.id).list_departments
+    if (l_dep == null)
+      l_dep = new Array<Ward>();
+    if (l_dep.find(x => x.id == ward.id) == undefined)
+      this.employee_service.list_employees_whole_data.get(this.employee_service.employee.id).list_departments.push(ward)
     else {
-      this.employee_service.Update().subscribe(data => this.employee_service.list_employees = data)
+      this.employee_service.list_employees_whole_data.get(this.employee_service.employee.id).list_departments.slice(this.employee_service.list_employees_whole_data.get(this.employee_service.employee.id).list_departments.indexOf(ward), 1)
     }
-    this.is_success = true
   }
 
+saveFile(files: FileList) {
+  this.fileToUpload = files.item(0);
+  this.employee_service.formData.append('employeesListXL', this.fileToUpload, this.fileToUpload.name);
+}
+importData() {
+  this.employee_service.ImportFromExcel().subscribe(data => { this.employee_service.list_employees = data })
+  this.router.navigate(['/employees-list'])
+}
+
+AddEditEmployee() {
+  this.employee_service.AddOrRemoveDepartments().subscribe()
+  if (this.employee_service.employee.id == undefined) {
+    this.employee_service.Add().subscribe(data => this.employee_service.list_employees = data)
+    this.employee_service.employee = new Employee()
+  }
+  else {
+    this.employee_service.Update().subscribe(data => this.employee_service.list_employees = data)
+  }
+  this.is_success = true
+}
+isInThisDep(dep_id: number) {
+  let list_dep = this.employee_service.list_employees_whole_data.get(this.employee_service.employee.id).list_departments
+  if (list_dep != null) {
+    let dep = list_dep.find(x => x.id == dep_id)
+    return dep != undefined
+  }
+}
 }
