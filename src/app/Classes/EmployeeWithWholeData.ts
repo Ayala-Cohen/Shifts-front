@@ -1,5 +1,6 @@
 import { Employee } from './Employee';
 import { EmployeesRole } from './EmployeesRole';
+import { Rating } from './Rating';
 import { Ward } from './Ward';
 
 export class EmployeeWithWholeData {

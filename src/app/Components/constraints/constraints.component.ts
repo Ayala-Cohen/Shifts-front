@@ -15,6 +15,7 @@ export class ConstraintsComponent implements OnInit {
   currentDay:string
   constructor(private shift_service: ShiftsService, private constraint_service: ConstraintsService) {
     shift_service.GetAll().subscribe(data=>shift_service.list_shifts = data)
+    shift_service.getAllShiftsInDay().subscribe(data=>shift_service.list_shifts_in_day = data)
    }
 
   ngOnInit(): void {

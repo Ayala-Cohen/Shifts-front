@@ -10,8 +10,8 @@ export class BusinessService {
   business: Business = new Business()
   list_business: Array<Business> = new Array<Business>()
   sec_password: string
-  director_email: string
-  director_name: string
+  // director_email: string
+  // director_name: string
   // logo: Blob
   // logo_url
   url: string = "http://localhost:50744/api/Business/"

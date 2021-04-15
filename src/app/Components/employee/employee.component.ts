@@ -15,7 +15,6 @@ export class EmployeeComponent implements OnInit {
   @Input() currentEmployee: Employee
   currentEmployeeWhole: EmployeeWithWholeData = new EmployeeWithWholeData()
   list_departments: Array<Ward> = new Array<Ward>()
-  role: string = ""
   constructor(private router: Router, private employee_role_service: EmployeesRoleService, private employee_service: EmployeesService) {
   }
 
@@ -37,20 +36,24 @@ export class EmployeeComponent implements OnInit {
   }
   getRoleNameById() {
     this.employee_role_service.GetOneById(this.currentEmployee.role_id).subscribe(data => {
-      this.role = data.role
-      this.currentEmployeeWhole.role = data
+      if (data) {
+        this.currentEmployeeWhole.role = data
+      }
     })
   }
+  //פונקציה לשליפת המחלקות בהן העובד עובד
   getDepartments() {
     this.employee_service.getDepartments(this.currentEmployee.id).subscribe(data => {
       this.list_departments = data
       this.currentEmployeeWhole.list_departments = data
     })
   }
+  
   edit() {
     this.employee_service.employee = this.currentEmployee
     this.router.navigate(['/add-edit-employee', true])
   }
+  //פונקציה למחיקת עובד
   delete() {
     this.employee_service.Delete(this.currentEmployee.id).subscribe(data => this.employee_service.list_employees = data)
   }

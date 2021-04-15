@@ -21,21 +21,26 @@ export class LogINComponent implements OnInit {
 
   ngOnInit() {
   }
-  getAllData(){
+  getAllData() {
     if (this.employee_service.employee.id != undefined) {//ההתחברות התבצעה על ידי עובד ולא על ידי מנהל
       this.integration_service.GetAll().subscribe(data => this.integration_service.list_rating = data)//שליפת רשימת הדירוגים של העובד
     }
-    this.employee_service.GetAll().subscribe(x => this.employee_service.list_employees = x)
+    this.employee_service.GetAll().subscribe(x => {
+      this.employee_service.list_employees = x
+    })
     this.shift_service.GetAll().subscribe(data => this.shift_service.list_shifts = data)
     this.employees_roles_service.GetAll().subscribe(data => this.employees_roles_service.list_roles = data)
     this.ward_service.GetAll().subscribe(data => this.ward_service.list_wards = data)
-    this.shift_service.GetAll().subscribe(data => this.shift_service.list_shifts = data)
+    this.shift_service.getAllShiftsInDay().subscribe(data => this.shift_service.list_shifts_in_day = data)
   }
-   logIn() {
-    this.employee_service.CheckEmployee().subscribe(async data => {
+  logIn() {
+    this.employee_service.CheckEmployee().subscribe(data => {
       if (data) {
         this.employee_service.employee = data
-        this.employee_service.getBusinessByEmployee(data.business_id)//שליפת פרטי העסק שבו העובד מועסק
+        this.business_service.GetOneById(data.business_id).subscribe(result => {
+          if (result)
+            this.business_service.business = result
+        })
         this.getAllData()
         this.router.navigate(['integration'])
       }
@@ -44,8 +49,8 @@ export class LogINComponent implements OnInit {
           if (x) {
             this.business_service.business = x
             this.employee_service.is_director = true
-            this.business_service.director_email = this.employee_service.employee.email
-            this.business_service.director_name = this.employee_service.employee.name
+            // this.business_service.director_email = this.employee_service.employee.email
+            // this.business_service.director_name = this.employee_service.employee.name
             this.employee_service.employee = new Employee()
             this.getAllData()
             this.router.navigate(['wards-shifts'])

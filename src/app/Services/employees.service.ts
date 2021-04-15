@@ -13,7 +13,7 @@ export class EmployeesService {
   employee: Employee = new Employee()
   is_director: boolean = false
   list_employees: Array<Employee> = new Array<Employee>();
-  list_employees_whole_data: Map<string,EmployeeWithWholeData> = new Map<string,EmployeeWithWholeData>()
+  list_employees_whole_data: Map<string, EmployeeWithWholeData> = new Map<string, EmployeeWithWholeData>()
   email: string
   sec_password: string
   formData: FormData = new FormData();
@@ -33,9 +33,9 @@ export class EmployeesService {
     return this.http.get<Array<Ward>>(`${this.url}GetDepartmentsForEmployee/${id}`)
   }
   //פונקציה להוספת מחלקות לעובד
-  public AddOrRemoveDepartments(): Observable<void> {
+  public AddOrRemoveDepartments(): Observable<Array<Ward>> {
     let list_dep = this.list_employees_whole_data.get(this.employee.id).list_departments
-    return this.http.post<void>(`${this.url}AddOrRemoveDepartmentsForEmployee/${this.employee.id}`, list_dep)
+    return this.http.post<Array<Ward>>(`${this.url}AddOrRemoveDepartmentsForEmployee/${this.employee.id}`, list_dep)
   }
 
   //פונקציה להוספת עובד
@@ -60,10 +60,5 @@ export class EmployeesService {
   //הוספת עובדים על ידי קריאה מקובץ אקסל
   public ImportFromExcel(): Observable<Array<Employee>> {
     return this.http.post<Array<Employee>>(`${this.url}ImportFromExcel/${this.business_service.business.id}`, this.formData)
-  }
-  //פונקציה למציאת פרטי עסק על פי פרטי עובד
-  public getBusinessByEmployee(business_id: number) {
-    this.business_service.GetOneById(business_id).subscribe(data =>
-      this.business_service.business = data)
   }
 }

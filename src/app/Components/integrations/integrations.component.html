@@ -17,19 +17,20 @@
 
         </div>
         <div class="scrollmenu col-10">
-            <table class="table mb-2" id="scheduleTable">
+            <table class="table mb-2" id="scheduleTable" *ngIf="shift_service.list_shifts.length != 0">
                 <tr>
                     <th *ngFor="let day of activity_days">{{day}}</th>
                 </tr>
                 <tr *ngFor="let shift of shift_service.list_shifts">
-                    <td *ngFor="let day of activity_days"  appChangeColor [style.background-color]="getRating(shift.id, day)" (click)="AddOrUpdate(shift.id, day)" >
+                    <td *ngFor="let day of activity_days" appChangeColor
+                        [style.background-color]="getRatingColor(shift.id, day)" (click)="AddOrUpdate(shift.id, day)">
                         {{shift.name}}
                     </td>
                 </tr>
             </table>
             <div class="alert-warning col-12" *ngIf="integration_service.list_rating.length == 0">
                 <p>לא דרגת אף משמרת</p>
-        </div>
+            </div>
         </div>
     </div>
 </div>
