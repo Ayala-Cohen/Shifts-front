@@ -30,6 +30,7 @@ export class NavComponent implements OnInit {
     this.shift_service.list_shifts = new Array<Shift>()
     this.ward_service.list_wards = new Array<Ward>()
     this.employee_role_service.list_roles = new Array<EmployeesRole>()
+    this.employee_service.is_director = false
   }
   getOut()
   {

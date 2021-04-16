@@ -15,18 +15,23 @@ export class FinalIntegrationComponent implements OnInit {
   constructor(private ward_service: WardService, private shift_service: ShiftsService, private assigning_service: AssigningService, private employee_service: EmployeesService) { }
 
   ngOnInit() {
-    this.assigning_service.getAssigning().subscribe(data => this.assigning_service.list_assigning = data)
+    // if (this.assigning_service.list_assigning == undefined)
+      this.assigning_service.getAssigning().subscribe(data => this.assigning_service.list_assigning = data)
   }
 
   getEmployeeName(id: string) {
     let name;
-    this.employee_service.GetOneById(id).subscribe(data => name = data.name)
+    name = this.employee_service.list_employees.find(x => x.id == id).name
     return name
   }
 
-  getAssigningForDay(day:string, shift_id:number) {
-    let id;
-    this.shift_service.GetShiftForDay(shift_id, day).subscribe(data=> id = data)
-    this.assigning_service.list_assigning.filter(x=>x.shift_in_day_id == id)[0]
+  getAssigningForDay(day: string, shift_id: number, department_id: number) {
+    let shift_in_day_id = this.shift_service.list_shifts_in_day.find(x => x.day == day && shift_id == x.shift_id).id
+    let current = this.assigning_service.list_assigning.filter(x => x.shift_in_day_id == shift_in_day_id && x.department_id == department_id)
+    let l_employees_names: Array<String> = new Array<String>()
+    current.map(x => {
+      l_employees_names.push(this.getEmployeeName(x.employee_id))
+    })
+    return l_employees_names
   }
 }

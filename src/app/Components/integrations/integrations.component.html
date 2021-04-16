@@ -17,7 +17,7 @@
 
         </div>
         <div class="scrollmenu col-10">
-            <table class="table mb-2" id="scheduleTable" *ngIf="shift_service.list_shifts.length != 0">
+            <table class="table mb-2" id="scheduleTable" *ngIf="shift_service.list_shifts != null">
                 <tr>
                     <th *ngFor="let day of activity_days">{{day}}</th>
                 </tr>

@@ -5,7 +5,7 @@
             <input type="text" class="col-12" [(ngModel)]="shift_service.shift.name">
         </div>
         <button class="btn m-3" (click)="AddOrUpdate('shift')">הוסף משמרת</button>
-        <div *ngIf="shift_service.list_shifts.length != 0">
+        <div class="scrollmenu col-10" *ngIf="shift_service.list_shifts.length != 0">
             <table class="table">
                 <tr>
                     <th>משמרת</th>
@@ -32,7 +32,7 @@
                 (ngModelChange)="ward_service.ward.diary_closing_day = $event">
         </div>
         <button class="btn m-3" (click)="AddOrUpdate('ward')">הוסף מחלקה</button>
-        <div *ngIf="ward_service.list_wards.length != 0">
+        <div class = "scrollmenu col-10" *ngIf="ward_service.list_wards.length != 0">
             <table class="table">
                 <tr>
                     <th>מחלקה</th>

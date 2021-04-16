@@ -3,6 +3,7 @@
     text-align: center;
     direction: rtl;
     margin: auto; 
+    height: 500px;
     align-items: center;
     display: flex;
 }
@@ -30,6 +31,11 @@
     white-space: nowrap;
     margin: auto;
   }
+.checkbox
+{
+    list-style: none;
+    /* margin-left: 10px; */
+}
 th, td
 {
     border-color: rgb(129, 182, 226);

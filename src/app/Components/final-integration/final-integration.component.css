@@ -52,3 +52,7 @@ input:focus-visible
     white-space: nowrap;
     margin: auto;
   }
+  .list-group
+  {
+      margin: auto;
+  }
