@@ -52,3 +52,14 @@ input:focus-visible
     white-space: nowrap;
     margin: auto;
   }
+  .assigngin_name{
+      outline-color:rgb(36, 134, 176);
+      outline-width: 2px;
+      border: none;
+      width: fit-content;
+      /* background-color: aquamarine; */
+  }
+  .list-group
+  {
+      margin: auto;
+  }

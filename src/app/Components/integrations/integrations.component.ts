@@ -21,6 +21,7 @@ export class IntegrationsComponent implements OnInit {
 
   ngOnInit() {
   }
+
   changeDirectiveColor(r: string) {
     this.integration_service.color = this.rating_color[r]
     this.integration_service.rating.rating = r
@@ -29,25 +30,36 @@ export class IntegrationsComponent implements OnInit {
 
     if (this.integration_service.rating.employee_id == undefined && this.integration_service.rating.shift_in_day == undefined) {
       this.integration_service.rating.shift_approved = false
-      this.integration_service.Add(shift_id, day).subscribe(data => this.integration_service.list_rating = data)
+      this.integration_service.Add(shift_id, day).subscribe(data => {
+        if (data)
+          this.integration_service.list_rating = data
+      })
     }
     else {
-      this.integration_service.Update().subscribe(data => this.integration_service.list_rating = data)
+      this.integration_service.Update().subscribe(data => {
+        if (data)
+          this.integration_service.list_rating = data
+        else
+          console.log("failed to update");
+
+      })
     }
     this.integration_service.rating = new Rating()
   }
   //פונקציה לשליפת דירוג על מנת להציג אותו גם אם העובד יצא מהמערכת באמצע הדירוג
-  getRating(shift_id: number, day: string) {
+  getRatingColor(shift_id: number, day: string) {
+    let l_rating = this.integration_service.list_rating
     let shift_in_day_id
-    this.shift_service.GetShiftForDay(shift_id, day).subscribe(data => {
-      if (data != 0)
-        shift_in_day_id = data
-      else
-        console.log("not found");
-    })
-    if (shift_in_day_id != undefined) {
-      let rating = this.integration_service.list_rating.filter(x => x.shift_in_day = shift_in_day_id)[0].rating
-      return this.rating_color[rating]
+    let shift_in_day = this.shift_service.list_shifts_in_day.find(x => x.shift_id == shift_id && day == x.day)
+    if (shift_in_day) {
+      shift_in_day_id = shift_in_day.id
+      if (l_rating) {
+        let rating = l_rating.find(x => x.shift_in_day == shift_in_day_id)
+        if (rating)
+          return this.rating_color.get(rating.rating)
+      }
     }
+    return "rgb(255, 255, 255)"
   }
+
 }

@@ -12,10 +12,10 @@ export class ConstraintsService {
   c:Constraint = new Constraint()
   list_constraints:Array<Constraint> = Array<Constraint>();
   constructor(private http : HttpClient, private employee_service:EmployeesService) { }
-    //פונקציה לשליפת רשימת אילוצים
+    //פונקציה לשליפת רשימת אילוצים של עובד מסוים
     public GetAll(): Observable<Array<Constraint>>
     {
-      return this.http.get<Array<Constraint>>(this.url + "GetAllConstraints")
+      return this.http.get<Array<Constraint>>(`${this.url}/GetAllConstraints/${this.employee_service.employee.id}`)
     }
     //פונקציה לשליפת אילוץ ע"י קוד
     public GetOneById(s_id:number, e_id:string): Observable<Constraint>
@@ -34,8 +34,8 @@ export class ConstraintsService {
       return this.http.post<Array<Constraint>>(this.url + "UpdateConstraint", this.c)
     }
     //פונקציה למחיקת אילוץ
-    public Delete(s_id:number, e_id:string) : Observable<Array<Constraint>>
+    public Delete(s_id:number, day:string) : Observable<Array<Constraint>>
     {
-      return this.http.delete<Array<Constraint>>(this.url + "DeleteConstraint/" + s_id+"/"+e_id)
+      return this.http.delete<Array<Constraint>>(`${this.url}DeleteConstraint/${s_id}/${day}/${this.employee_service.employee.id}`)
     }
 }

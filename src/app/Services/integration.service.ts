@@ -17,7 +17,7 @@ export class IntegrationService {
    }
     //פונקציה לשליפת רשימת דירוגים של עובד מסוים
     public GetAll(): Observable<Array<Rating>> {
-      return this.http.get<Array<Rating>>(`${this.url}/GetAllRatings/${this.employee_service.employee.id}`)
+      return this.http.get<Array<Rating>>(`${this.url}GetAllRatings/${this.employee_service.employee.id}`)
     }
     //פונקציה לשליפת דירוג ע"י קוד
     public GetOneById(e_id:string, shift_in_day: number): Observable<Rating> {

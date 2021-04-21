@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BusinessService } from 'src/app/Services/business.service';
 import { EmployeesService } from 'src/app/Services/employees.service';
 
 @Component({
@@ -7,14 +9,24 @@ import { EmployeesService } from 'src/app/Services/employees.service';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
-  isClicked: boolean = false
-  constructor(private employee_service: EmployeesService) { }
+  is_succes: boolean = false
+  previous_password: string
+  constructor(private employee_service: EmployeesService, private router: Router, private business_service:BusinessService) { }
 
   ngOnInit() {
-  }
-  forgotPassword() {
-    this.isClicked = true
-    this.employee_service.getEmployeeByEmail().subscribe(data => this.employee_service.employee = data)
-  }
+    this.previous_password = this.employee_service.employee.password
+    this.employee_service.default_password = `${this.business_service.business.name}&${this.employee_service.employee.id}`
 
+    this.employee_service.employee.password = ""
+  }
+  updatePassword() {
+    this.employee_service.Update().subscribe(async data => {
+      if (data) {
+        this.employee_service.employee = data.filter(x => x.id == this.employee_service.employee.id)[0]
+        this.is_succes = true
+        await new Promise(resolve => setTimeout(resolve, 500));
+        this.router.navigate(['integration'])
+      }
+    })
+  }
 }

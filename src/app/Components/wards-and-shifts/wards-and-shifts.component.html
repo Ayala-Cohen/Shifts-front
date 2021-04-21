@@ -12,16 +12,16 @@
             </div>
         </div>
         <button class="btn m-3" (click)="AddOrUpdate('shift')">הוסף משמרת</button>
-        <div *ngIf="shift_service.list_shifts.length != 0">
-            <label>לחיצה על ערך תתן אפשרות עריכה</label>
+        <div class="scrollmenu col-10" *ngIf="shift_service.list_shifts.length != 0">
             <table class="table">
                 <tr>
                     <th>משמרת</th>
                 </tr>
                 <tr *ngFor="let shift of shift_service.list_shifts">
-                    <td (click)="edit('shift', shift.id)">
+                    <td>
                         {{shift.name}}
                         <button (click)="delete('shift',shift.id)" class="btn mr-5">מחיקה</button>
+                        <button (click)="edit('shift', shift.id)" class="btn mr-1">עריכה</button>
                     </td>
 
                 </tr>
@@ -48,17 +48,28 @@
             *ngIf="close.invalid && (close.dirty || close.touched)">
             <p *ngIf="close.errors.required">שדה חובה</p>
             </div>
+            <input type="date" class="col-12" [ngModel]="ward_service.ward.diary_opening_day | date:'yyyy-MM-dd'"
+                (ngModelChange)="ward_service.ward.diary_opening_day = $event">
+            <label class="form-row">הכנס תאריך סגירת יומן</label>
+            <input type="date" class="col-12" [ngModel]="ward_service.ward.diary_closing_day | date:'yyyy-MM-dd'"
+                (ngModelChange)="ward_service.ward.diary_closing_day = $event">
+        </div>
         <button class="btn m-3" (click)="AddOrUpdate('ward')">הוסף מחלקה</button>
-        <div *ngIf="ward_service.list_wards.length != 0">
-            <label>לחיצה על ערך תתן אפשרות עריכה</label>
+        <div class = "scrollmenu col-10" *ngIf="ward_service.list_wards.length != 0">
             <table class="table">
                 <tr>
                     <th>מחלקה</th>
+                    <th>תאריך פתיחת יומן</th>
+                    <th>תאריך סגירת יומן</th>
                 </tr>
                 <tr *ngFor="let ward of ward_service.list_wards">
-                    <td (click)="edit('ward', ward.id)">
+                    <td>
                         {{ward.name}}
+                    </td>
+                    <td>{{ward.diary_opening_day | date:'dd/MM/yyyy'}}</td>
+                    <td>{{ward.diary_closing_day | date :'dd/MM/yyyy'}}
                         <button (click)="delete('ward',ward.id)" class="btn mr-5">מחיקה</button>
+                        <button (click)="edit('ward', ward.id)" class="btn mr-1">עריכה</button>
                     </td>
                 </tr>
             </table>

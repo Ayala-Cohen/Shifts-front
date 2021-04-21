@@ -8,21 +8,31 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['log-in']"
                     *ngIf="employee_service.employee.id == undefined && business_service.business.id ==undefined">התחבר</a>
-                
+
                 <a class="nav-link dropdown-toggle dropright" id="logInByUserName" data-toggle="dropdown"
-                    *ngIf="employee_service.employee.email != undefined">{{employee_service.employee.name}}</a>
+                    *ngIf="employee_service.employee.id != undefined && !employee_service.is_director">{{employee_service.employee.name}}</a>
                 <a class="nav-link dropdown-toggle dropright" id="logInByDirector" data-toggle="dropdown"
-                    *ngIf="business_service.director_email != undefined">{{business_service.director_name}}</a>
+                    *ngIf="business_service.business.user_name != undefined && employee_service.is_director">{{business_service.business.full_name}}</a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="logInByUserName">
-                    <label class="dropdown-item" (click)="getOut()">יציאה</label>
+                    <label class="dropdown-item" (blur)="getOut()" [routerLink]="['home']">יציאה</label>
                     <label class="dropdown-item" [routerLink]="['forgot-password']">שינוי סיסמה</label>
+                    <label class="dropdown" *ngIf="employee_service.is_director">שינוי מבנה עסק
+                    <div class="dropdown-content">
+                        <a [routerLink]="['roles']" >תפקידי עובדים</a>
+                        <a [routerLink]="['wards-shifts']">מבנה משמרות ומחלקות</a>
+                        <li><a [routerLink] = "['ward']">משמרות במחלקות</a></li>
+                        <li><a [routerLink] = "['add-edit-employee/', false]">הוספת עובד חדש</a></li>
+
+                    </div>
+                </label>
                 </div>
 
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['integration']"
-                    *ngIf="employee_service.employee.id != undefined">מילוי שיבוץ שבועי</a>
+                    *ngIf="employee_service.employee.id != undefined && !employee_service.is_director">מילוי שיבוץ
+                    שבועי</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['final-integration']"
@@ -36,7 +46,8 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['constraints']"
-                    *ngIf="employee_service.employee.id != undefined">אילוצים קבועים</a>
+                    *ngIf="employee_service.employee.id != undefined && !employee_service.is_director">אילוצים
+                    קבועים</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['home']">עמוד הבית</a>

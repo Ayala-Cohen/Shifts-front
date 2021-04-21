@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Shift } from '../Classes/Shift';
 import { BusinessService } from './business.service';
+import { ShiftInDay } from '../Classes/ShiftInDay';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { BusinessService } from './business.service';
 export class ShiftsService {
   num_shifts: number
   list_shifts: Array<Shift> = new Array<Shift>()
+  list_shifts_in_day:Array<ShiftInDay> = new Array<ShiftInDay>()
   shift:Shift = new Shift()
   url: string = "http://localhost:50744/api/Shifts/"
   constructor(private http: HttpClient, private business_service: BusinessService) {
@@ -39,5 +41,10 @@ export class ShiftsService {
   public GetShiftForDay(shift_id:number, day:string):Observable<number>
   {
     return this.http.get<number>(`${this.url}/GetShiftInDayId/${shift_id}/${day}`)
+  }
+
+  public getAllShiftsInDay():Observable<Array<ShiftInDay>>
+  {
+    return this.http.get<Array<ShiftInDay>>(`${this.url}/GetAllShiftsForDay/${this.business_service.business.id}`)
   }
 }

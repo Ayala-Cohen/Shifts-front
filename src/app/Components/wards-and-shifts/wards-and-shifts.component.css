@@ -17,6 +17,11 @@
     width: 80%;
     margin:auto;
 }
+.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    margin: auto;
+  }
 table
 {
     text-align: center;
