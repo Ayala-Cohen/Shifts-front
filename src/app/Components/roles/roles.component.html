@@ -15,7 +15,11 @@
             </tr>
             <tr *ngFor="let role of employees_role_service.list_roles">
                 <td>{{role.role}}</td>
-                <td>{{role.min_of_shift}}</td>
+                <td>{{role.min_of_shift}}
+                    <button (click)="delete(role.id)" class="btn mr-5">מחיקה</button>
+                    <button (click)="edit(role.id)" class="btn mr-1">עריכה</button>
+                </td>
+
             </tr>
         </table>
         <button class="btn m-3" (click)="next()">הבא</button>

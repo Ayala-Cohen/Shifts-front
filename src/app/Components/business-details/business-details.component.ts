@@ -27,7 +27,10 @@ export class BusinessDetailsComponent implements OnInit {
 
   next() {
     this.employees_service.is_director = true
-    this.business_service.Add().subscribe(data => { this.business_service.business = data.filter(x => x.number == this.business_service.business.number)[0] }, err => alert("כשל בגישה לשרת"))
+    this.business_service.Add().subscribe(data => {
+      if (data)
+        this.business_service.business = data.filter(x => x.number == this.business_service.business.number)[0]
+    }, err => alert("כשל בגישה לשרת"))
     this.router.navigate(['roles'])
   }
 

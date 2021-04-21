@@ -13,12 +13,15 @@ export class EmployeesService {
   employee: Employee = new Employee()
   is_director: boolean = false
   list_employees: Array<Employee> = new Array<Employee>();
-  list_employees_whole_data: Map<string, EmployeeWithWholeData> = new Map<string, EmployeeWithWholeData>()
+  list_employees_whole_data: Map<string, Array<Ward>> = new Map<string, Array<Ward>>()
   email: string
+  default_password:string
   sec_password: string
   formData: FormData = new FormData();
   url: string = "http://localhost:50744/api/Employees/"
-  constructor(private http: HttpClient, private business_service: BusinessService) { }
+  constructor(private http: HttpClient, private business_service: BusinessService) {
+
+   }
 
   //פונקציה לשליפת רשימת עובדים
   public GetAll(): Observable<Array<Employee>> {
@@ -28,20 +31,23 @@ export class EmployeesService {
   public GetOneById(id: string): Observable<Employee> {
     return this.http.get<Employee>(this.url + "GetEmployeeById/" + id)
   }
+  public GetAllEmployeesDepartments() :Observable<Map<string, Array<Ward>>>{
+    return this.http.get<Map<string, Array<Ward>>>(`${this.url}/GetAllEmployeesDepartments/${this.business_service.business.id}`)
+  }
   //פונקציה לשליפת מחלקות העובד
   public getDepartments(id: string): Observable<Array<Ward>> {
     return this.http.get<Array<Ward>>(`${this.url}GetDepartmentsForEmployee/${id}`)
   }
   //פונקציה להוספת מחלקות לעובד
   public AddOrRemoveDepartments(): Observable<Array<Ward>> {
-    let list_dep = this.list_employees_whole_data.get(this.employee.id).list_departments
+    let list_dep = this.list_employees_whole_data.get(this.employee.id)
     return this.http.post<Array<Ward>>(`${this.url}AddOrRemoveDepartmentsForEmployee/${this.employee.id}`, list_dep)
   }
 
   //פונקציה להוספת עובד
   public Add(): Observable<Array<Employee>> {
     this.employee.business_id = this.business_service.business.id
-    this.employee.password = "123456"
+    this.employee.password = `${this.business_service.business.name}&${this.employee.id}`
     return this.http.put<Array<Employee>>(this.url + "AddEmployee", this.employee)
   }
   //פונקציה לעדכון עובד

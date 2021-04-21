@@ -16,11 +16,6 @@ export class ConstraintsComponent implements OnInit {
   shift_can_not = ""
   currentDay: string
   constructor(private shift_service: ShiftsService, private constraint_service: ConstraintsService, private integration_service: IntegrationService) {
-    shift_service.GetAll().subscribe(data => shift_service.list_shifts = data)
-    shift_service.getAllShiftsInDay().subscribe(data => shift_service.list_shifts_in_day = data)
-    constraint_service.GetAll().subscribe(data => {
-      this.constraint_service.list_constraints = data
-    })
     integration_service.color = "rgb(120, 157, 163)"
   }
 
@@ -33,9 +28,15 @@ export class ConstraintsComponent implements OnInit {
     this.constraint_service.c.shift_id = shift_id
     this.constraint_service.c.day = day
     if (this.constraint_service.list_constraints.find(x => x.day == day && x.shift_id == shift_id) != undefined)
-      this.constraint_service.Delete(shift_id, day).subscribe(data => this.constraint_service.list_constraints = data)
+      this.constraint_service.Delete(shift_id, day).subscribe(data => {
+        if (data)
+          this.constraint_service.list_constraints = data
+      })
     else
-      this.constraint_service.Add().subscribe(data => { this.constraint_service.list_constraints = data })
+      this.constraint_service.Add().subscribe(data => {
+        if (data)
+          this.constraint_service.list_constraints = data
+      })
     this.constraint_service.c = new Constraint()
   }
 
@@ -45,9 +46,4 @@ export class ConstraintsComponent implements OnInit {
       return "rgb(120, 157, 163)"
     return "rgb(255, 255, 255)"
   }
-
-  getShiftName(shift_id: number) {
-    this.shift_service.GetOneById(shift_id).subscribe(data => this.shift_can_not = data.name)
-  }
-
 }

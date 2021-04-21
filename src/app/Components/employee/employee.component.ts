@@ -19,42 +19,25 @@ export class EmployeeComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.employee_service.list_employees_whole_data.size == 0)
-      this.employee_service.list_employees.map(x => {
-        this.employee_service.list_employees_whole_data.set(x.id, new EmployeeWithWholeData(x))
-      })
-    let employee = this.employee_service.list_employees_whole_data.get(this.currentEmployee.id)
-    this.currentEmployeeWhole = employee
-    if (employee != undefined) {
-      if (employee.role == undefined)
-        this.getRoleNameById()
-      if (employee.list_departments == undefined)
-        this.getDepartments()
-      this.employee_service.list_employees_whole_data.get(this.currentEmployee.id).list_departments = this.currentEmployeeWhole.list_departments
-      this.employee_service.list_employees_whole_data.get(this.currentEmployee.id).role = this.currentEmployeeWhole.role
-    }
+    let deps = this.employee_service.list_employees_whole_data[this.currentEmployee.id]
+    if (deps)
+      this.currentEmployeeWhole = new EmployeeWithWholeData(this.currentEmployee, deps)   
   }
   getRoleNameById() {
-    this.employee_role_service.GetOneById(this.currentEmployee.role_id).subscribe(data => {
-      if (data) {
-        this.currentEmployeeWhole.role = data
-      }
-    })
+    let role = this.employee_role_service.list_roles.find(x => x.id == this.currentEmployee.role_id)
+    if (role)
+      return role.role
   }
-  //פונקציה לשליפת המחלקות בהן העובד עובד
-  getDepartments() {
-    this.employee_service.getDepartments(this.currentEmployee.id).subscribe(data => {
-      this.list_departments = data
-      this.currentEmployeeWhole.list_departments = data
-    })
-  }
-  
   edit() {
     this.employee_service.employee = this.currentEmployee
     this.router.navigate(['/add-edit-employee', true])
   }
   //פונקציה למחיקת עובד
   delete() {
-    this.employee_service.Delete(this.currentEmployee.id).subscribe(data => this.employee_service.list_employees = data)
+    this.employee_service.list_employees_whole_data.delete(this.currentEmployee.id)
+    this.employee_service.Delete(this.currentEmployee.id).subscribe(data => {
+      if (data)
+        this.employee_service.list_employees = data
+    })
   }
 }

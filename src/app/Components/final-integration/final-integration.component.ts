@@ -15,8 +15,6 @@ export class FinalIntegrationComponent implements OnInit {
   constructor(private ward_service: WardService, private shift_service: ShiftsService, private assigning_service: AssigningService, private employee_service: EmployeesService) { }
 
   ngOnInit() {
-    // if (this.assigning_service.list_assigning == undefined)
-      this.assigning_service.getAssigning().subscribe(data => this.assigning_service.list_assigning = data)
   }
 
   getEmployeeName(id: string) {
@@ -33,5 +31,8 @@ export class FinalIntegrationComponent implements OnInit {
       l_employees_names.push(this.getEmployeeName(x.employee_id))
     })
     return l_employees_names
+  }
+  Edit(){
+    
   }
 }

@@ -3,7 +3,7 @@
     direction: rtl;
     text-align: center;
     margin:auto;
-    height: 500px; 
+    /* height: 500px;  */
     align-items: center;
     display: flex;
 }

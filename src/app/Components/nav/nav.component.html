@@ -15,14 +15,17 @@
                     *ngIf="business_service.business.user_name != undefined && employee_service.is_director">{{business_service.business.full_name}}</a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="logInByUserName">
-                    <label class="dropdown-item" (click)="getOut()">יציאה</label>
+                    <label class="dropdown-item" (blur)="getOut()" [routerLink]="['home']">יציאה</label>
                     <label class="dropdown-item" [routerLink]="['forgot-password']">שינוי סיסמה</label>
-                    <label class="dropdown" *ngIf="employee_service.is_director">שינוי מבנה עסק</label>
-                    <ul>
-                        <li><a [routerLink]="['roles']" class="dropdown-item nav-link">תפקידי עובדים</a></li>
-                        <li><a [routerLink]="['wards-shifts']" class="dropdown-item nav-link">משמרות ומחלקות</a></li>
-                        <!-- <li><a [routerLink] = "['roles']">משמרו</a></li> -->
-                    </ul>
+                    <label class="dropdown" *ngIf="employee_service.is_director">שינוי מבנה עסק
+                    <div class="dropdown-content">
+                        <a [routerLink]="['roles']" >תפקידי עובדים</a>
+                        <a [routerLink]="['wards-shifts']">מבנה משמרות ומחלקות</a>
+                        <li><a [routerLink] = "['ward']">משמרות במחלקות</a></li>
+                        <li><a [routerLink] = "['add-edit-employee/', false]">הוספת עובד חדש</a></li>
+
+                    </div>
+                </label>
                 </div>
 
             </li>

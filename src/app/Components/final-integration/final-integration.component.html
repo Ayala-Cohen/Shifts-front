@@ -15,7 +15,8 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"
                                     *ngFor="let name of getAssigningForDay(day,shift.id, ward.id)">
-                                    {{name}}
+                                    <input type="text" [readonly] = "!employee_service.is_director" value="{{name}}" (blur)="Edit()" class="assigngin_name"> 
+                                    <!-- {{name}} -->
                                 </li>
                             </ul>
                         </td>

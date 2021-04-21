@@ -6,7 +6,7 @@
     <li *ngIf = "employee_service.is_director == true" class="list-group-item">{{currentEmployeeWhole.employee.id}}</li>  
     <li class="list-group-item">{{currentEmployeeWhole.employee.phone}}</li>
     <li class="list-group-item">{{currentEmployeeWhole.employee.email}}</li>
-    <li class="list-group-item" *ngIf="currentEmployeeWhole.role != undefined">{{currentEmployeeWhole.role.role}}</li>
+    <li class="list-group-item">{{getRoleNameById()}}</li>
     <li class="list-group-item" *ngFor="let dep of currentEmployeeWhole.list_departments">מחלקת {{dep.name}} </li>
   </ul>
   <button *ngIf = "employee_service.is_director == true" class="btn card-footer" (click)="edit()">עריכה</button><!-- להסתיר במצב עובד רגיל -->

@@ -6,7 +6,7 @@ import { ShiftsService } from 'src/app/Services/shifts.service';
 import { EmployeesRoleService } from 'src/app/Services/employees-role.service';
 import { Shift } from 'src/app/Classes/Shift';
 import { Ward } from 'src/app/Classes/Ward';
-import {DatePipe} from '@angular/common'
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-wards-and-shifts',
@@ -21,39 +21,40 @@ export class WardsAndShiftsComponent implements OnInit {
   }
   edit(str: string, id) {
     if (str == "shift") {
-      this.shift_service.GetOneById(id).subscribe(data => this.shift_service.shift = data)
+      this.shift_service.GetOneById(id).subscribe(data => { if (data) this.shift_service.shift = data })
     }
     if (str == "ward") {
-      this.ward_service.GetOneById(id).subscribe(data =>{
-        this.ward_service.ward = data
+      this.ward_service.GetOneById(id).subscribe(data => {
+        if (data)
+          this.ward_service.ward = data
       })
     }
   }
   AddOrUpdate(str: string) {
     if (str == "shift") {
       if (this.shift_service.shift.id == undefined) {
-        this.shift_service.Add().subscribe(data => this.shift_service.list_shifts = data)
+        this.shift_service.Add().subscribe(data => { if (data) this.shift_service.list_shifts = data })
         this.shift_service.shift = new Shift()
       }
       else {
-        this.shift_service.Update().subscribe(data => this.shift_service.list_shifts = data)
+        this.shift_service.Update().subscribe(data => { if (data) this.shift_service.list_shifts = data })
       }
     }
     else {
       if (this.ward_service.ward.id == undefined) {
-        this.ward_service.Add().subscribe(data => this.ward_service.list_wards = data)
+        this.ward_service.Add().subscribe(data => { if (data) this.ward_service.list_wards = data })
         this.ward_service.ward = new Ward()
       }
       else {
-        this.ward_service.Update().subscribe(data => this.ward_service.list_wards = data)
+        this.ward_service.Update().subscribe(data => { if (data) this.ward_service.list_wards = data })
       }
     }
   }
   delete(str: string, id) {
     if (str == 'shift')
-      this.shift_service.Delete(id).subscribe(data => this.shift_service.list_shifts = data)
+      this.shift_service.Delete(id).subscribe(data => { if (data) this.shift_service.list_shifts = data })
     else
-      this.ward_service.Delete(id).subscribe(data => this.ward_service.list_wards = data)
+      this.ward_service.Delete(id).subscribe(data => { if (data) this.ward_service.list_wards = data })
   }
   next() {
     //הוספת המחלקה האחרונה אם לא לחצו על כפתור ההוספה

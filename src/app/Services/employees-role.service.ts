@@ -28,8 +28,8 @@ export class EmployeesRoleService {
     return this.http.put<Array<EmployeesRole>>(this.url + "AddRole", this.role)
   }
   //פונקציה לעדכון תפקיד
-  public Update(r: EmployeesRole): Observable<Array<EmployeesRole>> {
-    return this.http.post<Array<EmployeesRole>>(this.url + "UpdateRole", r)
+  public Update(): Observable<Array<EmployeesRole>> {
+    return this.http.post<Array<EmployeesRole>>(this.url + "UpdateRole", this.role)
   }
   //פונקציה למחיקת תפקיד
   public Delete(id: number): Observable<Array<EmployeesRole>> {

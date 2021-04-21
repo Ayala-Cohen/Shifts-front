@@ -3,16 +3,18 @@ import { Ward } from '../Classes/Ward';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { BusinessService } from './business.service';
+import { ShiftEmployees } from '../Classes/ShiftEmployee';
+import { Shift } from '../Classes/Shift';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WardService {
-  num_wards: number
   list_wards: Array<Ward> = new Array<Ward>()
   ward: Ward = new Ward()
   url: string = "http://localhost:50744/api/Departments/"
-  constructor(private http: HttpClient, private business_service: BusinessService) { }
+  constructor(private http: HttpClient, private business_service: BusinessService) {
+  }
   //פונקציה לשליפת רשימת מחלקות
   public GetAll(): Observable<Array<Ward>> {
     return this.http.get<Array<Ward>>(this.url + "GetAllDepartments/" + this.business_service.business.id)
