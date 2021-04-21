@@ -1,23 +1,36 @@
-<div class="container col-sm-12 col-md-6 col-lg-8">
-    <div class="sub_container">
-        <h2> תפקידי עובדים</h2>
-        <div class="ma form-group">
-            <label class="form-row">הכנס שם תפקיד</label>
-            <input type="text" class="col-12" [(ngModel)]="employees_role_service.role.role">
-            <label class="form-row">מספר משמרות מינימלי לביצוע</label>
-            <input type="number" class="col-12" [(ngModel)]="employees_role_service.role.min_of_shift">
+<form #roleDetails="ngForm" class="form">
+    <div class="container col-sm-12 col-md-6 col-lg-8">
+        <div class="sub_container">
+            <h2> תפקידי עובדים</h2>
+            <div class="ma form-group">
+                <label class="form-row">הכנס שם תפקיד</label>
+                <input type="text" class="col-12" name="name" #name="ngModel" required pattern="[A-Za-zא-ת ]+"
+                    [(ngModel)]="employees_role_service.role.role">
+                <div class="alert-warning col-12" 
+                *ngIf="name.invalid && (name.dirty || name.touched)">
+                    <p *ngIf="name.errors.pattern">יש להכניס אותיות בלבד</p>
+                    <p *ngIf="num.errors.required">שדה חובה</p>
+                </div>
+                <label class="form-row">מספר משמרות מינימלי לביצוע</label>
+                <input type="number" class="col-12" name="num" #num="ngModel" required 
+                    [(ngModel)]="employees_role_service.role.min_of_shift">
+                <div class="alert-warning col-12" *ngIf="num.invalid && (num.dirty || num.touched)">
+                    <p *ngIf="num.errors.required">שדה חובה</p>
+                </div>
+            </div>
+            <button class="btn m-3" (click)="AddOrUpdate()">הוסף תפקיד</button>
+            <table *ngIf="employees_role_service.list_roles.length != 0" class="table">
+                <tr>
+                    <th>תפקיד</th>
+                    <th>מספר משמרות מינימלי לביצוע</th>
+                </tr>
+                <tr *ngFor="let role of employees_role_service.list_roles">
+                    <td>{{role.role}}</td>
+                    <td>{{role.min_of_shift}}</td>
+                </tr>
+            </table>
+            <button class="btn m-3" (click)="next()" [disabled]="roleDetails.form.invalid">הבא</button>
         </div>
-        <button class="btn m-3" (click)="AddOrUpdate()">הוסף תפקיד</button>
-        <table *ngIf="employees_role_service.list_roles.length != 0" class="table">
-            <tr>
-                <th>תפקיד</th>
-                <th>מספר משמרות מינימלי לביצוע</th>
-            </tr>
-            <tr *ngFor="let role of employees_role_service.list_roles">
-                <td>{{role.role}}</td>
-                <td>{{role.min_of_shift}}</td>
-            </tr>
-        </table>
-        <button class="btn m-3" (click)="next()">הבא</button>
-    </div>
 </div>
+</form>
+

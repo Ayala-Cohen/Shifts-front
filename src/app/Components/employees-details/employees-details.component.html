@@ -10,21 +10,48 @@
         </div>
         <div id="AddEmployee">
             <h3>הוספת עובד חדש</h3>
-            <form>
+            <form #addEmployees="ngForm" class="form">
                 <div class="form-group">
-                    <label class="form-row">שם:</label><input type="text" name="employee_name" class="col-12"
-                        [(ngModel)]="employee_service.employee.name"></div>
+                    <label class="form-row">שם:</label>
+                    <input type="text" name="employee_name" #employee_name="ngModel" class="col-12" required  pattern="[a-zא-תA-Z ]*" 
+                    [(ngModel)]="employee_service.employee.name">
+                    <div class="alert-warning col-12"
+                    *ngIf="employee_name.invalid && (employee_name.dirty || employee_name.touched)">
+                    <p *ngIf="employee_name.errors.required">שדה חובה</p>
+                    <p *ngIf="employee_name.errors.pattern">יש להכניס אותיות בלבד</p>
+                </div>
+                </div>
+
                 <div class="form-group">
-                    <label class="form-row">מספר זהות:</label><input type="text" name="employee_id" class="col-12"
+                    <label class="form-row">מספר זהות:</label>
+                    <input type="text" name="employee_id" #employee_id="ngModel" pattern="[0-9]{9}" required class="col-12"
                         [(ngModel)]="employee_service.employee.id">
+                        <div class="alert-warning col-12"
+                        *ngIf="employee_id.invalid && (employee_id.dirty || employee_id.touched)">
+                        <p *ngIf="employee_id.errors.required">שדה חובה</p>
+                        <p *ngIf="employee_id.errors.pattern">הכנס תעודת זהות תקינה </p>
+                    </div>
+                    
                 </div>
                 <div class="form-group">
-                    <label class="form-row">מספר טלפון:</label><input type="text" name="emplyee_phone" class="col-12"
+                    <label class="form-row">מספר טלפון:</label>
+                    <input type="text" name="emplyee_phone" class="col-12" required pattern="05?[0-9]-?[0-9]{7}" #emplyee_phone="ngModel"
                         [(ngModel)]="employee_service.employee.phone">
+                        <div class="alert-warning col-12"
+                        *ngIf="emplyee_phone.invalid && (emplyee_phone.dirty || emplyee_phone.touched)">
+                        <p *ngIf="emplyee_phone.errors.required">שדה חובה</p>
+                        <p *ngIf="emplyee_phone.errors.pattern">הכנס מספר פלאפון תקין </p>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-row">כתובת דוא"ל:</label><input type="email" name="emplyee_task" class="col-12"
+                    <label class="form-row">כתובת דוא"ל:</label>
+                    <input type="email" name="emplyee_task" class="col-12" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #emplyee_task="ngModel"
                         [(ngModel)]="employee_service.employee.email">
+                        <div class="alert-warning col-12" 
+                        *ngIf="emplyee_task.invalid && (emplyee_task.dirty || emplyee_task.touched)">
+                            <p *ngIf="emplyee_task.errors.required">שדה חובה</p>
+                            <p *ngIf="emplyee_task.errors.pattern">אנא הזן כתובת מייל תקינה</p>
+                        </div>
                 </div>
                 <div class="form-group">
                     <label class="form-row">מחלקת עובד: </label>
@@ -48,7 +75,7 @@
                         </option><br>
                     </select>
                 </div>
-                <button class="btn" (click)="AddEditEmployee()">אישור</button>
+                <button class="btn" (click)="AddEditEmployee()" [disabled]="addEmployees.form.invalid">אישור</button>
                 <div *ngIf="is_success">
                     הפרטים נקלטו בהצלחה!!
                 </div>

@@ -22,7 +22,8 @@ export class BusinessDetailsComponent implements OnInit {
     let res = reader.result as ArrayBuffer
     let bytes = new Uint8Array(res);
     let arrayBytes = Array.from(bytes)
-    this.business_service.business.logo = arrayBytes
+    this.business_service.business.logo = arrayBytes 
+    
   }
 
   next() {
