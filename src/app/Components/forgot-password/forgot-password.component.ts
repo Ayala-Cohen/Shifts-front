@@ -15,7 +15,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit() {
     this.previous_password = this.employee_service.employee.password
-    this.employee_service.default_password = `${this.business_service.business.name}&${this.employee_service.employee.id}`
+    this.employee_service.default_password = `Ab${this.employee_service.employee.id}`
 
     this.employee_service.employee.password = ""
   }

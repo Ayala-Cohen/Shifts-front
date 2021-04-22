@@ -70,8 +70,9 @@
                         </option><br>
                     </select>
                 </div>
-                <button class="btn" (click)="AddEditEmployee()" [disabled]="addEmployees.form.invalid">אישור</button>
-                <div *ngIf="is_success">
+                <!-- [disabled]="addEmployees.form.invalid" -->
+                <button class="btn" (click)="AddEditEmployee()" >אישור</button>
+                <div *ngIf="is_success == true">
                     הפרטים נקלטו בהצלחה!!
                 </div>
             </form>

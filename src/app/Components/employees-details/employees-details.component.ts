@@ -21,19 +21,9 @@ export class EmployeesDetailsComponent implements OnInit {
     this.active.params.subscribe(p => {
       this.is_edit = p["flag"]
       if (this.is_edit == "false") {
-        // if (this.employee_service.list_employees_whole_data.size == 0)
-        //   this.employee_service.list_employees.map(x => {
-        //     this.employee_service.list_employees_whole_data.set(x.id, new EmployeeWithWholeData(x))
-        //   })
         this.employee_service.employee = new Employee()
       }
-      // else
-      //שליפת המחלקות בהן העובד עובד
-      // this.employee_service.getDepartments(this.employee_service.employee.id).subscribe(data => {
-      //   if (data)
-      //     this.employee_service.list_employees_whole_data.get(this.employee_service.employee.id).list_departments = data
     })
-    // })
   }
 
 
@@ -52,16 +42,16 @@ export class EmployeesDetailsComponent implements OnInit {
     this.router.navigate(['/employees-list'])
   }
   //פונקציה להוספת או עריכת עובד
-  AddEditEmployee() {
+  async AddEditEmployee() {
     if (this.employee_service.employee.password == undefined) {
       this.employee_service.Add().subscribe(data => {
         if (data)
           this.employee_service.list_employees = data
       })
-      this.employee_service.list_employees_whole_data.set(this.employee_service.employee.id, this.l_dep)
+      this.employee_service.list_employees_whole_data[this.employee_service.employee.id] = this.l_dep
       this.employee_service.AddOrRemoveDepartments().subscribe(data => {
         if (data)
-          this.employee_service.list_employees_whole_data.set(this.employee_service.employee.id, data)
+          this.employee_service.list_employees_whole_data[this.employee_service.employee.id] = data
       })
       this.employee_service.employee = new Employee()
       this.l_dep = new Array<Ward>()
@@ -69,7 +59,7 @@ export class EmployeesDetailsComponent implements OnInit {
     else {
       this.employee_service.AddOrRemoveDepartments().subscribe(data => { //עדכון רשימת המחלקות לעובד
         if (data)
-          this.employee_service.list_employees_whole_data.set(this.employee_service.employee.id, data)
+          this.employee_service.list_employees_whole_data[this.employee_service.employee.id] = data
       })
       this.employee_service.Update().subscribe(data => {
         if (data)
@@ -77,6 +67,8 @@ export class EmployeesDetailsComponent implements OnInit {
       })
     }
     this.is_success = true
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    this.router.navigate(['employees-list'])
   }
   //פונקציה להוספת מחלקות עבור העובד
   AddTolistDepOrRemove(ward: Ward) {
@@ -84,7 +76,7 @@ export class EmployeesDetailsComponent implements OnInit {
       let l_dep = this.employee_service.list_employees_whole_data[this.employee_service.employee.id]
 
       if (l_dep == null) {
-        this.employee_service.list_employees_whole_data.set(this.employee_service.employee.id, new Array<Ward>());
+        this.employee_service.list_employees_whole_data[this.employee_service.employee.id] = new Array<Ward>();
         l_dep = new Array<Ward>()
       }
       if (l_dep.find(x => x.id == ward.id) == undefined)

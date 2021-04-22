@@ -40,14 +40,14 @@ export class EmployeesService {
   }
   //פונקציה להוספת מחלקות לעובד
   public AddOrRemoveDepartments(): Observable<Array<Ward>> {
-    let list_dep = this.list_employees_whole_data.get(this.employee.id)
+    let list_dep = this.list_employees_whole_data[this.employee.id]
     return this.http.post<Array<Ward>>(`${this.url}AddOrRemoveDepartmentsForEmployee/${this.employee.id}`, list_dep)
   }
 
   //פונקציה להוספת עובד
   public Add(): Observable<Array<Employee>> {
     this.employee.business_id = this.business_service.business.id
-    this.employee.password = `${this.business_service.business.name}&${this.employee.id}`
+    this.employee.password = `Ab${this.employee.id}`
     return this.http.put<Array<Employee>>(this.url + "AddEmployee", this.employee)
   }
   //פונקציה לעדכון עובד

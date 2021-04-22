@@ -26,6 +26,8 @@ export class NavComponent implements OnInit {
   constructor(private router: Router, private integration_service: IntegrationService, private assigning_service: AssigningService, private employee_service: EmployeesService, private business_service: BusinessService, private shift_service: ShiftsService, private ward_service: WardService, private employee_role_service: EmployeesRoleService) { }
 
   ngOnInit() {
+    this.business_service.business = new Business()
+    this.employee_service.employee = new Employee()
   }
   clearData() {
     this.employee_service.employee = new Employee()

@@ -1,82 +1,79 @@
-<form #wardsShifts="ngForm" class="form" > 
-    
-<div class="container col-sm-12 col-md-6 col-lg-8">
-    <div class="sub_container">
-        <div class="ma form-group">
-            <label class="form-row">הכנס שם משמרת</label>
-            <input type="text" class="col-12" required pattern="[A-Za-zא-ת ]+"  name="shiftName"  #shiftName="ngModel" [(ngModel)]="shift_service.shift.name">
-            <div class="alert-warning col-12" 
-            *ngIf="shiftName.invalid && (shiftName.dirty || shiftName.touched)">
-                <p *ngIf="shiftName.errors.pattern">יש להכניס אותיות בלבד</p>
-                <p *ngIf="shiftName.errors.required">שדה חובה</p>
-            </div>
-        </div>
-        <button class="btn m-3" (click)="AddOrUpdate('shift')">הוסף משמרת</button>
-        <div class="scrollmenu col-10" *ngIf="shift_service.list_shifts.length != 0">
-            <table class="table">
-                <tr>
-                    <th>משמרת</th>
-                </tr>
-                <tr *ngFor="let shift of shift_service.list_shifts">
-                    <td>
-                        {{shift.name}}
-                        <button (click)="delete('shift',shift.id)" class="btn mr-5">מחיקה</button>
-                        <button (click)="edit('shift', shift.id)" class="btn mr-1">עריכה</button>
-                    </td>
+<form #wardsShifts="ngForm" class="form">
 
-                </tr>
-            </table>
-        </div>
-    
-        <div class="ma form-group">
-            <label class="form-row">הכנס שם מחלקה</label>
-            <input type="text" class="col-12" required pattern="[A-Za-zא-ת ]+" name="department" #department="ngModel" [(ngModel)]="ward_service.ward.name">
-            <div class="alert-warning col-12" 
-            *ngIf="department.invalid && (department.dirty || department.touched)">
-                <p *ngIf="department.errors.pattern">יש להכניס אותיות בלבד</p>
-                <p *ngIf="department.errors.required">שדה חובה</p>
+    <div class="container col-sm-12 col-md-6 col-lg-8">
+        <div class="sub_container">
+            <div class="ma form-group">
+                <label class="form-row">הכנס שם משמרת</label>
+                <input type="text" class="col-12" required pattern="[A-Za-zא-ת ]+" name="shiftName" #shiftName="ngModel"
+                    [(ngModel)]="shift_service.shift.name">
+                <div class="alert-warning col-12" *ngIf="shiftName.invalid && (shiftName.dirty || shiftName.touched)">
+                    <p *ngIf="shiftName.errors.pattern">יש להכניס אותיות בלבד</p>
+                    <p *ngIf="shiftName.errors.required">שדה חובה</p>
+                </div>
             </div>
-            <label class="form-row">הכנס תאריך פתיחת יומן</label>
-            <input type="date" class="col-12" name="open" #open="ngModel" [value] = "opening_date | date:'yyyy/MM/dd'" [(ngModel)]="ward_service.ward.diary_opening_day">
-            <div class="alert-warning col-12" 
-            *ngIf="open.invalid && (open.dirty || open.touched)">
-            <p *ngIf="open.errors.required">שדה חובה</p>
+            <button class="btn m-3" (click)="AddOrUpdate('shift')">הוסף משמרת</button>
+            <div class="scrollmenu col-10" *ngIf="shift_service.list_shifts.length != 0">
+                <table class="table">
+                    <tr>
+                        <th>משמרת</th>
+                    </tr>
+                    <tr *ngFor="let shift of shift_service.list_shifts">
+                        <td>
+                            {{shift.name}}
+                            <button (click)="delete('shift',shift.id)" class="btn mr-5">מחיקה</button>
+                            <button (click)="edit('shift', shift.id)" class="btn mr-1">עריכה</button>
+                        </td>
+
+                    </tr>
+                </table>
             </div>
-            <label class="form-row">הכנס תאריך סגירת יומן</label>
-            <input type="date" class="col-12" name="close" #close="ngModel" [value] = "closing_date | date:'yyyy/MM/dd'" [(ngModel)]="ward_service.ward.diary_closing_day">
-            <div class="alert-warning col-12" 
-            *ngIf="close.invalid && (close.dirty || close.touched)">
-            <p *ngIf="close.errors.required">שדה חובה</p>
+
+            <div class="ma form-group">
+                <label class="form-row">הכנס שם מחלקה</label>
+                <input type="text" class="col-12" required pattern="[A-Za-zא-ת ]+" name="department"
+                    #department="ngModel" [(ngModel)]="ward_service.ward.name">
+                <div class="alert-warning col-12"
+                    *ngIf="department.invalid && (department.dirty || department.touched)">
+                    <p *ngIf="department.errors.pattern">יש להכניס אותיות בלבד</p>
+                    <p *ngIf="department.errors.required">שדה חובה</p>
+                </div>
+                <label class="form-row">הכנס תאריך פתיחת יומן</label>
+                <input type="date" class="col-12" [ngModel]="ward_service.ward.diary_opening_day | date:'yyyy-MM-dd'"
+                    (ngModelChange)="ward_service.ward.diary_opening_day = $event" name="open" #open="ngModel">
+
+                <div class="alert-warning col-12" *ngIf="open.invalid && (open.dirty || open.touched)">
+                    <p *ngIf="open.errors.required">שדה חובה</p>
+                </div>
+
+                <label class="form-row">הכנס תאריך סגירת יומן</label>
+                <input type="date" class="col-12" [ngModel]="ward_service.ward.diary_closing_day | date:'yyyy-MM-dd'"
+                    (ngModelChange)="ward_service.ward.diary_closing_day = $event" name="close" #close="ngModel">
+                <div class="alert-warning col-12" *ngIf="close.invalid && (close.dirty || close.touched)">
+                    <p *ngIf="close.errors.required">שדה חובה</p>
+                </div>
             </div>
-            <input type="date" class="col-12" [ngModel]="ward_service.ward.diary_opening_day | date:'yyyy-MM-dd'"
-                (ngModelChange)="ward_service.ward.diary_opening_day = $event">
-            <label class="form-row">הכנס תאריך סגירת יומן</label>
-            <input type="date" class="col-12" [ngModel]="ward_service.ward.diary_closing_day | date:'yyyy-MM-dd'"
-                (ngModelChange)="ward_service.ward.diary_closing_day = $event">
+            <button class="btn m-3" (click)="AddOrUpdate('ward')">הוסף מחלקה</button>
+            <div class="scrollmenu col-10" *ngIf="ward_service.list_wards.length != 0">
+                <table class="table">
+                    <tr>
+                        <th>מחלקה</th>
+                        <th>תאריך פתיחת יומן</th>
+                        <th>תאריך סגירת יומן</th>
+                    </tr>
+                    <tr *ngFor="let ward of ward_service.list_wards">
+                        <td>
+                            {{ward.name}}
+                        </td>
+                        <td>{{ward.diary_opening_day | date:'dd/MM/yyyy'}}</td>
+                        <td>{{ward.diary_closing_day | date :'dd/MM/yyyy'}}
+                            <button (click)="delete('ward',ward.id)" class="btn mr-5">מחיקה</button>
+                            <button (click)="edit('ward', ward.id)" class="btn mr-1">עריכה</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- [disabled]="wardsShifts.form.invalid" -->
+            <button class="btn m-3"  (click)="next()">הבא</button>
         </div>
-        <button class="btn m-3" (click)="AddOrUpdate('ward')">הוסף מחלקה</button>
-        <div class = "scrollmenu col-10" *ngIf="ward_service.list_wards.length != 0">
-            <table class="table">
-                <tr>
-                    <th>מחלקה</th>
-                    <th>תאריך פתיחת יומן</th>
-                    <th>תאריך סגירת יומן</th>
-                </tr>
-                <tr *ngFor="let ward of ward_service.list_wards">
-                    <td>
-                        {{ward.name}}
-                    </td>
-                    <td>{{ward.diary_opening_day | date:'dd/MM/yyyy'}}</td>
-                    <td>{{ward.diary_closing_day | date :'dd/MM/yyyy'}}
-                        <button (click)="delete('ward',ward.id)" class="btn mr-5">מחיקה</button>
-                        <button (click)="edit('ward', ward.id)" class="btn mr-1">עריכה</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <button class="btn m-3" [disabled]="wardsShifts.form.invalid" (click)="next()">הבא</button>
     </div>
-</div>
-
-</div>
 </form>

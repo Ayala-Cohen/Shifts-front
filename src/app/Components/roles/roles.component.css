@@ -19,6 +19,7 @@
 }
 table
 {
+    direction: rtl;
     text-align: center;
     border-style: solid;
     border-width: thin;

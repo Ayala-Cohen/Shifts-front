@@ -29,15 +29,6 @@ export class LogINComponent implements OnInit {
     }
     this.employee_service.GetAll().subscribe(x => {
       this.employee_service.list_employees = x
-      // if (this.employee_service.list_employees_whole_data.size == 0)
-      //   x.map(x => {
-      //     let list_departments
-      //     this.employee_service.getDepartments(x.id).subscribe(data => {
-      //       if (data)
-      //         list_departments = data
-      //       this.employee_service.list_employees_whole_data.set(x.id, new EmployeeWithWholeData(x,list_departments))
-      //     })
-      //   })
     })
     this.employee_service.GetAllEmployeesDepartments().subscribe(data => {
       if (data)
@@ -58,7 +49,8 @@ export class LogINComponent implements OnInit {
         let b = this.business_service.list_business.find(x => x.id == data.business_id)
         this.business_service.business = b
         this.getAllData()
-        if (this.employee_service.employee.password == this.employee_service.default_password)
+        let default_p = `Ab${data.id}`
+        if (this.employee_service.employee.password == default_p)
           this.router.navigate(['forgot-password'])
         else
           this.router.navigate(['integration'])

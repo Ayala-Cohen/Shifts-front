@@ -21,7 +21,9 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     let deps = this.employee_service.list_employees_whole_data[this.currentEmployee.id]
     if (deps)
-      this.currentEmployeeWhole = new EmployeeWithWholeData(this.currentEmployee, deps)   
+      this.currentEmployeeWhole = new EmployeeWithWholeData(this.currentEmployee, deps)
+    else
+      this.currentEmployeeWhole = new EmployeeWithWholeData(this.currentEmployee)
   }
   getRoleNameById() {
     let role = this.employee_role_service.list_roles.find(x => x.id == this.currentEmployee.role_id)
