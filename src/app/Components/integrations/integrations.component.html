@@ -23,7 +23,8 @@
                 </tr>
                 <tr *ngFor="let shift of shift_service.list_shifts">
                     <td *ngFor="let day of activity_days" appChangeColor
-                        [style.background-color]="getRatingColor(shift.id, day)" (click)="AddOrUpdate(shift.id, day)">
+                        [style.background-color]="getRatingColor(shift.id, day)"
+                        (click)="AddOrUpdate(shift.id, day, $event)">
                         {{shift.name}}
                     </td>
                 </tr>
@@ -31,6 +32,13 @@
             <div class="alert-warning col-12" *ngIf="integration_service.list_rating == null">
                 <p>לא דרגת אף משמרת</p>
             </div>
+            <div class="alert-warning col-12" *ngIf="cnt_can_not > 4">
+                <p>{{message}}</p>
+            </div>
+            <div class="alert-warning col-12" *ngIf="cnt_not_prefere > 5">
+                <p>{{message}}</p>
+            </div>
         </div>
+
     </div>
 </div>
