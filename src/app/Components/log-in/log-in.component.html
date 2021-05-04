@@ -15,7 +15,7 @@
       <div class="form-group mb-3">
         <label for="pwd" class="form-row">סיסמה:</label>
         <input type="password" id="pwd" placeholder="הכנס סיסמה" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}" name="pswd" required class="col-12"
-          [(ngModel)]="employee_service.employee.password" appShowPassword #password="ngModel">
+          [(ngModel)]="employee_service.employee.password" appShowPassword #pswd="ngModel">
           <div class="alert-warning col-12"
                 *ngIf="password.invalid && (password.dirty || password.touched)">
                 <p *ngIf="password.errors.required">שדה חובה</p>
