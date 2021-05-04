@@ -81,7 +81,9 @@ export class IntegrationsComponent implements OnInit {
 
       })
     }
+    let prev_rating = this.integration_service.rating.rating
     this.integration_service.rating = new Rating()
+    this.integration_service.rating.rating = prev_rating
   }
   //פונקציה לשליפת דירוג על מנת להציג אותו גם אם העובד יצא מהמערכת באמצע הדירוג
   getRatingColor(shift_id: number, day: string) {
