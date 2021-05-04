@@ -6,6 +6,7 @@ import { WardService } from 'src/app/Services/ward.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ward } from 'src/app/Classes/Ward';
 import { EmployeeWithWholeData } from 'src/app/Classes/EmployeeWithWholeData';
+import { BusinessService } from 'src/app/Services/business.service';
 
 @Component({
   selector: 'app-employees-details',
@@ -17,7 +18,7 @@ export class EmployeesDetailsComponent implements OnInit {
   is_success: boolean = false
   is_edit: string
   l_dep: Array<Ward> = new Array<Ward>()
-  constructor(private router: Router, private active: ActivatedRoute, private ward_service: WardService, private employee_service: EmployeesService, private employee_roles_service: EmployeesRoleService) {
+  constructor(private router: Router, private active: ActivatedRoute, private ward_service: WardService, private employee_service: EmployeesService, private employee_roles_service: EmployeesRoleService,private business_service:BusinessService) {
     this.active.params.subscribe(p => {
       this.is_edit = p["flag"]
       if (this.is_edit == "false") {

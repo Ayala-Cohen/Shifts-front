@@ -18,7 +18,7 @@ import { WardService } from 'src/app/Services/ward.service';
   styleUrls: ['./log-in.component.css']
 })
 export class LogINComponent implements OnInit {
-
+  is_in: boolean
   constructor(private shift_employee_service: ShiftsEmployeesService, private employees_roles_service: EmployeesRoleService, private employee_service: EmployeesService, private integration_service: IntegrationService, private business_service: BusinessService, private ward_service: WardService, private shift_service: ShiftsService, private assigning_service: AssigningService, private router: Router) { }
 
   ngOnInit() {
@@ -54,7 +54,6 @@ export class LogINComponent implements OnInit {
           this.router.navigate(['forgot-password'])
         else
           this.router.navigate(['integration'])
-
       }
       else {
         this.business_service.getBusinessBydirectorDetails(this.employee_service.employee.email, this.employee_service.employee.password).subscribe(x => {
@@ -64,10 +63,9 @@ export class LogINComponent implements OnInit {
             this.getAllData()
             this.employee_service.employee = new Employee()
             this.router.navigate(['wards-shifts'])
-
           }
           else
-            alert("לא מוכר במערכת")
+            this.is_in = false
         })
       }
     }),

@@ -56,5 +56,23 @@ export class BusinessService {
     let res = reader.result as String
     return res
   }
+  checkIfCorrect(id:number) {
+    let sum = 0
+    if (id.toString().length == 9) {
+      for (let i = 0; i < 9; i++) {
+        if (((i + 1) % 2)) {
+          sum += Number(id.toString()[i])
+        }
+        else {
+          let num = Number(id.toString()[i]) * 2
+          if (num >= 10)
+            sum += (num % 10 + (num - (num % 10)) / 10)
+          else
+            sum += num
+        }
+      }
+    }
+    return sum % 10
+  }
 }
 

@@ -31,7 +31,9 @@
                         <p *ngIf="employee_id.errors.required">שדה חובה</p>
                         <p *ngIf="employee_id.errors.pattern">הכנס תעודת זהות תקינה </p>
                     </div>
-                    
+                    <div class="alert-warning col-12" *ngIf="business_service.checkIfCorrect(employee_id.value)">
+                        <p>מספר זהות לא תקין</p>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-row">מספר טלפון:</label>

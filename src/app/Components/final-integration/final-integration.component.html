@@ -1,27 +1,39 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <div class="sub_container">
-        <h2>שיבוץ לשבוע תאריך...</h2>
+        <div *ngIf="!is_edit">
+            <h2>שיבוץ לשבוע תאריך...</h2>
 
-        <div *ngFor="let ward of ward_service.list_wards" class="col-12 ward mb-3">
-            <h2>מחלקת {{ward.name}} </h2>
-            <div class="scrollmenu col-10">
-                <table class="table mb-2" id="scheduleTable">
-                    <tr>
-                        <th *ngFor="let day of activity_days">{{day}}</th>
-                    </tr>
-                    <tr class="dropdown" *ngFor="let shift of shift_service.list_shifts">
-                        <td *ngFor="let day of activity_days">
-                            <b style="margin: auto;">{{shift.name}}</b>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"
-                                    *ngFor="let name of getAssigningForDay(day,shift.id, ward.id)">
-                                    <input type="text" [readonly] = "!employee_service.is_director" value="{{name}}" (blur)="Edit()" class="assigngin_name"> 
-                                    <!-- {{name}} -->
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </table>
+            <div *ngFor="let ward of ward_service.list_wards" class="col-12 ward mb-3">
+                <h2>מחלקת {{ward.name}} </h2>
+                <div class="scrollmenu col-12">
+                    <table class="table mb-2" id="scheduleTable">
+                        <tr>
+                            <th *ngFor="let day of activity_days">{{day}}</th>
+                        </tr>
+                        <tr class="dropdown" *ngFor="let shift of shift_service.list_shifts">
+                            <td *ngFor="let day of activity_days">
+                                <b style="margin: auto;">{{shift.name}}</b>
+                                <div class="list-group">
+                                    <div *ngFor="let name of getAssigningForDay(day,shift.id, ward.id)">
+                                        <input type="text" [readonly]="!employee_service.is_director" value="{{name}}"
+                                            (blur)="Edit()" class="assigngin_name">
+                                    </div>
+                                    <button *ngIf="employee_service.is_director" class="btn"
+                                        (click)="Edit(shift.id, day)">עריכה</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="edit_integration" *ngIf="is_edit">
+            <h3>עריכת שיבוץ למשמרת {{shift_name}} ביום {{day}}</h3>
+            <div *ngFor="let role of assigning_service.list_employee_high_rating">
+                {{roleName(role)}}
+                <ul *ngFor = "let employee of assigning_service.list_employee_high_rating[role]">
+                    <li>{{employee.name}}</li>
+                </ul>
             </div>
         </div>
     </div>

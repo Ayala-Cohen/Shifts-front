@@ -4,13 +4,13 @@
             <h2> תפקידי עובדים</h2>
             <div class="ma form-group">
                 <label class="form-row">הכנס שם תפקיד</label>
-                <input type="text" class="col-12" name="name" #name="ngModel" required pattern="[A-Za-zא-ת ]+"
+                <input type="text" class="col-12" name="name" #name="ngModel" required pattern="[A-Za-zא-ת /]+"
                     [(ngModel)]="employees_role_service.role.role">
                 <div class="alert-warning col-12" *ngIf="name.invalid && (name.dirty || name.touched)">
                     <p *ngIf="name.errors.pattern">יש להכניס אותיות בלבד</p>
                     <p *ngIf="num.errors.required">שדה חובה</p>
                 </div>
-                <label class="form-row">מספר משמרות מינימלי לביצוע</label>
+                <label class="form-row">מספר משמרות לביצוע</label>
                 <input type="number" class="col-12" name="num" #num="ngModel" required
                     [(ngModel)]="employees_role_service.role.min_of_shift">
                 <div class="alert-warning col-12" *ngIf="num.invalid && (num.dirty || num.touched)">
@@ -25,7 +25,7 @@
     <table *ngIf="employees_role_service.list_roles.length != 0" class="table col-10">
         <tr>
             <th>תפקיד</th>
-            <th>מספר משמרות מינימלי לביצוע</th>
+            <th>מספר משמרות לביצוע</th>
         </tr>
         <tr *ngFor="let role of employees_role_service.list_roles">
             <td>{{role.role}}</td>

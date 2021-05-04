@@ -37,7 +37,8 @@
                     <p *ngIf="department.errors.pattern">יש להכניס אותיות בלבד</p>
                     <p *ngIf="department.errors.required">שדה חובה</p>
                 </div>
-                <label class="form-row">הכנס תאריך פתיחת יומן</label>
+                <p>טווח התאריכים יישמר ויתעדכן מדי שבוע </p>
+                <label class="form-row">הכנס תאריך פתיחת יומן הקרוב</label>
                 <input type="date" class="col-12" [ngModel]="ward_service.ward.diary_opening_day | date:'yyyy-MM-dd'"
                     (ngModelChange)="ward_service.ward.diary_opening_day = $event" name="open" #open="ngModel">
 
@@ -45,7 +46,7 @@
                     <p *ngIf="open.errors.required">שדה חובה</p>
                 </div>
 
-                <label class="form-row">הכנס תאריך סגירת יומן</label>
+                <label class="form-row">הכנס תאריך סגירת יומן הקרוב</label>
                 <input type="date" class="col-12" [ngModel]="ward_service.ward.diary_closing_day | date:'yyyy-MM-dd'"
                     (ngModelChange)="ward_service.ward.diary_closing_day = $event" name="close" #close="ngModel">
                 <div class="alert-warning col-12" *ngIf="close.invalid && (close.dirty || close.touched)">

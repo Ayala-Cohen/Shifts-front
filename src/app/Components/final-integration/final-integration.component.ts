@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Assigning } from 'src/app/Classes/Assigning';
 import { AssigningService } from 'src/app/Services/assigning.service';
+import { EmployeesRoleService } from 'src/app/Services/employees-role.service';
 import { EmployeesService } from 'src/app/Services/employees.service';
 import { ShiftsService } from 'src/app/Services/shifts.service';
 import { WardService } from 'src/app/Services/ward.service';
@@ -11,8 +13,11 @@ import { WardService } from 'src/app/Services/ward.service';
 })
 export class FinalIntegrationComponent implements OnInit {
   activity_days = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"]
-
-  constructor(private ward_service: WardService, private shift_service: ShiftsService, private assigning_service: AssigningService, private employee_service: EmployeesService) { }
+  is_edit: boolean
+  assiging_for_edit: Assigning = new Assigning()
+  shift_name: string
+  day: string
+  constructor(private ward_service: WardService, private employees_role_service: EmployeesRoleService, private shift_service: ShiftsService, private assigning_service: AssigningService, private employee_service: EmployeesService) { }
 
   ngOnInit() {
   }
@@ -32,7 +37,17 @@ export class FinalIntegrationComponent implements OnInit {
     })
     return l_employees_names
   }
-  Edit(){
-    
+  Edit(shift_id: number, day: string) {
+    this.is_edit = true
+    this.shift_name = this.shift_service.list_shifts.find(x => x.id == shift_id).name
+    this.day = day
+    let shift_in_day_id = this.shift_service.list_shifts_in_day.find(x => x.shift_id == shift_id && x.day == day).id
+    this.assigning_service.GetEmployeesWithHighRating(shift_in_day_id).subscribe(data => {
+      if (data)
+        this.assigning_service.list_employee_high_rating = data
+    })
+  }
+  roleName(role_id: number) {
+    return this.employees_role_service.list_roles.find(x => x.id == role_id).role
   }
 }

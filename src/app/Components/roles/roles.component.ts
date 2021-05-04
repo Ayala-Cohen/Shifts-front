@@ -24,7 +24,7 @@ export class RolesComponent implements OnInit {
     //הוספת תפקיד חדש
     if (this.employees_role_service.role.id == undefined) {
       this.employees_role_service.Add().subscribe(data =>{if(data) this.employees_role_service.list_roles = data})
-      this.employees_role_service.role = new EmployeesRole()
+      this.employees_role_service.role = new EmployeesRole(0, 0, "", 0)
     }
     //עריכת תפקיד קיים
     else {

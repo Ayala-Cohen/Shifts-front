@@ -3,17 +3,18 @@
     <h2>התחברות</h2>
     <form #logInForm="ngForm">
       <div class="ma form-group">
-        <label for="uname" class="form-row">שם משתמש(מייל):   </label>
+        <label for="uname" class="form-row">שם משתמש(מייל): </label>
         <input type="text" id="uname" placeholder="הכנס שם משתמש" name="uname" required class="col-12"
-          [(ngModel)]="employee_service.employee.email" #userName="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-        <div class="alert-warning col-12" 
-        *ngIf="userName.invalid && (userName.dirty || userName.touched)">
-        <p *ngIf="userName.errors.required">שדה חובה</p>
-        <p *ngIf="userName.errors.pattern">אנא הזן כתובת מייל תקינה</p>
+          [(ngModel)]="employee_service.employee.email" #userName="ngModel"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+        <div class="alert-warning col-12" *ngIf="userName.invalid && (userName.dirty || userName.touched)">
+          <p *ngIf="userName.errors.required">שדה חובה</p>
+          <p *ngIf="userName.errors.pattern">אנא הזן כתובת מייל תקינה</p>
         </div>
       </div>
       <div class="form-group mb-3">
         <label for="pwd" class="form-row">סיסמה:</label>
+<<<<<<< HEAD
         <input type="password" id="pwd" placeholder="הכנס סיסמה" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}" name="pswd" required class="col-12"
           [(ngModel)]="employee_service.employee.password" appShowPassword #pswd="ngModel">
           <div class="alert-warning col-12"
@@ -21,10 +22,23 @@
                 <p *ngIf="password.errors.required">שדה חובה</p>
                 <p *ngIf="password.errors.pattern">הסיסמא חייב להכיל לפחות אות קטנה אחת, אות גדולה אחת ומספר אחד. 6-12 תווים</p>
       </div>
+=======
+        <input type="password" id="pwd" placeholder="הכנס סיסמה" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
+          name="pswd" required class="col-12" [(ngModel)]="employee_service.employee.password" appShowPassword
+          #password="ngModel">
+        <div class="alert-warning col-12" *ngIf="password.invalid && (password.dirty || password.touched)">
+          <p *ngIf="password.errors.required">שדה חובה</p>
+          <p *ngIf="password.errors.pattern">הסיסמא חייב להכיל לפחות אות קטנה אחת, אות גדולה אחת ומספר אחד. 6-12 תווים
+          </p>
+        </div>
+>>>>>>> af07313529ca70dbb7c8a9ecba137471efc33194
       </div>
-      
+
       <button type="submit" class="btn" (click)="logIn()" [disabled]="logInForm.form.invalid">אישור</button>
     </form>
+    <div class="alert-warning col-12" *ngIf="is_in == false">
+      <p>לא מוכר במערכת</p>
+    </div>
     <a [routerLink]="['/forgot-password']">שכחת סיסמה?</a>
   </div>
 </div>

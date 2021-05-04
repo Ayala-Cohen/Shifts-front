@@ -15,7 +15,7 @@
                     *ngIf="business_service.business.user_name != undefined && employee_service.is_director">{{business_service.business.full_name}}</a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="logInByUserName">
-                    <label class="dropdown-item" (blur)="getOut()" [routerLink]="['home']">יציאה</label>
+                    <label class="dropdown-item" (blur)="getOut()" [routerLink]="['log-in']">יציאה</label>
                     <label class="dropdown-item" [routerLink]="['forgot-password']">שינוי סיסמה</label>
                     <label class="dropdown" *ngIf="employee_service.is_director">שינוי מבנה עסק
                     <div class="dropdown-content">
@@ -51,12 +51,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['home']">עמוד הבית</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['#']">תמיכה</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['#']">אודות</a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-left">

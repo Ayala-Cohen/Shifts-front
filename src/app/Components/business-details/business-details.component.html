@@ -3,7 +3,8 @@
         <h2>פרטי עסק</h2>
         <div class="form-group">
             <label class="form-row"> שם העסק: </label>
-            <input type="text" name="b_name" #b_name=ngModel class="col-12" required [(ngModel)]="business_service.business.name">
+            <input type="text" name="b_name" #b_name=ngModel class="col-12" required
+                [(ngModel)]="business_service.business.name">
             <div class="alert-warning col-12" *ngIf="b_name.invalid && (b_name.dirty || b_name.touched)">
                 <p *ngIf="b_name.errors.required">שדה חובה</p>
             </div>
@@ -11,13 +12,16 @@
 
         <div class="form-group">
             <label class="form-row">מספר עסק:</label>
-            <input type="text" #numBussiness="ngModel" required
-                name="numBussiness" [(ngModel)]="business_service.business.number" pattern="[0-9]+" class="col-12">
+            <input type="text" #numBussiness="ngModel" required name="numBussiness"
+                [(ngModel)]="business_service.business.number" pattern="[0-9]+" class="col-12">
             <div class="alert-warning col-12"
                 *ngIf="numBussiness.invalid && (numBussiness.dirty || numBussiness.touched)">
                 <!--תציג הודעות אם הקלט לא תקין כי נגענו בו או שינינו-->
                 <p *ngIf="numBussiness.errors.required">שדה חובה</p>
                 <p *ngIf="numBussiness.errors.pattern">הכנס מספרים בלבד</p>
+            </div>
+            <div class="alert-warning col-12" *ngIf="business_service.checkIfCorrect(numBussiness.value)">
+                <p>מספר עסק לא תקין</p>
             </div>
         </div>
 

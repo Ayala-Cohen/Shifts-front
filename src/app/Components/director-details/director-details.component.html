@@ -1,6 +1,6 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <form #directorDetails="ngForm" class="form">
-        <h2>פרטי מנהל</h2>
+        <h2>פרטי מעסיק</h2>
         <div class="form-group">
             <label class="form-row"> שם:</label>
             <input type="text" name="directorName" [(ngModel)]="business_service.business.full_name"
@@ -11,15 +11,6 @@
                 <p *ngIf="directorName.errors.pattern">יש להכניס אותיות בלבד</p>
             </div>
         </div>
-        <!-- <div class="form-group">
-            <label class="form-row"> מספר זהות:</label><input type="text" name="directorId" [(ngModel)]="id"
-                #directorId="ngModel" pattern="[0-9]*" maxlength="9" minlength="9" required class="col-12">
-            <div class="alert-warning col-12" *ngIf="directorId.invalid && (directorId.dirty || directorId.touched)">
-                <p *ngIf="directorId.errors.required">שדה חובה</p>
-                <p *ngIf="directorId.errors.pattern">יש להכניס מספרים בלבד</p>
-                <p *ngIf="directorId.errors.minlength">יש להכניס תשע ספרות</p>
-            </div>
-        </div> -->
         <div class="form-group mb-3">
             <label class="form-row"> שם משתמש מנהל(מייל): </label>
             <input type="text" name="user_name" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
