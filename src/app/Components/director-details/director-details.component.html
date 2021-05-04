@@ -21,7 +21,7 @@
             </div>
         </div> -->
         <div class="form-group mb-3">
-            <label class="form-row"> :שם משתמש מנהל(מייל) </label>
+            <label class="form-row"> שם משתמש מנהל(מייל): </label>
             <input type="text" name="user_name" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
                 #user_name=ngModel [(ngModel)]="business_service.business.user_name" class="col-12">
             <div class="alert-warning col-12" *ngIf="user_name.invalid && (user_name.dirty || user_name.touched)">

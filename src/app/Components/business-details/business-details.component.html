@@ -15,6 +15,7 @@
                 name="numBussiness" [(ngModel)]="business_service.business.number" pattern="[0-9]+" class="col-12">
             <div class="alert-warning col-12"
                 *ngIf="numBussiness.invalid && (numBussiness.dirty || numBussiness.touched)">
+                <!--תציג הודעות אם הקלט לא תקין כי נגענו בו או שינינו-->
                 <p *ngIf="numBussiness.errors.required">שדה חובה</p>
                 <p *ngIf="numBussiness.errors.pattern">הכנס מספרים בלבד</p>
             </div>
