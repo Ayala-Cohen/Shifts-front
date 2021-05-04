@@ -27,7 +27,7 @@ th, td
     border-color: rgb(129, 182, 226);
     border-style: solid;
     border-width: thin;
-
+    font-size: 15px;
 }
 th
 {
@@ -56,10 +56,17 @@ input:focus-visible
       outline-color:rgb(36, 134, 176);
       outline-width: 2px;
       border: none;
-      width: fit-content;
+      width: 100%;
       /* background-color: aquamarine; */
   }
   .list-group
   {
       margin: auto;
+      width: 100px;
+      padding: 2px;
   }
+  button
+{
+    background-color: rgb(77, 131, 191);
+    color:rgb(255, 255, 255)
+}

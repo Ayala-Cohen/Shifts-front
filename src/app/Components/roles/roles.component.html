@@ -4,7 +4,7 @@
             <h2> תפקידי עובדים</h2>
             <div class="ma form-group">
                 <label class="form-row">הכנס שם תפקיד</label>
-                <input type="text" class="col-12" name="name" #name="ngModel" required pattern="[A-Za-zא-ת ]+"
+                <input type="text" class="col-12" name="name" #name="ngModel" required pattern="[A-Za-zא-ת /]+"
                     [(ngModel)]="employees_role_service.role.role">
                 <div class="alert-warning col-12" *ngIf="name.invalid && (name.dirty || name.touched)">
                     <p *ngIf="name.errors.pattern">יש להכניס אותיות בלבד</p>

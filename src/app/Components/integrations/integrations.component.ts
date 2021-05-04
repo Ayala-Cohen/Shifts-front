@@ -47,6 +47,7 @@ export class IntegrationsComponent implements OnInit {
     let employee_id = this.employee_service.employee.id
     if (!this.integration_service.list_rating.find(x => x.shift_in_day == shift_in_day_id && x.employee_id == employee_id)) {
       this.integration_service.rating.shift_approved = false
+      this.integration_service.rating.shift_in_day = shift_in_day_id
       if (this.integration_service.rating.rating == "לא יכול") {
         this.cnt_can_not++
         if (this.cnt_can_not > 4) {

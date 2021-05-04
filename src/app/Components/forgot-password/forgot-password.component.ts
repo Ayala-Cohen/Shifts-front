@@ -25,6 +25,7 @@ export class ForgotPasswordComponent implements OnInit {
         this.employee_service.employee = data.filter(x => x.id == this.employee_service.employee.id)[0]
         this.is_succes = true
         await new Promise(resolve => setTimeout(resolve, 500));
+        this.employee_service.sec_password = ""
         this.router.navigate(['integration'])
       }
     })
