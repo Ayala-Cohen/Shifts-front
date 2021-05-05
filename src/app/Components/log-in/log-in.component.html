@@ -14,15 +14,6 @@
       </div>
       <div class="form-group mb-3">
         <label for="pwd" class="form-row">סיסמה:</label>
-<<<<<<< HEAD
-        <input type="password" id="pwd" placeholder="הכנס סיסמה" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}" name="pswd" required class="col-12"
-          [(ngModel)]="employee_service.employee.password" appShowPassword #pswd="ngModel">
-          <div class="alert-warning col-12"
-                *ngIf="password.invalid && (password.dirty || password.touched)">
-                <p *ngIf="password.errors.required">שדה חובה</p>
-                <p *ngIf="password.errors.pattern">הסיסמא חייב להכיל לפחות אות קטנה אחת, אות גדולה אחת ומספר אחד. 6-12 תווים</p>
-      </div>
-=======
         <input type="password" id="pwd" placeholder="הכנס סיסמה" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
           name="pswd" required class="col-12" [(ngModel)]="employee_service.employee.password" appShowPassword
           #password="ngModel">
@@ -31,7 +22,6 @@
           <p *ngIf="password.errors.pattern">הסיסמא חייב להכיל לפחות אות קטנה אחת, אות גדולה אחת ומספר אחד. 6-12 תווים
           </p>
         </div>
->>>>>>> af07313529ca70dbb7c8a9ecba137471efc33194
       </div>
 
       <button type="submit" class="btn" (click)="logIn()" [disabled]="logInForm.form.invalid">אישור</button>

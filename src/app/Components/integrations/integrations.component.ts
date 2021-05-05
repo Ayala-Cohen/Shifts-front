@@ -71,6 +71,8 @@ export class IntegrationsComponent implements OnInit {
             this.integration_service.list_rating = data
         })
       }
+      // else
+      //   this.integration_service.list_rating.splice(this.integration_service.list_rating.lastIndexOf(), 1)
     }
     else {
       this.integration_service.Delete(shift_in_day_id, employee_id).subscribe(data => {
