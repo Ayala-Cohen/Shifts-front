@@ -37,7 +37,9 @@
                     <p *ngIf="department.errors.pattern">יש להכניס אותיות בלבד</p>
                     <p *ngIf="department.errors.required">שדה חובה</p>
                 </div>
-                <p>טווח התאריכים יישמר ויתעדכן מדי שבוע </p>
+            </div>
+            <div *ngIf="ward_service.list_wards == undefined">
+                <p>טווח התאריכים יישמר עבור כל המחלקות ויתעדכן מדי שבוע </p>
                 <label class="form-row">הכנס תאריך פתיחת יומן הקרוב</label>
                 <input type="date" class="col-12" [ngModel]="ward_service.ward.diary_opening_day | date:'yyyy-MM-dd'"
                     (ngModelChange)="ward_service.ward.diary_opening_day = $event" name="open" #open="ngModel">

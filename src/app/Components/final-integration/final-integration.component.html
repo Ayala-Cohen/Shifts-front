@@ -1,7 +1,7 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <div class="sub_container">
         <div *ngIf="!is_edit">
-            <h2>שיבוץ לשבוע תאריך...</h2>
+            <h2>שיבוץ לשבוע מתאריך {{ward_service.list_wards[0].diary_opening_day |date:'dd/MM/yyyy'}} עד לתאריך {{ward_service.list_wards[0].diary_closing_day |date:'dd/MM/yyyy'}}</h2>
 
             <div *ngFor="let ward of ward_service.list_wards" class="col-12 ward mb-3">
                 <h2>מחלקת {{ward.name}} </h2>
@@ -18,7 +18,7 @@
                                         <input type="text" [readonly]="!employee_service.is_director" value="{{name}}"
                                             (blur)="Edit()" class="assigngin_name">
                                     </div>
-                                    <button *ngIf="employee_service.is_director" class="btn"
+                                    <button *ngIf="employee_service.is_director && getAssigningForDay(day,shift.id, ward.id).length != 0" class="btn"
                                         (click)="Edit(shift.id, day)">עריכה</button>
                                 </div>
                             </td>
@@ -27,6 +27,7 @@
                 </div>
             </div>
         </div>
+        <button (click)="activateAssigning()" class="btn" *ngIf="employee_service.is_director">תזמון שיבוץ</button>
         <div class="edit_integration" *ngIf="is_edit">
             <h3>עריכת שיבוץ למשמרת {{shift_name}} ביום {{day}}</h3>
             <div *ngFor="let role of assigning_service.list_employee_high_rating">

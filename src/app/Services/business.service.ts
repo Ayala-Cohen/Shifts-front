@@ -49,29 +49,30 @@ export class BusinessService {
     let reader = new FileReader();
     let buffer = new Uint8Array(business.logo)
     let x = buffer[0];
-    let blob = new Blob([buffer], { type: 'image/png'  })
+    let blob = new Blob([buffer], { type: 'image/png' })
     reader.readAsDataURL(blob)
-    this.delay(1000).then().catch(()=>
+    this.delay(1000).then().catch(() =>
       console.log("error of waiting"))
     let res = reader.result as String
     return res
   }
-  checkIfCorrect(id:number) {
+  checkIfCorrect(id: string) {
     let sum = 0
-    if (id.toString().length == 9) {
-      for (let i = 0; i < 9; i++) {
-        if (((i + 1) % 2)) {
-          sum += Number(id.toString()[i])
-        }
-        else {
-          let num = Number(id.toString()[i]) * 2
-          if (num >= 10)
-            sum += (num % 10 + (num - (num % 10)) / 10)
-          else
-            sum += num
+    if (id != undefined)
+      if (id.length == 9) {
+        for (let i = 0; i < 9; i++) {
+          if (((i + 1) % 2)) {
+            sum += Number(id[i])
+          }
+          else {
+            let num = Number(id[i]) * 2
+            if (num >= 10)
+              sum += (num % 10 + (num - (num % 10)) / 10)
+            else
+              sum += num
+          }
         }
       }
-    }
     return sum % 10
   }
 }

@@ -2,14 +2,18 @@
     <div class="sub_container col-12">
         <div *ngIf="is_edit == 'false'">
             <div style="margin: auto;">
-                <p id="explanation">באפשרותך להעלות קובץ אקסל המכיל את נתוני העובדים ובמידת הצורך ישנה אפשרות להוסיף
-                    עובד בצורה ידנית. כמובן שתוכל להזין את פרטי כל העובדים בצורה ידנית</p>
+                <p id="explanation">
+                    באפשרותך להעלות קובץ אקסל המכיל את נתוני העובדים.
+                     קובץ האקסל יכיל את השדות: מספר זהות, שם, תפקיד, כתובת דוא"ל, טלפון ומחלקה ולא יכיל שדות נוספים.
+                     במידת הצורך ישנה אפשרות להוסיף
+                    עובד בצורה ידנית</p>
                 <input type="file" (change)="saveFile($event.target.files)"><br>
                 <button class="btn btn-lg" (click)="importData()">הוספת עובדים</button><br>
             </div>
         </div>
         <div id="AddEmployee">
-            <h3>הוספת עובד חדש</h3>
+            <h3 *ngIf="is_edit == 'false'">הוספת עובד חדש</h3>
+            <h3 *ngIf="is_edit == 'true'">עריכת עובד קיים</h3>
             <form #addEmployees="ngForm" class="form">
                 <div class="form-group">
                     <label class="form-row">שם:</label>

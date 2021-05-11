@@ -45,16 +45,9 @@ div
   .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
-/* div label ul.dropdown {
-    min-width: 100%; 
-    display: none;
-    position: absolute;
-    z-index: 999;
-    left: 0;
+
+
+#businessName
+{
+   margin-right: 50%;
 }
-div label:hover ul.dropdown{
-    display: block; 
-}
-div label ul.dropdown li:hover {
-    display: block;
-} */

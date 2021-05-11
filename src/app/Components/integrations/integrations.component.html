@@ -1,6 +1,6 @@
 <div class="container col-sm-12 col-md-6 col-lg-8">
     <div class="sub_container">
-        <h2>מתאריך עד תאריך...</h2>
+        <h2 *ngIf="ward_service.list_wards[0] != undefined">  מתאריך {{ward_service.list_wards[0].diary_opening_day | date:'dd/MM/yyyy'}} עד לתאריך {{ward_service.list_wards[0].diary_closing_day | date:'dd/MM/yyyy'}}</h2>
         <h4>סמן כל משמרת בדרגת העדיפות שלך</h4>
         <h5>לחץ על כפתור וצבע את המשמרות לפי עדיפותך</h5>
         <h5>משמרת שלא תדרג תדורג כברירת מחדל בדרגת יכול</h5>
@@ -22,7 +22,8 @@
                     <th *ngFor="let day of activity_days">{{day}}</th>
                 </tr>
                 <tr *ngFor="let shift of shift_service.list_shifts">
-                    <td *ngFor="let day of activity_days" appChangeColor
+                    <!-- appPreventClicking -->
+                    <td *ngFor="let day of activity_days" appChangeColor 
                         [style.background-color]="getRatingColor(shift.id, day)"
                         (click)="AddOrUpdate(shift.id, day, $event)">
                         {{shift.name}}
@@ -32,12 +33,12 @@
             <div class="alert-warning col-12" *ngIf="integration_service.list_rating == null">
                 <p>לא דרגת אף משמרת</p>
             </div>
-            <div class="alert-warning col-12" *ngIf="cnt_can_not > 4">
+            <div class="alert-warning col-12" *ngIf="message">
                 <p>{{message}}</p>
             </div>
-            <div class="alert-warning col-12" *ngIf="cnt_not_prefere > 5">
+            <!-- <div class="alert-warning col-12" *ngIf="cnt_not_prefere > max_value_for_prefere">
                 <p>{{message}}</p>
-            </div>
+            </div> -->
         </div>
 
     </div>

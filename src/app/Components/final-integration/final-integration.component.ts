@@ -50,4 +50,9 @@ export class FinalIntegrationComponent implements OnInit {
   roleName(role_id: number) {
     return this.employees_role_service.list_roles.find(x => x.id == role_id).role
   }
+
+  activateAssigning()
+  {
+    
+  }
 }

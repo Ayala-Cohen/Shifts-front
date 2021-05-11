@@ -53,7 +53,7 @@
                 <a class="nav-link" [routerLink]="['home']">עמוד הבית</a>
             </li>
         </ul>
-        <ul class="nav navbar-nav navbar-left">
+        <ul class="nav navbar-nav" id="businessName">
             <li *ngIf="business_service.business.id != undefined">{{business_service.business.name}}</li>
         </ul>
     </div>
