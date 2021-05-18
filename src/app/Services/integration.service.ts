@@ -12,6 +12,7 @@ export class IntegrationService {
   url:string ="http://localhost:50744/api/Rating/"
   rating:Rating = new Rating();
   list_rating:Array<Rating> = new Array<Rating>();
+  toChange:boolean = true
   constructor(private http:HttpClient, private employee_service:EmployeesService) {
     this.rating.rating = "יכול"
    }

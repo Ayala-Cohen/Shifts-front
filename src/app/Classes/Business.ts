@@ -3,7 +3,7 @@ export class Business
     constructor(
         public id?:number,
         public name?:string,
-        public logo?:number[],//check what the change for byte[]
+        public logo?:string,
         public user_name?:string,
         public password?:string,
         public full_name?:string,

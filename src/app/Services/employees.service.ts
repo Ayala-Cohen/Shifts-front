@@ -14,6 +14,7 @@ export class EmployeesService {
   is_director: boolean = false
   list_employees: Array<Employee> = new Array<Employee>();
   list_employees_whole_data: Map<string, Array<Ward>> = new Map<string, Array<Ward>>()
+  num_employees_with_same_role:number
   email: string
   default_password:string
   sec_password: string

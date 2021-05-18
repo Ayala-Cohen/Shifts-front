@@ -51,8 +51,11 @@ export class FinalIntegrationComponent implements OnInit {
     return this.employees_role_service.list_roles.find(x => x.id == role_id).role
   }
 
-  activateAssigning()
-  {
-    
+  activateAssigning() {
+    this.assigning_service.ActivateAssigning().subscribe(data => {
+      if (data) {
+        this.assigning_service.list_assigning = data
+      }
+    })
   }
 }

@@ -99,8 +99,8 @@ export class IntegrationsComponent implements OnInit {
       this.integration_service.rating = new Rating()
       this.integration_service.rating.rating = prev_rating
     }
-    else
-    {
+    else {
+      this.integration_service.toChange = false
       this.message = "היומן סגור, לא ניתן להכניס או לשנות דירוגים"
       event.preventDefault()
     }

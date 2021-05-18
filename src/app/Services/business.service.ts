@@ -13,7 +13,8 @@ export class BusinessService {
   // director_email: string
   // director_name: string
   // logo: Blob
-  // logo_url
+  logo_url:string
+  formData: FormData = new FormData();
   url: string = "http://localhost:50744/api/Business/"
   constructor(private http: HttpClient) {
   }
@@ -28,7 +29,10 @@ export class BusinessService {
   //פונקציה להוספת עסק
   public Add(): Observable<Array<Business>> {
     this.business.id = 0
-    return this.http.put<Array<Business>>(this.url + "AddBusiness", this.business)
+    return this.http.put<Array<Business>>(this.url + "AddBusiness",this.business)
+  }
+  public saveLogo():Observable<string>{
+    return this.http.post<string>(`${this.url}/saveLogo/${this.business.id}`, this.formData)
   }
   //פונקציה לעדכון עסק
   public Update(): Observable<Array<Business>> {
@@ -45,16 +49,19 @@ export class BusinessService {
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-  getLogoAsImage(business: Business) {
-    let reader = new FileReader();
-    let buffer = new Uint8Array(business.logo)
-    let x = buffer[0];
-    let blob = new Blob([buffer], { type: 'image/png' })
-    reader.readAsDataURL(blob)
-    this.delay(1000).then().catch(() =>
-      console.log("error of waiting"))
-    let res = reader.result as String
-    return res
+  // getLogoAsImage(business: Business) {
+  //   let reader = new FileReader();
+  //   let buffer = new Uint8Array(business.logo)
+  //   let x = buffer[0];
+  //   let blob = new Blob([buffer], { type: 'image/png' })
+  //   reader.readAsDataURL(blob)
+  //   this.delay(1000).then().catch(() =>
+  //     console.log("error of waiting"))
+  //   let res = reader.result as String
+  //   return res
+  // }
+  getLogo():Observable<string>{
+    return this.http.post<string>(`${this.url}/GetLogo/${this.business.id}`, this.formData)
   }
   checkIfCorrect(id: string) {
     let sum = 0

@@ -14,24 +14,41 @@ export class BusinessDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  async saveFile(files: FileList) {
+  // async saveFile(files: FileList) {
+  //   this.fileToUpload = files.item(0);
+  //   let reader = new FileReader();
+  //   reader.readAsArrayBuffer(this.fileToUpload)
+  //   await this.business_service.delay(300);
+  //   let res = reader.result as ArrayBuffer
+  //   let bytes = new Uint8Array(res);
+  //   let arrayBytes = Array.from(bytes)
+  //   this.business_service.business.logo = arrayBytes
+
+  // }
+  saveFile(files: FileList) {
     this.fileToUpload = files.item(0);
-    let reader = new FileReader();
-    reader.readAsArrayBuffer(this.fileToUpload)
-    await this.business_service.delay(300);
-    let res = reader.result as ArrayBuffer
-    let bytes = new Uint8Array(res);
-    let arrayBytes = Array.from(bytes)
-    this.business_service.business.logo = arrayBytes
-
+    this.business_service.formData.append('Logo', this.fileToUpload, this.fileToUpload.name);
   }
-
 
   next() {
     this.employees_service.is_director = true
     this.business_service.Add().subscribe(data => {
-      if (data)
+      if (data) {
+        this.business_service.list_business = data
         this.business_service.business = data.filter(x => x.number == this.business_service.business.number)[0]
+        this.business_service.saveLogo().subscribe(logo => {
+          if (logo) {
+            this.business_service.business.logo = logo
+            this.business_service.Update().subscribe(b => {
+              if (b) {
+                this.business_service.list_business = b
+                this.business_service.business = b.filter(x => x.number == this.business_service.business.number)[0]
+              }
+            })
+          }
+        })
+      }
+
     }, err => alert("כשל בגישה לשרת"))
     this.router.navigate(['roles'])
   }

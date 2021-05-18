@@ -4,7 +4,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['log-in']"
                     *ngIf="employee_service.employee.id == undefined && business_service.business.id ==undefined">התחבר</a>
@@ -53,8 +53,9 @@
                 <a class="nav-link" [routerLink]="['home']">עמוד הבית</a>
             </li>
         </ul>
-        <ul class="nav navbar-nav" id="businessName">
-            <li *ngIf="business_service.business.id != undefined">{{business_service.business.name}}</li>
+        <ul class="nav navbar-nav nav" id="businessName">
+            <!-- <li *ngIf="business_service.business.id != undefined">{{business_service.business.name}}</li> -->
+            <li *ngIf="business_service.business.logo"><img class="img-rounded" src="../../../assets/images/{{business_service.business.logo}}"></li>
         </ul>
     </div>
 </nav>

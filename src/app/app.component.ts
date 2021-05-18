@@ -1,4 +1,4 @@
-import { Component, SecurityContext } from '@angular/core';
+import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Business } from './Classes/Business';
@@ -17,6 +17,6 @@ export class AppComponent {
   }
 
   sanitize(business: Business) { 
-    return this.sanitizer.bypassSecurityTrustUrl(this.business_service.getLogoAsImage(business).toString())
+    return this.sanitizer.bypassSecurityTrustUrl(business.logo.toString())
   }
 }
