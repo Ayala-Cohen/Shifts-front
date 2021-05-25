@@ -14,7 +14,7 @@ export class EmployeesService {
   is_director: boolean = false
   list_employees: Array<Employee> = new Array<Employee>();
   list_employees_whole_data: Map<string, Array<Ward>> = new Map<string, Array<Ward>>()
-  num_employees_with_same_role:number
+  // num_employees_with_same_role:number
   email: string
   default_password:string
   sec_password: string
@@ -67,5 +67,9 @@ export class EmployeesService {
   //הוספת עובדים על ידי קריאה מקובץ אקסל
   public ImportFromExcel(): Observable<Array<Employee>> {
     return this.http.post<Array<Employee>>(`${this.url}ImportFromExcel/${this.business_service.business.id}`, this.formData)
+  }
+  public sendEmail(l:Array<Employee>, subject:string, message:string):Observable<void>
+  {
+    return this.http.post<void>(`${this.url}/SendCheckingEmailToEmployees/${subject}/${message}/1`, l)
   }
 }

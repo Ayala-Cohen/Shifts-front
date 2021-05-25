@@ -25,6 +25,7 @@ export class LogINComponent implements OnInit {
   ngOnInit() {
   }
   getAllData() {
+    this.is_in = true
     if (this.employee_service.employee.id != undefined) {//ההתחברות התבצעה על ידי עובד ולא על ידי מנהל
       this.integration_service.GetAll().subscribe(data => this.integration_service.list_rating = data)//שליפת רשימת הדירוגים של העובד
       this.constraints_service.GetAllOfEmployee().subscribe(data => this.constraints_service.list_constraints = data)
@@ -64,6 +65,7 @@ export class LogINComponent implements OnInit {
           if (x) {
             this.business_service.business = x
             this.employee_service.is_director = true
+            
             this.getAllData()
             this.employee_service.employee = new Employee()
             this.router.navigate(['wards-shifts'])

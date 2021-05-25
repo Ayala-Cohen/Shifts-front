@@ -43,7 +43,7 @@ input
 }
 input:focus-visible
 {
-    outline: none;
+    outline: none !important;
     border-color: rgb(36, 134, 176);
     border-width:2px;
 }
@@ -69,4 +69,24 @@ input:focus-visible
 {
     background-color: rgb(77, 131, 191);
     color:rgb(255, 255, 255)
+}
+.disabled
+{
+    font-weight:bold;
+    width: 300px;
+    margin: auto;
+}
+.form-group{
+    margin: auto;
+}
+.float-right{
+    margin:10px;
+}
+.cb
+{
+    margin: 10px;
+}
+.checkbox
+{
+    width: 250px !important;
 }

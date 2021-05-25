@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-row">מספר טלפון:</label>
-                    <input type="text" name="emplyee_phone" class="col-12" required pattern="05?[0-9]-?[0-9]{7}" #emplyee_phone="ngModel"
+                    <input type="tel" name="emplyee_phone" class="col-12" required pattern="05?[0-9]-?[0-9]{7}" #emplyee_phone="ngModel"
                         [(ngModel)]="employee_service.employee.phone">
                         <div class="alert-warning col-12"
                         *ngIf="emplyee_phone.invalid && (emplyee_phone.dirty || emplyee_phone.touched)">

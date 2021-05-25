@@ -9,7 +9,7 @@
     <li class="list-group-item">{{getRoleNameById()}}</li>
     <li class="list-group-item" *ngFor="let dep of currentEmployeeWhole.list_departments">מחלקת {{dep.name}} </li>
   </ul>
-  <button *ngIf = "employee_service.is_director == true" class="btn card-footer" (click)="edit()">עריכה</button><!-- להסתיר במצב עובד רגיל -->
-  <button *ngIf = "employee_service.is_director == true" class="btn card-footer" (click)="delete()">מחיקה</button><!-- להסתיר במצב עובד רגיל -->
+  <button *ngIf = "employee_service.is_director == true" class="btn card-footer" (click)="edit()">עריכה</button>
+  <button *ngIf = "employee_service.is_director == true" class="btn card-footer" (click)="delete()">מחיקה</button>
 
 </div>
