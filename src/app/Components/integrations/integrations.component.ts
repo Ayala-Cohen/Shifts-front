@@ -27,6 +27,9 @@ export class IntegrationsComponent implements OnInit {
 
   ngOnInit() {
     this.initalizeCanNotAndNotPrefereCounters()
+    this.integration_service.rating.rating = "יכול"
+    this.integration_service.color = "rgb(152, 200, 210)"
+
   }
 
   initalizeCanNotAndNotPrefereCounters() {
