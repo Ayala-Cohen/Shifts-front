@@ -14,7 +14,6 @@ export class IntegrationService {
   list_rating:Array<Rating> = new Array<Rating>();
   toChange:boolean = true
   constructor(private http:HttpClient, private employee_service:EmployeesService) {
-    this.rating.rating = "יכול"
    }
     //פונקציה לשליפת רשימת דירוגים של עובד מסוים
     public GetAll(): Observable<Array<Rating>> {
