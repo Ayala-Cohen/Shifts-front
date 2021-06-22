@@ -23,6 +23,7 @@ export class LogINComponent implements OnInit {
   constructor(private constraints_service: ConstraintsService, private shift_employee_service: ShiftsEmployeesService, private employees_roles_service: EmployeesRoleService, private employee_service: EmployeesService, private integration_service: IntegrationService, private business_service: BusinessService, private ward_service: WardService, private shift_service: ShiftsService, private assigning_service: AssigningService, private router: Router) { }
 
   ngOnInit() {
+    this.is_in = true
   }
   getAllData() {
     this.is_in = true

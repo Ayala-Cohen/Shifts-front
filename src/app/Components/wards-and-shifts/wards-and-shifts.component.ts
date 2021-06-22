@@ -34,7 +34,7 @@ export class WardsAndShiftsComponent implements OnInit {
     if (str == "shift") {
       if (this.shift_service.shift.id == undefined) {
         this.shift_service.Add().subscribe(data => { if (data) this.shift_service.list_shifts = data })
-        this.shift_service.shift = new Shift()
+        this.shift_service.shift = new Shift(0, 0, " ")
       }
       else {
         this.shift_service.Update().subscribe(data => { if (data) this.shift_service.list_shifts = data })
@@ -43,7 +43,7 @@ export class WardsAndShiftsComponent implements OnInit {
     else {
       if (this.ward_service.ward.id == undefined) {
         this.ward_service.Add().subscribe(data => { if (data) this.ward_service.list_wards = data })
-        this.ward_service.ward = new Ward()
+        this.ward_service.ward = new Ward(0, " ")
       }
       else {
         this.ward_service.Update().subscribe(data => { if (data) this.ward_service.list_wards = data })
