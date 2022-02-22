@@ -27,7 +27,7 @@ export class LogINComponent implements OnInit {
   }
   getAllData() {
     this.is_in = true
-    if (this.employee_service.employee.id != undefined) {//ההתחברות התבצעה על ידי עובד ולא על ידי מנהל
+    if (this.employee_service.employee.id) {//ההתחברות התבצעה על ידי עובד ולא על ידי מנהל
       this.integration_service.GetAll().subscribe(data => this.integration_service.list_rating = data)//שליפת רשימת הדירוגים של העובד
       this.constraints_service.GetAllOfEmployee().subscribe(data => this.constraints_service.list_constraints = data)
     }
@@ -44,9 +44,6 @@ export class LogINComponent implements OnInit {
     this.shift_service.getAllShiftsInDay().subscribe(data => { if (data) this.shift_service.list_shifts_in_day = data })
     this.assigning_service.getAssigning().subscribe(data => { if (data) this.assigning_service.list_assigning = data })
     this.shift_employee_service.GetAll().subscribe(data => { if (data) this.shift_employee_service.list_employees_in_shift = data })
-    this.business_service.getLogo().subscribe(data=>{
-      this.business_service.logo_url = data
-    })
   }
   logIn() {
     this.employee_service.CheckEmployee().subscribe(data => {
@@ -62,9 +59,9 @@ export class LogINComponent implements OnInit {
           this.router.navigate(['integration'])
       }
       else {
-        this.business_service.getBusinessBydirectorDetails(this.employee_service.employee.email, this.employee_service.employee.password).subscribe(x => {
-          if (x) {
-            this.business_service.business = x
+        this.business_service.getBusinessBydirectorDetails(this.employee_service.employee.email, this.employee_service.employee.password).subscribe(business => {
+          if (business) {
+            this.business_service.business = business
             this.employee_service.is_director = true
             
             this.getAllData()
@@ -76,6 +73,5 @@ export class LogINComponent implements OnInit {
         })
       }
     }),
-      err => alert("כשל בגישה לשרת")
-  }
+      err => console.log("כשל בגישה לשרת")  }
 }

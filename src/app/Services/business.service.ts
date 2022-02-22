@@ -10,9 +10,6 @@ export class BusinessService {
   business: Business = new Business()
   list_business: Array<Business> = new Array<Business>()
   sec_password: string
-  // director_email: string
-  // director_name: string
-  // logo: Blob
   logo_url:string
   formData: FormData = new FormData();
   url: string = "http://localhost:50744/api/Business/"
@@ -48,20 +45,6 @@ export class BusinessService {
   }
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
-  // getLogoAsImage(business: Business) {
-  //   let reader = new FileReader();
-  //   let buffer = new Uint8Array(business.logo)
-  //   let x = buffer[0];
-  //   let blob = new Blob([buffer], { type: 'image/png' })
-  //   reader.readAsDataURL(blob)
-  //   this.delay(1000).then().catch(() =>
-  //     console.log("error of waiting"))
-  //   let res = reader.result as String
-  //   return res
-  // }
-  getLogo():Observable<string>{
-    return this.http.post<string>(`${this.url}/GetLogo/${this.business.id}`, this.formData)
   }
   checkIfCorrect(id: string) {
     let sum = 0

@@ -49,6 +49,10 @@ footer nav li
     list-style:none;
     font-size:large
 }
+.business_logo{
+    display: inline;
+    margin: 10px;
+}
 
 
 

@@ -13,18 +13,6 @@ export class BusinessDetailsComponent implements OnInit {
   constructor(private router: Router, private business_service: BusinessService, private employees_service: EmployeesService) { }
   ngOnInit() {
   }
-
-  // async saveFile(files: FileList) {
-  //   this.fileToUpload = files.item(0);
-  //   let reader = new FileReader();
-  //   reader.readAsArrayBuffer(this.fileToUpload)
-  //   await this.business_service.delay(300);
-  //   let res = reader.result as ArrayBuffer
-  //   let bytes = new Uint8Array(res);
-  //   let arrayBytes = Array.from(bytes)
-  //   this.business_service.business.logo = arrayBytes
-
-  // }
   saveFile(files: FileList) {
     this.fileToUpload = files.item(0);
     this.business_service.formData.append('Logo', this.fileToUpload, this.fileToUpload.name);
