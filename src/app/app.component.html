@@ -6,19 +6,17 @@
 <router-outlet></router-outlet>
 <footer class="down_banner col-12">
     <nav>
-        <h3>עסקים שהצטרפו</h3>
-        <ul>
-            <li *ngFor="let business of business_service.list_business">
-                {{business.name}}
-                <!-- <img *ngIf ="business.logo != null" [src]="sanitize(business)"> -->
-            </li>
-        </ul>
-    </nav>
-    <nav>
         <h3>יצירת קשר</h3>
         <ul>
             <li>דוא"ל:support@gmail.com</li>
             <li>מספר טלפון:0504123456</li>
+        </ul>
+    </nav>
+    <nav>
+        <ul >
+            <li *ngFor="let business of business_service.list_business" class="business_logo">
+                <img *ngIf ="business.logo" src="./../assets/images/{{business.logo}}" class="rounded">
+            </li>
         </ul>
     </nav>
 </footer>

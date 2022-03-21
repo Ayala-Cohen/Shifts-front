@@ -4,6 +4,7 @@ import { Employee } from 'src/app/Classes/Employee';
 import { AssigningService } from 'src/app/Services/assigning.service';
 import { EmployeesRoleService } from 'src/app/Services/employees-role.service';
 import { EmployeesService } from 'src/app/Services/employees.service';
+import { IntegrationService } from 'src/app/Services/integration.service';
 import { ShiftsService } from 'src/app/Services/shifts.service';
 import { WardService } from 'src/app/Services/ward.service';
 
@@ -28,10 +29,11 @@ export class FinalIntegrationComponent implements OnInit {
   is_activated:boolean
   l_to_replace: Array<string> = new Array<string>()
   success_message:string
-  constructor(private ward_service: WardService, private employees_role_service: EmployeesRoleService, private shift_service: ShiftsService, private assigning_service: AssigningService, private employee_service: EmployeesService) { }
+  constructor(private ward_service: WardService,private integration_service:IntegrationService, private employees_role_service: EmployeesRoleService, private shift_service: ShiftsService, private assigning_service: AssigningService, private employee_service: EmployeesService) { }
 
   ngOnInit() {
     this.is_activated = false
+    this.integration_service.toChange = true
   }
 
   getEmployeeName(id: string) {
@@ -104,6 +106,7 @@ export class FinalIntegrationComponent implements OnInit {
       if (data)
         {
           this.assigning_service.list_assigning = data
+          this.l_to_replace.splice(0)
           this.success_message = "השיבוץ עודכן בהצלחה"
           await new Promise(resolve => setTimeout(resolve, 1000));
           this.is_edit = false
