@@ -30,6 +30,9 @@
                 </div>
             </div>
             <button (click)="activateAssigning()" class="btn" *ngIf="employee_service.is_director">תזמון שיבוץ</button>
+            <div class="loader_container" *ngIf="is_activated">
+                <div class="loader"></div>
+            </div>
         </div>
         <div class="edit_integration" *ngIf="is_edit && assigning_service.list_employee_for_replacing != undefined">
             <h3>עריכת שיבוץ למשמרת {{shift_name}} ביום {{day}} במחלקת {{ward_name}}</h3>
@@ -42,13 +45,15 @@
                         {{employee.name}}</li>
                 </ul>
                 <li class="list-group-item disabled disabled"
-                    *ngIf="assigning_service.current_employees_assigned_grouped_by_role[role.key].length!=0">משובצים כרגע:</li>
+                    *ngIf="assigning_service.current_employees_assigned_grouped_by_role[role.key].length!=0">משובצים
+                    כרגע:</li>
                 <ul *ngFor="let employee_assigned of assigning_service.current_employees_assigned_grouped_by_role[role.key]"
                     class="list-group" style="width: 300px;">
                     <li class="list-group-item" appChangeColor (click)="AddToReplacingList(employee_assigned.id)">
                         {{employee_assigned.name}}</li>
                 </ul>
-                <button class="btn" (click)="Replace()" *ngIf="assigning_service.current_employees_assigned_grouped_by_role[role.key].length!=0">החלף</button>
+                <button class="btn" (click)="Replace()"
+                    *ngIf="assigning_service.current_employees_assigned_grouped_by_role[role.key].length!=0">החלף</button>
             </div>
             <div *ngIf="success_message">{{success_message}}</div>
             <div class="form-group">

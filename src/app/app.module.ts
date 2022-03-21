@@ -62,7 +62,7 @@ import { ForgotPasswordComponent } from './Components/forgot-password/forgot-pas
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     IntegrationService,

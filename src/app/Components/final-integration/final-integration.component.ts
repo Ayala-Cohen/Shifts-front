@@ -7,6 +7,7 @@ import { EmployeesService } from 'src/app/Services/employees.service';
 import { ShiftsService } from 'src/app/Services/shifts.service';
 import { WardService } from 'src/app/Services/ward.service';
 
+
 @Component({
   selector: 'app-final-integration',
   templateUrl: './final-integration.component.html',
@@ -24,11 +25,13 @@ export class FinalIntegrationComponent implements OnInit {
   current_shift_in_day_id: number
   current_ward: number
   l_roles = []
+  is_activated:boolean
   l_to_replace: Array<string> = new Array<string>()
   success_message:string
   constructor(private ward_service: WardService, private employees_role_service: EmployeesRoleService, private shift_service: ShiftsService, private assigning_service: AssigningService, private employee_service: EmployeesService) { }
 
   ngOnInit() {
+    this.is_activated = false
   }
 
   getEmployeeName(id: string) {
@@ -70,9 +73,11 @@ export class FinalIntegrationComponent implements OnInit {
   }
 
   activateAssigning() {
+    this.is_activated = true
     this.assigning_service.ActivateAssigning().subscribe(data => {
       if (data) {
         this.assigning_service.list_assigning = data
+        this.is_activated = false
       }
     })
   }
